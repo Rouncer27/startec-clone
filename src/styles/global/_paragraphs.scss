@@ -13,24 +13,12 @@
 
 .p-one,
 .p1 {
-  @include utils.font-sizer(1.8, 2.1, 76.8, 150, 1.8);
+  @include utils.font-sizer(2, 2.3, 76.8, 150, 2);
   @extend .paragraph-all;
 }
 
 .p-two,
 .p2 {
   @include utils.font-sizer(1.6, 1.8, 76.8, 150, 1.8);
-  @extend .paragraph-all;
-}
-
-.p-three,
-.p3 {
-  @include utils.font-sizer(1.6, 1.8, 76.8, 150, 1.6);
-  @extend .paragraph-all;
-}
-
-.p-four,
-.p4 {
-  @include utils.font-sizer(1.2, 1.4, 76.8, 150, 1.6);
   @extend .paragraph-all;
 }
