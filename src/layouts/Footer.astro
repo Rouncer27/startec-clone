@@ -38,15 +38,15 @@ const {
 } = await response.json();
 ---
 
-<footer>
-  <Wrapper>
-    <div>
+<footer class="main-footer">
+  <Wrapper classes="main-footer__wrapper">
+    <div class="main-footer__logo">
       <MainLogo data={logoOptions} />
     </div>
-    <div>
+    <div class="main-footer__social-media">
       <SocialMediaLinks data={socialMediaLinks} />
     </div>
-    <div>
+    <div class="main-footer__menu">
       <FooterNav items={menuItems} />
     </div>
   </Wrapper>

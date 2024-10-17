@@ -1,13 +1,13 @@
 ---
-
+import "./footerNav.scss";
 ---
 
-<div>
-  <ul>
+<div class="footer-nav">
+  <ul class="footer-nav-items">
     {
       Astro.props.items.map((item) => {
         return (
-          <li>
+          <li class="footer-nav-item">
             <a href={item.url}>{item.label}</a>
           </li>
         );

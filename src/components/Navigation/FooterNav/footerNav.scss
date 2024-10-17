@@ -1,0 +1,23 @@
+@use "../../../styles/global/paragraphs";
+@use "../../../styles/global/buttons";
+@use "../../../styles/abstracts/" as *;
+
+.footer-nav {
+  width: 100%;
+
+  &-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-item {
+    margin: 0 1.5rem;
+
+    a {
+      @extend .p-two;
+      text-transform: uppercase;
+    }
+  }
+}
