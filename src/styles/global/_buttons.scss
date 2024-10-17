@@ -5,17 +5,17 @@
   @include utils.font-sizer(1.8, 2.3, 76.8, 150, 1.8);
   position: relative;
   display: inline-block;
-  padding: 0.5rem 5rem;
+  padding: 1rem 2rem;
   transition: all 0.3s ease;
-  border: 0.15rem solid $secondaryColor;
-  border-radius: 5rem;
-  background-color: $secondaryColor;
-  color: $primaryColor;
+  border: 0.2rem solid $tertiaryColor;
+  border-radius: 0;
+  background-color: $whiteColor;
+  color: $blackColor;
   font-family: $primaryFont;
-  font-weight: 600;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.5;
+  line-height: 1.89;
   letter-spacing: normal;
   text-align: center;
   text-transform: uppercase;
@@ -27,9 +27,9 @@
 
   &:hover {
     cursor: pointer;
-    color: $primaryColor;
-    background-color: $whiteColor;
-    border-color: $primaryColor;
+    color: $whiteColor;
+    background-color: $tertiaryColor;
+    border-color: $tertiaryColor;
   }
 
   &:disabled {
@@ -37,7 +37,7 @@
     cursor: not-allowed;
 
     &:hover {
-      background-color: $primaryColor;
+      background-color: $tertiaryColor;
       cursor: not-allowed;
     }
   }
