@@ -35,18 +35,20 @@
         a {
           @extend .p-two;
           border-bottom: 0.2rem solid transparent;
+          color: $secondaryColor;
+          font-weight: 600;
           text-transform: uppercase;
 
           &:hover {
-            color: $secondaryColor;
-            border-bottom-color: $secondaryColor;
+            color: $primaryColor;
+            border-bottom-color: $primaryColor;
           }
         }
 
         a.main-nav-current {
-          color: $secondaryColor;
+          color: $primaryColor;
           font-weight: bold;
-          border-bottom-color: $secondaryColor;
+          border-bottom-color: $primaryColor;
 
           &:hover {
             cursor: default;
