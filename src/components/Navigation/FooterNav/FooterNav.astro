@@ -6,9 +6,11 @@ import "./footerNav.scss";
   <ul class="footer-nav-items">
     {
       Astro.props.items.map((item) => {
+        console.log(item);
+        const classes = item.cssClasses.join(" ");
         return (
-          <li class="footer-nav-item">
-            <a href={item.url}>{item.label}</a>
+          <li class={`footer-nav-item ${classes}`}>
+            <a href={`${item.uri}`}>{item.label}</a>
           </li>
         );
       })
