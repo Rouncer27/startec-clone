@@ -60,14 +60,14 @@ const Hamburger = ({ state, mainMenu, mainLogo, pathname }) => {
         <div className="wrapper">
           <div className="menu-logo">
             <img
-              src={mainLogo.mainLogo.sourceUrl}
-              alt={mainLogo.mainLogo.altTex}
+              src={mainLogo.mainLogo.node.sourceUrl}
+              alt={mainLogo.mainLogo.node.altTex}
             />
           </div>
           <div className="menu-links">
             <nav>
               <ul>
-                {mainMenu.menuItems.nodes.map((item, index) => {
+                {mainMenu.nodes.map((item, index) => {
                   if (item.parentId) {
                     return null;
                   }

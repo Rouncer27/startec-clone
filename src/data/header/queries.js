@@ -5,6 +5,7 @@ export const Main_Menu_Query = `
                 label
                 uri
                 parentId
+                cssClasses
                 childItems {
                     nodes {
                         label
@@ -23,6 +24,7 @@ export const Mobile_Menu_Query = `
                 label
                 uri
                 parentId
+                cssClasses
                 childItems {
                     nodes {
                         label

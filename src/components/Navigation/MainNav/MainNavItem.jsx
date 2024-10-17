@@ -11,9 +11,11 @@ const MainNavItem = ({ item, currentPage, pathname }) => {
     setIsSubActive(false);
   };
 
+  const classes = item.cssClasses.join(" ");
+
   return (
     <li
-      className={`main-nav-top-list-item`}
+      className={`main-nav-top-list-item ${classes}`}
       onMouseEnter={handleIsActiveOn}
       onMouseLeave={handleIsActiveOff}
       onFocus={handleIsActiveOn}
@@ -27,6 +29,7 @@ const MainNavItem = ({ item, currentPage, pathname }) => {
         >
           {item.childItems.nodes.map((subItem, subIndex) => {
             const currentSubPage = pathname === subItem.uri;
+
             return (
               <li key={subIndex}>
                 <a

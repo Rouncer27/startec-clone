@@ -15,14 +15,12 @@
   }
 
   &-logo {
-    @media (min-width: 768px) {
-      width: calc(15%);
-      margin: auto;
-    }
+    max-width: 30rem;
 
-    @media (min-width: 1025px) {
-      width: calc(15%);
-      margin: 0;
+    @media (min-width: 768px) {
+      max-width: 30rem;
+      width: calc(100%);
+      margin: auto;
     }
 
     @media (min-width: 1040px) {
@@ -43,11 +41,10 @@
 
     @media (min-width: 769px) {
       display: flex;
-      width: calc(85%);
-      align-self: center;
+      width: calc(100%);
     }
 
-    @media (min-width: 1025px) {
+    @media (min-width: 1040px) {
       width: calc(85%);
       align-self: flex-end;
     }

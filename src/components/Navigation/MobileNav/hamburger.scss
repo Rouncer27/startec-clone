@@ -20,7 +20,7 @@
 
   .menu-logo {
     width: 100%;
-    max-width: 12.5rem;
+    max-width: 25rem;
     margin: 0.5rem auto 2rem;
     background-color: $whiteColor;
   }
@@ -51,10 +51,11 @@
 
   .menu-layer {
     position: relative;
-    background-color: $primaryColor;
+    background-color: $whiteColor;
     height: 100%;
     overflow-x: scroll;
     z-index: 10;
+    border-bottom: 1rem solid $secondaryColor;
 
     .menu-links {
       width: 100%;

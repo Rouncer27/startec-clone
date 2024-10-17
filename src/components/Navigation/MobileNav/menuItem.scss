@@ -3,7 +3,7 @@
 
 .menu-links-item {
   text-align: center;
-  border-bottom: 0.25rem solid $whiteColor;
+  border-bottom: 0.25rem solid $secondaryColor;
 
   .menu-links-item-list {
     position: relative;
@@ -35,7 +35,7 @@
       width: 100%;
       padding-top: 1rem;
       padding-bottom: 1rem;
-      color: $whiteColor;
+      color: $secondaryColor;
       cursor: pointer;
       text-transform: uppercase;
 
