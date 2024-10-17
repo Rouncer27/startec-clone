@@ -1,7 +1,53 @@
 ---
+import {
+  Footer_Menu_Query,
+  Logo_Options_Query,
+  Social_Media_Links_Query,
+} from "../data/footer/queries";
+
+import MainLogo from "../components/Logo/MainLogo.astro";
+import FooterNav from "../components/Navigation/FooterNav/FooterNav.astro";
+import SocialMediaLinks from "../components/SocialMedia/SocialMediaLinks.astro";
+import Wrapper from "../components/shared/Wrapper.astro";
+
 import "./footer.scss";
+
+const response = await fetch(`${import.meta.env.PUBLIC_WP_URL}/graphql`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+        query headerQuery {
+            ${Footer_Menu_Query}
+            ${Logo_Options_Query}
+            ${Social_Media_Links_Query}
+        }
+    `,
+  }),
+});
+const {
+  data: {
+    menu: {
+      menuItems: { nodes: menuItems },
+    },
+    mainLogo: { logoOptions },
+    socialMediaLinks,
+  },
+} = await response.json();
 ---
 
 <footer>
-  <h1>Footer</h1>
+  <Wrapper>
+    <div>
+      <MainLogo data={logoOptions} />
+    </div>
+    <div>
+      <SocialMediaLinks data={socialMediaLinks} />
+    </div>
+    <div>
+      <FooterNav items={menuItems} />
+    </div>
+  </Wrapper>
 </footer>

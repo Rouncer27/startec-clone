@@ -1,0 +1,17 @@
+---
+
+---
+
+<div>
+  <ul>
+    {
+      Astro.props.items.map((item) => {
+        return (
+          <li>
+            <a href={item.url}>{item.label}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

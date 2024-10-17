@@ -1,0 +1,15 @@
+---
+console.log(Astro.props.data);
+import FacebookLink from "./FacebookLink.astro";
+import Youtube from "./YoutubeLink.astro";
+import Linkedin from "./LinkedinLink.astro";
+import "./socialMediaLinks.scss";
+---
+
+<div class="social-media">
+  <ul class="social-media-links">
+    <FacebookLink link={Astro.props.data.socialMedia.facebookLink} />
+    <Youtube link={Astro.props.data.socialMedia.youTubeLink} />
+    <Linkedin link={Astro.props.data.socialMedia.linkedinLink} />
+  </ul>
+</div>
