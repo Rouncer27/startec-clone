@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroSlider from "../components/HomePage/HeroSlider/HeroSlider";
+import MarketsSlider from "../components/HomePage/MarketsSlider/MarketsSlider";
 import "../styles/styles.scss";
 ---
 
 <Layout title="Welcome to Stantec.">
-  <h1>Startec</h1>
+  <HeroSlider client:only="react" />
+  <MarketsSlider client:only="react" />
 </Layout>
