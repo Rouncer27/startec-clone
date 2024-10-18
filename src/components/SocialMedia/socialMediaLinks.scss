@@ -19,15 +19,15 @@
     a {
       display: block;
       position: relative;
-      width: 4rem;
-      height: 4rem;
+      width: 5rem;
+      height: 5rem;
       padding: 1rem;
       border-radius: 50%;
       background-color: $tertiaryColor;
 
       @media (min-width: 768px) {
-        width: 2.6rem;
-        height: 2.6rem;
+        width: 5rem;
+        height: 5rem;
       }
       @media (min-width: 1025px) {
         width: 5rem;
