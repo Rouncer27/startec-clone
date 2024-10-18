@@ -7,13 +7,51 @@ import ContentSideImageSide from "../components/HomePage/ContentSideImageSide/Co
 import ThreeImagesRow from "../components/HomePage/ThreeImagesRow/ThreeImagesRow.astro";
 import "../styles/styles.scss";
 import HeroCallOut from "../components/HomePage/HeroCallOut/HeroCallOut.astro";
+
+import {
+  Hero_Slider_Query,
+  Markets_Slider_Query,
+  Content_Title_Logo_Query,
+  Content_Side_Image_Side_Query,
+  Three_Image_Row_Query,
+  Hero_Call_Out_Query,
+} from "../data/home/queries.js";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+			query homePageQuery {
+				page(id: "/", idType: URI) {
+          homePage {
+            ${Hero_Slider_Query}
+            ${Markets_Slider_Query}
+            ${Content_Title_Logo_Query}
+            ${Content_Side_Image_Side_Query}
+            ${Three_Image_Row_Query}
+            ${Hero_Call_Out_Query}
+          }
+				}
+			}
+		`,
+  }),
+});
+
+const {
+  data: {
+    page: { homePage },
+  },
+} = await response.json();
 ---
 
 <Layout title="Welcome to Stantec.">
-  <HeroSlider client:only="react" />
-  <MarketsSlider client:only="react" />
-  <ContentTitleLogo />
-  <ContentSideImageSide />
-  <ThreeImagesRow />
-  <HeroCallOut />
+  <HeroSlider client:only="react" data={homePage.heroSlider} />
+  <MarketsSlider client:only="react" data={homePage.marketsSlider} />
+  <ContentTitleLogo data={homePage.contentTitleLogo} />
+  <ContentSideImageSide data={homePage.contentSideImageSide} />
+  <ThreeImagesRow data={homePage.threeImagesRow} />
+  <HeroCallOut data={homePage.heroCallOut} />
 </Layout>
