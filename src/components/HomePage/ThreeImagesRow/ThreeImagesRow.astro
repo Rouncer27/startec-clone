@@ -1,7 +1,30 @@
 ---
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
 import "./threeImagesRow.scss";
+import Paragraph from "../../shared/Paragraph.astro";
 ---
 
-<div>
-  <h1>Three Images Row</h1>
+<div class="three-images-row">
+  <Wrapper>
+    {
+      Astro.props.data.blocks.map((block) => {
+        return (
+          <div class="three-images-row__item">
+            <div class="three-images-row__item__image">
+              <Image
+                src={block.image.node.sourceUrl}
+                alt={block.image.node.altText}
+                inferSize={true}
+              />
+            </div>
+            <div class="three-images-row__item__content">
+              <Paragraph ele="h2">{block.title}</Paragraph>
+              <Paragraph pstyle="two">{block.content}</Paragraph>
+            </div>
+          </div>
+        );
+      })
+    }
+  </Wrapper>
 </div>
