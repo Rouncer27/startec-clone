@@ -3,7 +3,13 @@ export const Hero_Slider_Query = `
         heroSliderSlides {
             title
             content
-            buttonLink
+            buttonLink {
+                edges {
+                    node {
+                        uri
+                    }
+                }
+            }
             buttonText
             buttonRequired
             image {

@@ -1,7 +1,7 @@
+import Slide from "./Slide";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import "./heroSlider.scss";
 
 const settings = {
@@ -11,21 +11,22 @@ const settings = {
   draggable: true,
   infinite: true,
   speed: 500,
-  autoplay: false,
-  autoplaySpeed: 10000,
+  autoplay: true,
+  autoplaySpeed: 15000,
   centerMode: false,
-  arrows: false,
-  dots: true,
+  arrows: true,
+  dots: false,
   pauseOnHover: true,
 };
 
 const HeroSlider = (props) => {
-  console.log(props);
   return (
-    <div>
-      <div>
-        <h1>Hero Slider</h1>
-      </div>
+    <div className="hero-slider">
+      <Slider {...settings}>
+        {props.data.heroSliderSlides.map((slide, index) => {
+          return <Slide key={index} data={slide} />;
+        })}
+      </Slider>
     </div>
   );
 };

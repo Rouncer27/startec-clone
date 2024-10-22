@@ -1,0 +1,39 @@
+.hero-slider {
+  .slick-arrow {
+    top: auto;
+    bottom: 0rem;
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 0.1rem solid #fff;
+    z-index: 999;
+
+    &::before {
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 3rem;
+    }
+  }
+
+  .slick-prev {
+    left: calc(85% - 4.4rem);
+
+    @media (min-width: 768px) {
+      left: calc(90% - 4.4rem);
+    }
+
+    @media (min-width: 1025px) {
+      left: calc(55% - 4.4rem);
+    }
+  }
+
+  .slick-next {
+    right: calc(15% - 4.4rem);
+
+    @media (min-width: 768px) {
+      right: calc(10% - 4.4rem);
+    }
+
+    @media (min-width: 1025px) {
+      right: calc(45% - 4.4rem);
+    }
+  }
+}

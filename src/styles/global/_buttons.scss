@@ -49,13 +49,13 @@
 
 .btn-two {
   @extend .btn;
-  background-color: $primaryColor;
-  border-color: $primaryColor;
+  background-color: $tertiaryColor;
+  border-color: $tertiaryColor;
   color: $whiteColor;
 
   &:hover {
-    background-color: $blackColor;
-    color: $whiteColor;
+    background-color: $whiteColor;
+    color: $secondaryColor;
   }
 }
 
