@@ -68,20 +68,6 @@
 
     a {
       @extend .btn-one;
-      display: inline-block;
-      padding: 1rem 5rem 1rem 2rem;
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      &::after {
-        position: absolute;
-        top: 1.25rem;
-        right: 2rem;
-        display: block;
-        content: "\2192";
-      }
     }
   }
 }

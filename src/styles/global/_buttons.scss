@@ -5,7 +5,7 @@
   @include utils.font-sizer(1.8, 2.3, 76.8, 150, 1.8);
   position: relative;
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 1rem 5rem 1rem 2rem;
   transition: all 0.3s ease;
   border: 0.2rem solid $tertiaryColor;
   border-radius: 0;
@@ -40,6 +40,14 @@
       background-color: $tertiaryColor;
       cursor: not-allowed;
     }
+  }
+
+  &::after {
+    position: absolute;
+    top: 1.15rem;
+    right: 2rem;
+    display: block;
+    content: "\2192";
   }
 }
 
