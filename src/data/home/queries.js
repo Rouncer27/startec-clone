@@ -56,10 +56,7 @@ export const Content_Title_Logo_Query = `
     buttonLink {
         edges {
             node {
-                ... on Page {
-                id
                 uri
-                }
             }
         }
     }
@@ -79,9 +76,8 @@ export const Content_Side_Image_Side_Query = `
     mainContent
     buttonText
     buttonLink {
-        nodes {
-            ... on Page {
-                id
+        edges {
+            node {
                 uri
             }
         }

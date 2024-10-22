@@ -1,7 +1,37 @@
 ---
+import Wrapper from "../../shared/Wrapper.astro";
+import Button from "../../shared/Button.astro";
 import "./contentSideImageSide.scss";
+import { Image } from "astro:assets";
+import Paragraph from "../../shared/Paragraph.astro";
+import Headline from "../../shared/Headline.astro";
 ---
 
-<div>
-  <h1>Content Side Image Side</h1>
+<div class="content-side-image">
+  <Wrapper>
+    <div class="content-side-image-left">
+      <div class="content-side-image-left-titles">
+        <Paragraph>{Astro.props.data.topSmallTitle}</Paragraph>
+        <Headline ele="h2" hlstyle="two">{Astro.props.data.mainTitle}</Headline>
+      </div>
+      <div
+        class="content-side-image-left-content"
+        set:html={Astro.props.data.mainContent}
+      />
+      <div>
+        <Button
+          href={Astro.props.data.buttonLink.edges[0].node.uri}
+          title={Astro.props.data.buttonText}
+          >{Astro.props.data.buttonText}</Button
+        >
+      </div>
+    </div>
+    <div class="content-side-image-right">
+      <Image
+        src={Astro.props.data.image.node.sourceUrl}
+        alt={Astro.props.data.image.node.altText}
+        inferSize={true}
+      />
+    </div>
+  </Wrapper>
 </div>

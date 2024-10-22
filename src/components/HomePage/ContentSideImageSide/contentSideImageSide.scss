@@ -1,0 +1,51 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/paragraphs";
+@use "../../../styles/global/headlines";
+
+.content-side-image {
+  margin-top: 20rem;
+
+  &-left {
+    width: 100%;
+    margin-bottom: 5rem;
+
+    @media (min-width: 768px) {
+      width: calc(50% - 3rem);
+      margin-right: 3rem;
+      margin-bottom: 0;
+    }
+
+    &-titles {
+      width: 100%;
+      margin-bottom: 4rem;
+
+      p {
+        color: $secondaryColor;
+        margin: 0;
+      }
+
+      h2 {
+        margin: 0;
+        font-weight: 600;
+        line-height: 1.09;
+      }
+    }
+
+    &-content {
+      width: 100%;
+
+      p {
+        @extend .p-one;
+      }
+    }
+  }
+
+  &-right {
+    width: 100%;
+
+    @media (min-width: 768px) {
+      width: calc(50% - 3rem);
+      margin-left: 3 rem;
+    }
+  }
+}
