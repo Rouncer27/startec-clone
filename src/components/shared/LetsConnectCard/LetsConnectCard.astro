@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import "./letsConnectCard.scss";
+
+import letsConnectIcon from "../../../../public/lets-connect.png";
+---
+
+<div class="lets-connect-card">
+  <div class="lets-connect-card-inner">
+    <a
+      href="/contact"
+      title="Let's connect - click this button to go the contact page."
+    >
+      <Image
+        src={letsConnectIcon}
+        alt="Let's connect - click this button to go the contact page."
+      />
+    </a>
+  </div>
+</div>
