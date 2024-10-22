@@ -31,10 +31,9 @@ export const Markets_Slider_Query = `
             buttonRequired
             buttonText
             marketLink {
-                nodes {
-                    ... on Page {
-                    id
-                    uri
+                edges {
+                    node {
+                        uri
                     }
                 }
             }
