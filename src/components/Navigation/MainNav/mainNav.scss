@@ -98,7 +98,10 @@
       }
 
       li.main-nav-top-list-item-cta-one {
-        @media (min-width: 1081px) {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @media (min-width: 1025px) {
           width: auto;
           text-align: center;
           margin-right: 0;
