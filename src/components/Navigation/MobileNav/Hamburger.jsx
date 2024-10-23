@@ -5,8 +5,9 @@ import "./hamburger.scss";
 import MenuItem from "./MenuItem";
 // Animations. //
 import { staggerReveal } from "./animations/animations";
+import SocialMediaLinks from "../../SocialMedia/SocialReact/SocialMediaLinks.jsx";
 
-const Hamburger = ({ state, mainMenu, mainLogo, pathname }) => {
+const Hamburger = ({ state, mainMenu, mainLogo, pathname, socialMedia }) => {
   let menu = useRef(null);
   let revealMenu = useRef(null);
   let revealMenuBackground = useRef(null);
@@ -81,18 +82,12 @@ const Hamburger = ({ state, mainMenu, mainLogo, pathname }) => {
                     />
                   );
                 })}
-                <div className="menu-links-item">
-                  <li className="menu-links-item-list">
-                    <a
-                      className="menu-links-item-link"
-                      href="/donate/donate-now/"
-                    >
-                      Donate Now
-                    </a>
-                  </li>
-                </div>
               </ul>
             </nav>
+          </div>
+
+          <div className="menu-social-icons">
+            <SocialMediaLinks socialMedia={socialMedia} />
           </div>
         </div>
       </div>
