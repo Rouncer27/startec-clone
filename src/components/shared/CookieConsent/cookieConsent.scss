@@ -1,0 +1,40 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/paragraphs";
+@use "../../../styles/global/buttons";
+
+.cookie-banner-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 65rem;
+  padding: 2rem;
+  transform: translate(-50%, -50%);
+  background-color: $creamColor;
+  border-radius: 0.5rem;
+  z-index: 100000000;
+
+  &.hidden {
+    display: none;
+  }
+
+  p {
+    @extend .p-one;
+  }
+
+  a {
+    @extend .p-one;
+
+    &:hover {
+      color: $accentColor;
+    }
+  }
+
+  button {
+    @extend .btn;
+    @extend .btn-one;
+
+    &:nth-of-type(2) {
+      margin-left: 1rem;
+    }
+  }
+}
