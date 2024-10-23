@@ -2,17 +2,19 @@
 import "./footerNav.scss";
 ---
 
-<div class="footer-nav">
+<nav class="footer-nav" role="navigation" aria-label="secondary">
   <ul class="footer-nav-items">
     {
       Astro.props.items.map((item) => {
         const classes = item.cssClasses.join(" ");
         return (
           <li class={`footer-nav-item ${classes}`}>
-            <a href={`${item.uri}`}>{item.label}</a>
+            <a href={`${item.uri}`} title={item.label}>
+              {item.label}
+            </a>
           </li>
         );
       })
     }
   </ul>
-</div>
+</nav>

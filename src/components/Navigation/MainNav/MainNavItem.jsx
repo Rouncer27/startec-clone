@@ -20,7 +20,11 @@ const MainNavItem = ({ item, currentPage, pathname }) => {
       onMouseLeave={handleIsActiveOff}
       onFocus={handleIsActiveOn}
     >
-      <a className={`${currentPage ? "main-nav-current" : ""}`} href={item.uri}>
+      <a
+        className={`${currentPage ? "main-nav-current" : ""}`}
+        href={item.uri}
+        title={item.label}
+      >
         {item.label}
       </a>
       {item.childItems.nodes.length > 0 ? (
@@ -35,6 +39,7 @@ const MainNavItem = ({ item, currentPage, pathname }) => {
                 <a
                   className={`${currentSubPage ? " main-nav-sub-current" : ""}`}
                   href={subItem.uri}
+                  title={subItem.label}
                 >
                   {subItem.label}
                 </a>

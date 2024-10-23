@@ -4,7 +4,7 @@ import "./mainNav.scss";
 const MainNav = (props) => {
   return (
     <div className="main-nav">
-      <nav className="main-nav-top">
+      <nav role="navigation" aria-label="primary" className="main-nav-top">
         <ul className="main-nav-top-list">
           {props.menuItems.map((item, index) => {
             if (!item.parentId) {
