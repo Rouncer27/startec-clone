@@ -38,6 +38,10 @@
       width: calc(15%);
     }
 
+    @media (min-width: 1425px) {
+      max-width: 21rem;
+    }
+
     h1 {
       margin: 0;
       span {
