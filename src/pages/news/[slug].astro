@@ -1,0 +1,84 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Page_Seo_Query } from "../../data/Page/queries";
+
+export async function getStaticPaths() {
+  const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query postQuery {
+            posts(first: 999999) {
+                nodes {
+                    slug
+                    uri
+                }
+            }
+        }
+      `,
+    }),
+  });
+
+  const { data } = await response.json();
+
+  const allPosts = data.posts.nodes;
+
+  return allPosts.map((post, index) => {
+    return {
+      params: { slug: `${post.slug}` },
+      props: {
+        next:
+          index === 0
+            ? null
+            : {
+                slug: allPosts[index - 1].slug,
+                title: allPosts[index - 1].title,
+              },
+        prev:
+          index === allPosts.length - 1
+            ? null
+            : {
+                slug: allPosts[index + 1].slug,
+                title: allPosts[index + 1].title,
+              },
+      },
+    };
+  });
+}
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+    query postQuery($id: ID!) {
+        post(idType: SLUG, id: $id) {
+            ${Page_Seo_Query}
+            title
+            slug 
+        }
+    }
+    `,
+    variables: {
+      id: Astro.params["slug"],
+    },
+  }),
+});
+
+const {
+  data: { post },
+} = await response.json();
+---
+
+<Layout
+  metaImg={post?.seoMetaTags?.seoMetaInformation?.metaImage?.sourceUrl}
+  metaTitle={post?.seoMetaTags?.seoMetaInformation?.metaTitle}
+  metaDescription={post?.seoMetaTags?.seoMetaInformation?.metaDescription}
+>
+  <h1>{post.title} at {post.slug}</h1>
+</Layout>

@@ -5,8 +5,8 @@ import MarketsSlider from "../components/HomePage/MarketsSlider/MarketsSlider";
 import ContentTitleLogo from "../components/HomePage/ContentTitleLogo/ContentTitleLogo.astro";
 import ContentSideImageSide from "../components/HomePage/ContentSideImageSide/ContentSideImageSide.astro";
 import ThreeImagesRow from "../components/HomePage/ThreeImagesRow/ThreeImagesRow.astro";
-import "../styles/styles.scss";
 import HeroCallOut from "../components/HomePage/HeroCallOut/HeroCallOut.astro";
+import "../styles/styles.scss";
 
 import {
   Hero_Slider_Query,
@@ -17,6 +17,8 @@ import {
   Hero_Call_Out_Query,
 } from "../data/home/queries.js";
 
+import { Page_Seo_Query } from "../data/Page/queries";
+
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
   headers: {
@@ -26,6 +28,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
     query: `
 			query homePageQuery {
 				page(id: "/", idType: URI) {
+          ${Page_Seo_Query}
           homePage {
             ${Hero_Slider_Query}
             ${Markets_Slider_Query}
@@ -42,12 +45,16 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
-    page: { homePage },
+    page: { seoMetaTags, homePage },
   },
 } = await response.json();
 ---
 
-<Layout title="Welcome to Stantec.">
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
   <HeroSlider client:only="react" data={homePage.heroSlider} />
   <MarketsSlider client:only="react" data={homePage.marketsSlider} />
   <ContentTitleLogo data={homePage.contentTitleLogo} />

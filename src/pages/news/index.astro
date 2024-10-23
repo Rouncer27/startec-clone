@@ -1,7 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 
-import { Page_Seo_Query } from "../data/Page/queries";
+import { Page_Seo_Query } from "../../data/Page/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -11,7 +11,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   body: JSON.stringify({
     query: `
 			query homePageQuery {
-				page(id: "/products", idType: URI) {
+				page(id: "/news", idType: URI) {
           ${Page_Seo_Query}
 				}
 			}
@@ -31,5 +31,5 @@ const {
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <h1>Products</h1>
+  <h1>News</h1>
 </Layout>

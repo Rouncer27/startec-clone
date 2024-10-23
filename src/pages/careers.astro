@@ -1,7 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import { Page_Seo_Query } from "../data/Page/queries";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+			query homePageQuery {
+				page(id: "/careers", idType: URI) {
+          ${Page_Seo_Query}
+				}
+			}
+		`,
+  }),
+});
+
+const {
+  data: {
+    page: { seoMetaTags },
+  },
+} = await response.json();
 ---
 
-<Layout>
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
   <h1>Careers</h1>
 </Layout>
