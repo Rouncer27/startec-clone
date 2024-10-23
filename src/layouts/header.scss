@@ -65,6 +65,41 @@
     }
   }
 
+  &-social {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+      position: absolute;
+      bottom: -5.5rem;
+      right: 5vw;
+    }
+
+    @media (min-width: 1025px) {
+      bottom: -5.5rem;
+      right: 0;
+    }
+
+    .social-media {
+      width: 20rem;
+
+      &-link {
+        a {
+          @media (min-width: 768px) {
+            width: 4rem;
+            height: 4rem;
+          }
+
+          @media (min-width: 1025px) {
+            width: 4rem;
+            height: 4rem;
+            padding: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+
   &-mobile {
     display: block;
 

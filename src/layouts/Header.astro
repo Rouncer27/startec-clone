@@ -4,10 +4,12 @@ import {
   Mobile_Menu_Query,
   Logo_Options_Query,
 } from "../data/header/queries";
+import { Social_Media_Links_Query } from "../data/footer/queries";
 import MainNav from "../components/Navigation/MainNav/MainNav.jsx";
 import MobileNav from "../components/Navigation/MobileNav/MobileNav";
 import MainLogo from "../components/Logo/MainLogo.astro";
 import Wrapper from "../components/shared/Wrapper.astro";
+import SocialMediaLinks from "../components/SocialMedia/SocialMediaLinks.astro";
 
 import "./header.scss";
 
@@ -22,6 +24,7 @@ const response = await fetch(`${import.meta.env.PUBLIC_WP_URL}/graphql`, {
           ${Main_Menu_Query}
           ${Mobile_Menu_Query}
           ${Logo_Options_Query}
+          ${Social_Media_Links_Query}
         }
     `,
   }),
@@ -31,6 +34,7 @@ const {
     menu: { menuItems },
     mobile: { menuItems: mobile },
     mainLogo: { logoOptions },
+    socialMediaLinks,
   },
 } = await response.json();
 ---
@@ -51,6 +55,9 @@ const {
         menuItems={menuItems.nodes}
         pathname={Astro.url.pathname}
       />
+    </div>
+    <div class="header-social">
+      <SocialMediaLinks data={socialMediaLinks} />
     </div>
   </Wrapper>
   <div class="header-mobile">
