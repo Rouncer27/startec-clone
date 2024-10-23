@@ -1,3 +1,6 @@
+@use "../styles/abstracts/" as *;
+@use "../styles/global/paragraphs";
+
 .main-footer {
   width: 100%;
 
@@ -50,6 +53,42 @@
     @media (min-width: 1200px) {
       margin-top: 0rem;
       width: calc(65%);
+    }
+  }
+
+  &__copyright {
+    width: 100%;
+    margin-top: 2.5rem;
+    text-align: center;
+
+    p {
+      @extend .p-three;
+      color: rgba(0, 0, 0, 0.5);
+      margin: 0;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+
+      span {
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      li {
+        margin: 0 1rem;
+
+        a {
+          @extend .p-three;
+          color: rgba(0, 0, 0, 0.5);
+
+          &:hover {
+            color: rgba(0, 0, 0, 1);
+          }
+        }
+      }
     }
   }
 }
