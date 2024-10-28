@@ -1,7 +1,26 @@
 ---
-
+import { Image } from "astro:assets";
+import "./heroImage.scss";
+import Headline from "../../shared/Headline.astro";
 ---
 
-<div>
-  <h1>Hero Image</h1>
+<div class="hero-image">
+  <div class="hero-image-content">
+    <div class="hero-image-content-inner">
+      <div>
+        <Headline ele="h1" hlstyle="three"
+          >{Astro.props.data.heroTitle}</Headline
+        >
+      </div>
+      <div set:html={Astro.props.data.heroContent} />
+    </div>
+  </div>
+
+  <div class="hero-image-bgimage">
+    <Image
+      src={Astro.props.data.heroImage.node.sourceUrl}
+      alt={Astro.props.data.heroImage.node.altText}
+      inferSize={true}
+    />
+  </div>
 </div>
