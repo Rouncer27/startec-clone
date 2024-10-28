@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import "./heroCallOut.scss";
+import Headline from "../../shared/Headline.astro";
+---
+
+<div class="hero-call-out">
+  <div class="hero-call-out-banner">
+    <div class="hero-call-out-banner-icon">
+      <div class="hero-call-out-banner-icon-wrapper">
+        <Image
+          src={Astro.props.data.iconImage.node.sourceUrl}
+          alt={Astro.props.data.iconImage.node.altText}
+          inferSize={true}
+        />
+      </div>
+    </div>
+
+    <div class="hero-call-out-banner-content">
+      <div class="hero-call-out-banner-content-inner">
+        <div>
+          <Headline ele="h2" hlstyle="three">{Astro.props.data.title}</Headline>
+        </div>
+        <div set:html={Astro.props.data.content} />
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-call-out-bgimage">
+    <Image
+      src={Astro.props.data.heroImage.node.sourceUrl}
+      alt={Astro.props.data.heroImage.node.altText}
+      inferSize={true}
+    />
+  </div>
+</div>

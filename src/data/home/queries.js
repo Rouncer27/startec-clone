@@ -51,8 +51,10 @@ export const Content_Title_Logo_Query = `
    contentTitleLogo: contentTitleLogoComponent {
     title
     content
-    buttonText
     displayLetsConnectCard
+    buttonRequired
+    logoRequired
+    buttonText
     buttonLink {
         edges {
             node {
@@ -60,7 +62,7 @@ export const Content_Title_Logo_Query = `
             }
         }
     }
-        iconLogo {
+    iconLogo {
             node {
             altText
             sourceUrl

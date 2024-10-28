@@ -35,3 +35,46 @@ export const Markets_Slider_Query = `
         }
     }
 `;
+
+export const Content_Title_Logo_Query = `
+   contentTitleLogo: contentTitleLogoComponent {
+    title
+    content
+    displayLetsConnectCard
+    buttonRequired
+    logoRequired
+    buttonText
+    buttonLink {
+        edges {
+            node {
+                uri
+            }
+        }
+    }
+    iconLogo {
+            node {
+            altText
+            sourceUrl
+            }
+        }
+    }
+`;
+
+export const Hero_Call_Out_Query = `
+   heroCallOut: heroCallOutComponent {
+        title
+        content
+        heroImage {
+            node {
+                altText
+                sourceUrl
+            }
+        }
+        iconImage {
+            node {
+                altText
+                sourceUrl
+            }
+        }
+    }
+`;
