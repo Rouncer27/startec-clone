@@ -1,7 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroImage from "../components/MarketsPage/HeroImage/HeroImage.astro";
+import MarketsSlider from "../components/HomePage/MarketsSlider/MarketsSlider";
 
 import { Page_Seo_Query } from "../data/Page/queries";
+import {
+  Markets_Slider_Query,
+  Hero_Image_Query,
+} from "../data/markets/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -10,9 +16,13 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   },
   body: JSON.stringify({
     query: `
-			query homePageQuery {
+			query markestPageQuery {
 				page(id: "/markets", idType: URI) {
           ${Page_Seo_Query}
+          marketsWeServePage {
+            ${Hero_Image_Query}
+            ${Markets_Slider_Query}
+          }
 				}
 			}
 		`,
@@ -21,9 +31,11 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
-    page: { seoMetaTags },
+    page: { marketsWeServePage, seoMetaTags },
   },
 } = await response.json();
+
+console.log(marketsWeServePage);
 ---
 
 <Layout
@@ -31,5 +43,6 @@ const {
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <h1>Markets</h1>
+  <HeroImage data={marketsWeServePage.heroImage} />
+  <MarketsSlider client:only="react" data={marketsWeServePage.marketsSlider} />
 </Layout>
