@@ -1,14 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroImage from "../components/MarketsPage/HeroImage/HeroImage.astro";
+import SimpleIntro from "../components/MarketsPage/SimpleIntro/SimpleIntro.astro";
 import MarketsSlider from "../components/HomePage/MarketsSlider/MarketsSlider";
 import ContentTitleLogo from "../components/MarketsPage/ContentTitleLogo/ContentTitleLogo.astro";
 import HeroCallOut from "../components/HomePage/HeroCallOut/HeroCallOut.astro";
 
 import { Page_Seo_Query } from "../data/Page/queries";
 import {
-  Markets_Slider_Query,
   Hero_Image_Query,
+  Simple_Intro_Query,
+  Markets_Slider_Query,
   Content_Title_Logo_Query,
   Hero_Call_Out_Query,
 } from "../data/markets/queries";
@@ -25,6 +27,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Page_Seo_Query}
           marketsWeServePage {
             ${Hero_Image_Query}
+            ${Simple_Intro_Query}
             ${Markets_Slider_Query}
             ${Content_Title_Logo_Query}
             ${Hero_Call_Out_Query}
@@ -48,6 +51,7 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroImage data={marketsWeServePage.heroImage} />
+  <SimpleIntro data={marketsWeServePage.simpleIntro} />
   <MarketsSlider client:only="react" data={marketsWeServePage.marketsSlider} />
   <ContentTitleLogo data={marketsWeServePage.contentTitleLogo} />
   <HeroCallOut data={marketsWeServePage.heroCallOut} />

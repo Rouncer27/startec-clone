@@ -1,0 +1,24 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+
+.simple-intro {
+  width: 100%;
+
+  &-content {
+    width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 6rem 0 2rem 0;
+    max-width: 100rem;
+
+    p {
+      @extend .hl-four;
+      color: $secondaryColor;
+      font-weight: normal;
+
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+  }
+}

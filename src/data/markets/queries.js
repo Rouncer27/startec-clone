@@ -12,6 +12,13 @@ export const Hero_Image_Query = `
     
 `;
 
+export const Simple_Intro_Query = `
+    simpleIntro: simpleIntroComponent {
+        content
+    }
+    
+`;
+
 export const Markets_Slider_Query = `
     marketsSlider: marketsSliderComponent {
         marketsSliderSlides {
