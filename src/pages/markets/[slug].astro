@@ -1,0 +1,81 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroImage from "../../components/MarketsPost/HeroImage/HeroImage.astro";
+
+import { Page_Seo_Query } from "../../data/Page/queries";
+import { Hero_Image_Query } from "../../data/marketsPost/queries";
+
+export async function getStaticPaths() {
+  const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query marketsQuery {
+            markets(first: 999999) {
+                nodes {
+                    slug
+                    uri
+                    title
+                }
+            }
+        }
+      `,
+    }),
+  });
+
+  const { data } = await response.json();
+  return data.markets.nodes.map((mark, index) => {
+    return {
+      params: { slug: `${mark.slug}` },
+      props: {
+        next: index === 0 ? null : data.markets.nodes[index - 1],
+        prev:
+          index === data.markets.nodes.length - 1
+            ? null
+            : data.markets.nodes[index + 1],
+      },
+    };
+  });
+}
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+    query marketsPostQuery($id: ID!) {
+        market(idType: SLUG, id: $id) {
+            ${Page_Seo_Query}
+            marketsPost {
+                ${Hero_Image_Query}
+            }
+        }
+    }
+    `,
+    variables: {
+      id: Astro.params["slug"],
+    },
+  }),
+});
+
+const {
+  data: {
+    market: { seoMetaTags, marketsPost },
+  },
+} = await response.json();
+
+console.log("marketsPost: ", marketsPost);
+---
+
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <HeroImage data={marketsPost.heroImage} />
+</Layout>
