@@ -1,9 +1,18 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroImage from "../../components/MarketsPost/HeroImage/HeroImage.astro";
+import IntroTtitle from "../../components/MarketsPost/IntroTitle/IntroTtitle.astro";
+import MarketWysiwyg from "../../components/MarketsPost/MarketWysiwyg/MarketWysiwyg.astro";
+import ImageDivder from "../../components/MarketsPost/ImageDivider/ImageDivder.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
-import { Hero_Image_Query } from "../../data/marketsPost/queries";
+import {
+  Hero_Image_Query,
+  Intro_Title_Query,
+  Top_Content_Query,
+  Image_Divider_Query,
+  Bottom_Content_Query,
+} from "../../data/marketsPost/queries";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -53,6 +62,10 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
             ${Page_Seo_Query}
             marketsPost {
                 ${Hero_Image_Query}
+                ${Intro_Title_Query}
+                ${Top_Content_Query}
+                ${Image_Divider_Query}
+                ${Bottom_Content_Query}
             }
         }
     }
@@ -78,4 +91,8 @@ console.log("marketsPost: ", marketsPost);
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroImage data={marketsPost.heroImage} />
+  <IntroTtitle data={marketsPost.introTitle} />
+  <MarketWysiwyg data={marketsPost.topContent} />
+  <ImageDivder data={marketsPost.imageDivider} />
+  <MarketWysiwyg data={marketsPost.bottomContent} />
 </Layout>
