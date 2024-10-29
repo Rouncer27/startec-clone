@@ -1,0 +1,32 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+@use "../../../styles/global/wrappers";
+
+.featured-products {
+  padding-bottom: 10rem;
+  background-color: $secondaryColor;
+
+  &-wrapper {
+    @extend .wrap-med;
+  }
+
+  &-title {
+    width: 100%;
+    margin-bottom: 4rem;
+    text-align: center;
+
+    h2 {
+      @extend .hl-three;
+      color: $whiteColor;
+      font-weight: 600;
+    }
+  }
+
+  &-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}

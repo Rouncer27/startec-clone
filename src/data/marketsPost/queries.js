@@ -43,3 +43,40 @@ export const Bottom_Content_Query = `
         content
     }
 `;
+
+export const Featured_Products_Query = `
+    featuredProducts: featuredProductsComponents {
+        title
+        products {
+          product {
+            edges {
+              node {
+                ... on Product {
+                    title
+                    productPost {
+                    productContentComponent {
+                      image {
+                        node {
+                          altText
+                          sourceUrl
+                        }
+                      }
+                      content
+                      buttonRequired
+                      buttonText
+                      buttonLink {
+                        edges {
+                          node {
+                            uri
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+`;

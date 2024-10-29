@@ -4,6 +4,7 @@ import HeroImage from "../../components/MarketsPost/HeroImage/HeroImage.astro";
 import IntroTtitle from "../../components/MarketsPost/IntroTitle/IntroTtitle.astro";
 import MarketWysiwyg from "../../components/MarketsPost/MarketWysiwyg/MarketWysiwyg.astro";
 import ImageDivder from "../../components/MarketsPost/ImageDivider/ImageDivder.astro";
+import FeaturedProducts from "../../components/MarketsPost/FeaturedProducts/FeaturedProducts.jsx";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
@@ -12,6 +13,7 @@ import {
   Top_Content_Query,
   Image_Divider_Query,
   Bottom_Content_Query,
+  Featured_Products_Query,
 } from "../../data/marketsPost/queries";
 
 export async function getStaticPaths() {
@@ -66,6 +68,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
                 ${Top_Content_Query}
                 ${Image_Divider_Query}
                 ${Bottom_Content_Query}
+                ${Featured_Products_Query}
             }
         }
     }
@@ -95,4 +98,5 @@ console.log("marketsPost: ", marketsPost);
   <MarketWysiwyg data={marketsPost.topContent} />
   <ImageDivder data={marketsPost.imageDivider} />
   <MarketWysiwyg data={marketsPost.bottomContent} />
+  <FeaturedProducts client:only="react" data={marketsPost.featuredProducts} />
 </Layout>
