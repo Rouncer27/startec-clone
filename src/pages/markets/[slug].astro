@@ -6,6 +6,7 @@ import MarketWysiwyg from "../../components/MarketsPost/MarketWysiwyg/MarketWysi
 import ImageDivder from "../../components/MarketsPost/ImageDivider/ImageDivder.astro";
 import FeaturedProducts from "../../components/MarketsPost/FeaturedProducts/FeaturedProducts.jsx";
 import RelatedProjects from "../../components/MarketsPost/RelatedProjects/RelatedProjects.jsx";
+import SmallCallAction from "../../components/MarketsPost/SmallCallAction/SmallCallAction.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
@@ -15,6 +16,8 @@ import {
   Image_Divider_Query,
   Bottom_Content_Query,
   Featured_Products_Query,
+  Display_Related_Projects_Query,
+  Small_Call_Action_Query,
 } from "../../data/marketsPost/queries";
 
 import {
@@ -76,6 +79,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
               ${Image_Divider_Query}
               ${Bottom_Content_Query}
               ${Featured_Products_Query}
+              ${Display_Related_Projects_Query}
+              ${Small_Call_Action_Query}
           }
       }
 
@@ -105,10 +110,6 @@ const {
     allProjects,
   },
 } = await response.json();
-
-// console.log("marketsPost: ", marketsPost);
-// console.log("allProjects: ", allProjects);
-// console.log("Astro: ", Astro.params["slug"]);
 ---
 
 <Layout
@@ -126,5 +127,7 @@ const {
     client:only="react"
     currentMarket={Astro.params["slug"]}
     projects={allProjects.edges}
+    data={marketsPost.displayRelatedProjects}
   />
+  <SmallCallAction data={marketsPost.smallCallAction} />
 </Layout>

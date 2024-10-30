@@ -34,7 +34,7 @@ const settings = {
   ],
 };
 
-const RelatedProjects = ({ currentMarket, projects }) => {
+const RelatedProjects = ({ currentMarket, projects, data }) => {
   const relatedProjects = projects.filter((project) => {
     const projectRelatedMarkets =
       project.node.projectPost.marketsRelated.marketsRelated.edges;
@@ -45,11 +45,9 @@ const RelatedProjects = ({ currentMarket, projects }) => {
     return isMatched;
   });
 
-  console.log("relatedProjects", relatedProjects.length);
-
   const activateSlider = relatedProjects.length >= 3;
 
-  console.log(activateSlider);
+  if (!data.displayRelatedProjects) return null;
 
   return (
     <div className="related-projects">

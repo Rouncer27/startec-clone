@@ -80,3 +80,28 @@ export const Featured_Products_Query = `
         }
       }
 `;
+
+export const Display_Related_Projects_Query = `
+  displayRelatedProjects: relatedProjectsComponent {
+    displayRelatedProjects
+  }
+`;
+
+export const Small_Call_Action_Query = `
+  smallCallAction: smallCallAction {
+    title
+    content
+    backgroundImage {
+      node {
+        altText
+        sourceUrl
+      }
+    }
+    iconImage {
+      node {
+        altText
+        sourceUrl
+      }
+    }
+  }
+`;
