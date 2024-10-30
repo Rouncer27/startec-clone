@@ -1,7 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroImage from "../components/ProductPage/HeroImage/HeroImage.astro";
+import ProductsCategories from "../components/ProductPage/ProductsCategories/ProductsCategories.jsx";
+import SmallCallAction from "../components/ProductPage/SmallCallAction/SmallCallAction.astro";
 
 import { Page_Seo_Query } from "../data/Page/queries";
+import {
+  Hero_Image_Query,
+  Small_Call_Action_Query,
+  Products_Categories_Query,
+} from "../data/products/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -13,6 +21,11 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 			query homePageQuery {
 				page(id: "/products", idType: URI) {
           ${Page_Seo_Query}
+          productsPage {
+          ${Hero_Image_Query}
+          ${Small_Call_Action_Query}
+          ${Products_Categories_Query}
+          }
 				}
 			}
 		`,
@@ -21,9 +34,10 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
-    page: { seoMetaTags },
+    page: { productsPage, seoMetaTags },
   },
 } = await response.json();
+console.log(productsPage);
 ---
 
 <Layout
@@ -31,5 +45,10 @@ const {
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <h1>Products</h1>
+  <HeroImage data={productsPage.heroImage} />
+  <ProductsCategories
+    client:only="react"
+    data={productsPage.productsCategories}
+  />
+  <SmallCallAction data={productsPage.smallCallAction} />
 </Layout>

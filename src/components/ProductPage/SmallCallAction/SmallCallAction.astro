@@ -1,0 +1,36 @@
+---
+import Headline from "../../shared/Headline.astro";
+import { Image } from "astro:assets";
+import "./smallCallAction.scss";
+---
+
+<div class="small-call-action">
+  <div class="small-call-action-banner">
+    <div class="small-call-action-banner-icon">
+      <div class="small-call-action-banner-icon-wrapper">
+        <Image
+          src={Astro.props.data.iconImage.node.sourceUrl}
+          alt={Astro.props.data.iconImage.node.altText}
+          inferSize={true}
+        />
+      </div>
+    </div>
+
+    <div class="small-call-action-banner-content">
+      <div class="small-call-action-banner-content-inner">
+        <div>
+          <Headline ele="h2" hlstyle="three">{Astro.props.data.title}</Headline>
+        </div>
+        <div set:html={Astro.props.data.content} />
+      </div>
+    </div>
+  </div>
+
+  <div class="small-call-action-bgimage">
+    <Image
+      src={Astro.props.data.backgroundImage.node.sourceUrl}
+      alt={Astro.props.data.backgroundImage.node.altText}
+      inferSize={true}
+    />
+  </div>
+</div>
