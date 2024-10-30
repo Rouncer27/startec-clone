@@ -5,8 +5,6 @@ import "./productCat.scss";
 
 const ProductCat = ({ cat, index }) => {
   const [activeModal, setActiveModal] = useState(null);
-  console.log("cat", cat);
-
   return (
     <div className="product-cat">
       <div className="product-cat-wrapper">
@@ -20,9 +18,7 @@ const ProductCat = ({ cat, index }) => {
 
         <div className="product-cat-container">
           {cat.products.map((product, index) => {
-            console.log(product);
             const { node } = product.product.edges[0];
-            console.log("node: ", node);
             return (
               <Product
                 key={index}
