@@ -5,6 +5,7 @@ import IntroTtitle from "../../components/MarketsPost/IntroTitle/IntroTtitle.ast
 import MarketWysiwyg from "../../components/MarketsPost/MarketWysiwyg/MarketWysiwyg.astro";
 import ImageDivder from "../../components/MarketsPost/ImageDivider/ImageDivder.astro";
 import FeaturedProducts from "../../components/MarketsPost/FeaturedProducts/FeaturedProducts.jsx";
+import RelatedProjects from "../../components/MarketsPost/RelatedProjects/RelatedProjects.jsx";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
@@ -15,6 +16,12 @@ import {
   Bottom_Content_Query,
   Featured_Products_Query,
 } from "../../data/marketsPost/queries";
+
+import {
+  Related_Porjects_Query,
+  Project_Excerpt_Query,
+  Project_Featured_Image_Query,
+} from "../../data/projects/queries";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -60,17 +67,30 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   body: JSON.stringify({
     query: `
     query marketsPostQuery($id: ID!) {
-        market(idType: SLUG, id: $id) {
-            ${Page_Seo_Query}
-            marketsPost {
-                ${Hero_Image_Query}
-                ${Intro_Title_Query}
-                ${Top_Content_Query}
-                ${Image_Divider_Query}
-                ${Bottom_Content_Query}
-                ${Featured_Products_Query}
+      market(idType: SLUG, id: $id) {
+          ${Page_Seo_Query}
+          marketsPost {
+              ${Hero_Image_Query}
+              ${Intro_Title_Query}
+              ${Top_Content_Query}
+              ${Image_Divider_Query}
+              ${Bottom_Content_Query}
+              ${Featured_Products_Query}
+          }
+      }
+
+      allProjects: project(first: 999999) {
+        edges {
+          node {
+            title
+            projectPost {
+              ${Related_Porjects_Query}
+              ${Project_Featured_Image_Query}
+              ${Project_Excerpt_Query}
             }
+          }
         }
+      }
     }
     `,
     variables: {
@@ -82,10 +102,13 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 const {
   data: {
     market: { seoMetaTags, marketsPost },
+    allProjects,
   },
 } = await response.json();
 
-console.log("marketsPost: ", marketsPost);
+// console.log("marketsPost: ", marketsPost);
+// console.log("allProjects: ", allProjects);
+// console.log("Astro: ", Astro.params["slug"]);
 ---
 
 <Layout
@@ -99,4 +122,9 @@ console.log("marketsPost: ", marketsPost);
   <ImageDivder data={marketsPost.imageDivider} />
   <MarketWysiwyg data={marketsPost.bottomContent} />
   <FeaturedProducts client:only="react" data={marketsPost.featuredProducts} />
+  <RelatedProjects
+    client:only="react"
+    currentMarket={Astro.params["slug"]}
+    projects={allProjects.edges}
+  />
 </Layout>

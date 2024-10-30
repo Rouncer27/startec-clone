@@ -1,0 +1,91 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/wrappers";
+@use "../../../styles/global/headlines";
+
+.related-projects {
+  margin-top: 5rem;
+
+  &-wrapper {
+    @extend .wrap-med;
+  }
+
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-three;
+      color: $primaryColor;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+
+  &-slider {
+    width: 100%;
+
+    .slick-arrow {
+      top: auto;
+      bottom: -6.5rem;
+      width: 4.4rem;
+      height: 4.4rem;
+      border: 0.1rem solid #a5a5a5;
+      z-index: 999;
+
+      @media (min-width: 768px) {
+        bottom: -7rem;
+      }
+      @media (min-width: 1025px) {
+        bottom: -4rem;
+      }
+
+      &::before {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 3rem;
+        color: #a5a5a5;
+      }
+    }
+
+    .slick-prev {
+      left: calc(85% - 4.4rem);
+
+      @media (min-width: 768px) {
+        left: calc(90% - 4.4rem);
+      }
+
+      @media (min-width: 1025px) {
+        left: calc(50% - 1rem);
+        transform: translateX(-50%);
+      }
+    }
+
+    .slick-next {
+      right: auto;
+      left: calc(15% - 4.4rem);
+
+      @media (min-width: 768px) {
+        left: calc(10% - 4.4rem);
+      }
+
+      @media (min-width: 1025px) {
+        left: calc(50% + 1rem);
+        transform: translateX(50%);
+      }
+    }
+
+    .slick-list {
+      padding-left: 0px !important;
+
+      .slick-track {
+        display: flex !important;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: stretch;
+        padding-bottom: 5rem;
+
+        .slick-slide {
+          align-self: stretch;
+        }
+      }
+    }
+  }
+}
