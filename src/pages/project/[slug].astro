@@ -3,12 +3,14 @@ import Layout from "../../layouts/Layout.astro";
 import ProjectHeader from "../../components/ProjectPost/ProjectHeader/ProjectHeader.astro";
 import ProjectContent from "../../components/ProjectPost/ProjectContent/ProjectContent.astro";
 import RelatedProjects from "../../components/ProjectPost/RelatedProjects/RelatedProjects.jsx";
+import ProjectGallery from "../../components/ProjectPost/ProjectGallery/ProjectGallery.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
   Project_Content_Query,
   Project_Excerpt_Query,
   Project_Featured_Image_Query,
+  Project_Gallery_Images_Query,
   Related_Porjects_Query,
 } from "../../data/projects/queries";
 
@@ -77,6 +79,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
         projectPost {
             ${Related_Porjects_Query}
             ${Project_Content_Query}
+            ${Project_Gallery_Images_Query}
         }
       }
     }
@@ -102,6 +105,7 @@ const {
     relatedProjects={projects.projectPost.marketsRelated.marketsRelated.edges}
   />
   <ProjectContent data={projects.projectPost.mainContent} />
+  <ProjectGallery data={projects.projectPost.galleryImages} />
   <RelatedProjects
     client:only="react"
     relatedMarkets={projects.projectPost.marketsRelated.marketsRelated.edges}

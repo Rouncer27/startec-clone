@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./projectGallery.scss";
+---
+
+<div class="project-gallery">
+  <Wrapper>
+    {
+      Astro.props.data.imageGallery.edges.map((image) => {
+        return (
+          <div class="project-gallery-image">
+            <Image
+              src={image.node.sourceUrl}
+              alt={image.node.altText}
+              inferSize={true}
+            />
+          </div>
+        );
+      })
+    }
+  </Wrapper>
+</div>

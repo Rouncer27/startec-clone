@@ -35,3 +35,17 @@ export const Project_Content_Query = `
         content
       }
 `;
+
+export const Project_Gallery_Images_Query = `
+  galleryImages: imageGalleryComponent {
+    galleryRequired
+    imageGallery {
+      edges {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+    }
+  }
+`;
