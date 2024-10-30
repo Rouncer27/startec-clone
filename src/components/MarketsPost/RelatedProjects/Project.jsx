@@ -21,7 +21,7 @@ const Project = ({ project }) => {
           />
         </div>
         <div className="project-slide-button">
-          <a href="#">View Project</a>
+          <a href={`${project.node.uri}`}>View Project</a>
         </div>
       </div>
     </div>

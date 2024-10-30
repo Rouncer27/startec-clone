@@ -88,6 +88,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
         edges {
           node {
             title
+            slug
+            uri
             projectPost {
               ${Related_Porjects_Query}
               ${Project_Featured_Image_Query}
