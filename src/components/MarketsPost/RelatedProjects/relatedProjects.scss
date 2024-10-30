@@ -3,7 +3,27 @@
 @use "../../../styles/global/headlines";
 
 .related-projects {
+  position: relative;
   margin-top: 5rem;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50rem;
+    height: 3.3rem;
+    background-color: $primaryColor;
+    content: "";
+
+    @media (min-width: 768px) {
+      width: 50rem;
+    }
+
+    @media (min-width: 1025px) {
+      min-width: 50rem;
+      width: 35%;
+    }
+  }
 
   &-wrapper {
     @extend .wrap-med;
@@ -22,6 +42,7 @@
 
   &-slider {
     width: 100%;
+    padding-bottom: 5rem;
 
     .slick-arrow {
       top: auto;
@@ -85,6 +106,26 @@
         .slick-slide {
           align-self: stretch;
         }
+      }
+    }
+  }
+
+  &-slider-no-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .project-slide {
+      width: calc(100%);
+
+      @media (min-width: 768px) {
+        width: calc(50% - 2rem);
+        margin: 1rem;
+      }
+
+      @media (min-width: 1025px) {
+        width: calc(33.333333% - 2rem);
+        margin: 1rem;
       }
     }
   }

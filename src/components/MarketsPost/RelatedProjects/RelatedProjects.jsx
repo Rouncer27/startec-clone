@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import Project from "./Project";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { act } from "react";
 
 const settings = {
   slidesToShow: 3,
@@ -44,6 +45,12 @@ const RelatedProjects = ({ currentMarket, projects }) => {
     return isMatched;
   });
 
+  console.log("relatedProjects", relatedProjects.length);
+
+  const activateSlider = relatedProjects.length >= 3;
+
+  console.log(activateSlider);
+
   return (
     <div className="related-projects">
       <div className="related-projects-wrapper">
@@ -51,12 +58,21 @@ const RelatedProjects = ({ currentMarket, projects }) => {
           <h2>Related Projects for this market</h2>
         </div>
         <div className="related-projects-slider">
-          <Slider {...settings}>
-            {relatedProjects.map((project, index) => {
-              console.log("projectprojectprojectproject", project);
-              return <Project key={index} project={project} />;
-            })}
-          </Slider>
+          {activateSlider ? (
+            <Slider {...settings}>
+              {relatedProjects.map((project, index) => {
+                console.log("projectprojectprojectproject", project);
+                return <Project key={index} project={project} />;
+              })}
+            </Slider>
+          ) : (
+            <div className="related-projects-slider-no-slider">
+              {relatedProjects.map((project, index) => {
+                console.log("projectprojectprojectproject", project);
+                return <Project key={index} project={project} />;
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>
