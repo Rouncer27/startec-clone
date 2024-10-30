@@ -4,6 +4,9 @@ export const Related_Porjects_Query = `
       edges {
         node {
           slug
+           ... on Market {
+              title
+            }
           }
         }
       }
@@ -25,4 +28,10 @@ export const Project_Featured_Image_Query = `
             }
         }
     }
+`;
+
+export const Project_Content_Query = `
+    mainContent: mainContentComponent {
+        content
+      }
 `;

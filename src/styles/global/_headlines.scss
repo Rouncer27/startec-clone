@@ -42,3 +42,10 @@
   font-family: abstracts.$primaryFont;
   line-height: 1.3;
 }
+
+.hl-six {
+  @include utils.font-sizer(1.8, 2.4, 76.8, 160, 1.8);
+  @extend .headline-all;
+  font-family: abstracts.$primaryFont;
+  line-height: 1.3;
+}

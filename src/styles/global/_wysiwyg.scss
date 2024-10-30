@@ -22,14 +22,14 @@
   }
 
   a {
-    @extend .p-one;
+    @extend .p-two;
     transition: all 0.3s;
     color: $primaryColor;
     font-weight: bold;
     font-size: 1em;
 
     &:hover {
-      color: $blackColor;
+      color: $primaryColor;
     }
   }
 
@@ -47,6 +47,14 @@
 
   h4 {
     @extend .hl-four;
+  }
+
+  h5 {
+    @extend .hl-five;
+  }
+
+  h6 {
+    @extend .hl-six;
   }
 
   ul {

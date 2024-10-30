@@ -1,7 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ProjectHeader from "../../components/ProjectPost/ProjectHeader/ProjectHeader.astro";
+import ProjectContent from "../../components/ProjectPost/ProjectContent/ProjectContent.astro";
+import RelatedProjects from "../../components/ProjectPost/RelatedProjects/RelatedProjects.jsx";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
+import {
+  Project_Content_Query,
+  Project_Excerpt_Query,
+  Project_Featured_Image_Query,
+  Related_Porjects_Query,
+} from "../../data/projects/queries";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -25,9 +34,9 @@ export async function getStaticPaths() {
   });
 
   const { data } = await response.json();
-  return data.project.nodes.map((mark, index) => {
+  return data.project.nodes.map((pro, index) => {
     return {
-      params: { slug: `${mark.slug}` },
+      params: { slug: `${pro.slug}` },
       props: {
         next: index === 0 ? null : data.project.nodes[index - 1],
         prev:
@@ -47,8 +56,28 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   body: JSON.stringify({
     query: `
     query projectsPostQuery($id: ID!) {
+        allProjects: project(first: 999999) {
+            edges {
+                node {
+                    title
+                    slug
+                    uri
+                    projectPost {
+                        ${Related_Porjects_Query}
+                        ${Project_Featured_Image_Query}
+                        ${Project_Excerpt_Query}
+                    }
+                }
+            }
+      }
+
       projects(idType: SLUG, id: $id) {
         ${Page_Seo_Query}
+        title
+        projectPost {
+            ${Related_Porjects_Query}
+            ${Project_Content_Query}
+        }
       }
     }
     `,
@@ -59,18 +88,23 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 });
 
 const {
-  data: {
-    projects: { seoMetaTags },
-  },
+  data: { projects, allProjects },
 } = await response.json();
-
-console.log(Astro.params);
 ---
 
 <Layout
-  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
-  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
-  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+  metaImg={projects.seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={projects.seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={projects.seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <h1>Single Project</h1>
+  <ProjectHeader
+    title={projects.title}
+    relatedProjects={projects.projectPost.marketsRelated.marketsRelated.edges}
+  />
+  <ProjectContent data={projects.projectPost.mainContent} />
+  <RelatedProjects
+    client:only="react"
+    relatedMarkets={projects.projectPost.marketsRelated.marketsRelated.edges}
+    projects={allProjects.edges}
+  />
 </Layout>

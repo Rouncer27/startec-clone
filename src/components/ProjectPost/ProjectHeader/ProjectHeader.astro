@@ -1,0 +1,22 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import LetsConnectCard from "../../shared/LetsConnectCard/LetsConnectCard.astro";
+import "./projectHeader.scss";
+---
+
+<div class="project-header">
+  <Wrapper>
+    <div class="project-header-title">
+      <p>
+        {
+          Astro.props.relatedProjects.map((related) => {
+            return <span>{related.node.title} | </span>;
+          })
+        }
+        <span>Projects</span>
+      </p>
+      <h1>{Astro.props.title}</h1>
+    </div>
+  </Wrapper>
+  <LetsConnectCard />
+</div>

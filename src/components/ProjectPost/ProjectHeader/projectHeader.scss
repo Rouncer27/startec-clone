@@ -1,0 +1,49 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.project-header {
+  position: relative;
+  padding-top: 10rem;
+  padding-bottom: 15rem;
+
+  &::after {
+    position: absolute;
+    top: 10rem;
+    right: 0;
+    width: 50rem;
+    height: 3.3rem;
+    background-color: $secondaryColor;
+    content: "";
+
+    @media (min-width: 768px) {
+      width: 50rem;
+    }
+
+    @media (min-width: 1025px) {
+      min-width: 50rem;
+      width: 35%;
+    }
+  }
+
+  &-title {
+    width: 100%;
+
+    p {
+      @extend .p-one;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      @extend .hl-three;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
+  .lets-connect-card {
+    bottom: 0rem;
+  }
+}
