@@ -1,0 +1,20 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import "./postHeader.scss";
+---
+
+<div class="news-post-header">
+  <Wrapper>
+    <div class="news-post-header-title">
+      <p>
+        {
+          Astro.props.categories.map((cat) => {
+            return <span>{cat.node.name} | </span>;
+          })
+        }
+        <span>News</span>
+      </p>
+      <h1>{Astro.props.title}</h1>
+    </div>
+  </Wrapper>
+</div>

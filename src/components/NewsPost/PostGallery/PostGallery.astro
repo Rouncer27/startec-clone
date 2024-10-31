@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./postGallery.scss";
+---
+
+{
+  Astro.props.data.imageGalleryRequired && (
+    <div class="news-post-gallery">
+      <Wrapper>
+        {Astro.props.data.imageGallery.edges.map((image) => {
+          return (
+            <div class="news-post-gallery-image">
+              <Image
+                src={image.node.sourceUrl}
+                alt={image.node.altText}
+                inferSize={true}
+              />
+            </div>
+          );
+        })}
+      </Wrapper>
+    </div>
+  )
+}

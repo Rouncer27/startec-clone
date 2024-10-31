@@ -1,6 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import PostHeader from "../../components/NewsPost/PostHeader/PostHeader.astro";
+import PostContent from "../../components/NewsPost/PostContent/PostContent.astro";
 import { Page_Seo_Query } from "../../data/Page/queries";
+import {
+  Post_Content_Query,
+  Post_Gallery_Images_Query,
+  Post_Categories_Query,
+} from "../../data/newsPost/queries";
+import PostGallery from "../../components/NewsPost/PostGallery/PostGallery.astro";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -23,9 +31,7 @@ export async function getStaticPaths() {
   });
 
   const { data } = await response.json();
-
   const allPosts = data.posts.nodes;
-
   return allPosts.map((post, index) => {
     return {
       params: { slug: `${post.slug}` },
@@ -58,9 +64,14 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
     query: `
     query postQuery($id: ID!) {
         post(idType: SLUG, id: $id) {
-            ${Page_Seo_Query}
-            title
-            slug 
+          ${Page_Seo_Query}
+          ${Post_Categories_Query}
+          title
+          slug
+          newsPosts {
+            ${Post_Content_Query}
+            ${Post_Gallery_Images_Query}
+          }
         }
     }
     `,
@@ -80,5 +91,7 @@ const {
   metaTitle={post?.seoMetaTags?.seoMetaInformation?.metaTitle}
   metaDescription={post?.seoMetaTags?.seoMetaInformation?.metaDescription}
 >
-  <h1>{post.title} at {post.slug}</h1>
+  <PostHeader title={post.title} categories={post.categories.edges} />
+  <PostContent data={post.newsPosts.mainContent} />
+  <PostGallery data={post.newsPosts} />
 </Layout>

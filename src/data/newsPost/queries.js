@@ -19,3 +19,30 @@ export const News_Posts_Categories_Query = `
         }
     }  
 `;
+
+export const Post_Content_Query = `
+    mainContent 
+`;
+
+export const Post_Gallery_Images_Query = `
+    imageGalleryRequired
+      imageGallery {
+        edges {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+      }
+`;
+
+export const Post_Categories_Query = `
+    categories {
+        edges {
+            node {
+                name
+                slug
+            }
+        }
+    }
+`;
