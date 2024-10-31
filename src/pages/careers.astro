@@ -1,7 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroImage from "../components/CareersPage/HeroImage/HeroImage.astro";
+import Intro from "../components/CareersPage/Intro/Intro.astro";
 
 import { Page_Seo_Query } from "../data/Page/queries";
+
+import { Hero_Image_Query, Intro_Query } from "../data/careers/queries";
+import Wrapper from "../components/shared/Wrapper.astro";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -13,6 +18,10 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 			query homePageQuery {
 				page(id: "/careers", idType: URI) {
           ${Page_Seo_Query}
+          careersPage {
+            ${Hero_Image_Query}
+            ${Intro_Query}
+          }
 				}
 			}
 		`,
@@ -21,7 +30,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
-    page: { seoMetaTags },
+    page: { careersPage, seoMetaTags },
   },
 } = await response.json();
 ---
@@ -31,5 +40,9 @@ const {
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <h1>Careers</h1>
+  <HeroImage data={careersPage.heroImage} />
+  <Intro data={careersPage.intro} />
+  <div>
+    <Wrapper><p>TODO: Careers Page Embed from JazHR</p></Wrapper>
+  </div>
 </Layout>
