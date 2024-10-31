@@ -1,0 +1,69 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { Page_Seo_Query } from "../../data/Page/queries";
+
+export async function getStaticPaths() {
+  const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query biosQuery {
+            bios(first: 999999) {
+                nodes {
+                    uri
+                    slug
+                    title
+                }   
+            }
+        }
+        `,
+    }),
+  });
+
+  const { data } = await response.json();
+  return data.bios.nodes.map((bio, index) => {
+    return {
+      params: { slug: `${bio.slug}` },
+      props: {
+        next: index === 0 ? null : data.bios.nodes[index - 1],
+        prev:
+          index === data.bios.nodes.length - 1
+            ? null
+            : data.bios.nodes[index + 1],
+      },
+    };
+  });
+}
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+    query bioQuery($id: ID!) {
+        bio(idType: SLUG, id: $id) {
+          ${Page_Seo_Query}
+          title
+        }
+    }
+    `,
+    variables: {
+      id: Astro.params["slug"],
+    },
+  }),
+});
+
+const {
+  data: { bio },
+} = await response.json();
+---
+
+<Layout>
+  <h1>Single About Page - {bio.title}</h1>
+</Layout>
