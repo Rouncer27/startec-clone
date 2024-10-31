@@ -4,9 +4,13 @@ import HeroImage from "../../../components/NewsPage/HeroImage/HeroImage.astro";
 import CatIntroHeader from "../../../components/NewsPage/CategoryPage/CatIntroHeader/CatIntroHeader.astro";
 import CatNav from "../../../components/NewsPage/CatNav/CatNav.astro";
 import NewsPosts from "../../../components/NewsPage/NewsPosts/NewsPosts.astro";
+import SmallCallAction from "../../../components/NewsPage/SmallCallAction/SmallCallAction.astro";
 
 import { Page_Seo_Query } from "../../../data/Page/queries";
-import { Hero_Image_Query } from "../../../data/news/queries";
+import {
+  Hero_Image_Query,
+  Small_Call_Action_Query,
+} from "../../../data/news/queries";
 import {
   News_Posts_Intro_Query,
   News_Posts_Categories_Query,
@@ -47,6 +51,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Page_Seo_Query}
            newsPage {
             ${Hero_Image_Query}
+            ${Small_Call_Action_Query}
           }
 				}
 
@@ -87,4 +92,5 @@ const {
   <CatIntroHeader category={Astro.params["slug"]} />
   <CatNav categories={categories} />
   <NewsPosts posts={allPosts} />
+  <SmallCallAction data={newsPage.smallCallAction} />
 </Layout>
