@@ -3,10 +3,10 @@ import Product from "./Product";
 import ProductModal from "./ProductModal";
 import "./productCat.scss";
 
-const ProductCat = ({ cat, index }) => {
+const ProductCat = ({ cat }) => {
   const [activeModal, setActiveModal] = useState(null);
   return (
-    <div className="product-cat">
+    <div id={cat.sectionId} className="product-cat">
       <div className="product-cat-wrapper">
         <div className="product-cat-title">
           <h2>{cat.title}</h2>

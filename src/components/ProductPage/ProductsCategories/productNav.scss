@@ -1,0 +1,66 @@
+@use "../../../styles/abstracts" as *;
+@use "../../../styles/global/paragraphs";
+$img-circle-blue: url("/circle-blue.png");
+$img-circle-grey: url("/circle-grey.png");
+
+.product-nav {
+  position: relative;
+  width: 19rem;
+  height: 18.4rem;
+  margin: 2rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    .product-nav-bg-icon {
+      background-image: $img-circle-grey;
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: block;
+    z-index: 100;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+    h2 {
+      @extend .p-one;
+      margin: 0;
+      padding: 1rem;
+      color: $whiteColor;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  &-bg-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: $img-circle-blue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+  }
+}

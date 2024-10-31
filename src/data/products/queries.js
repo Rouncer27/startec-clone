@@ -17,6 +17,7 @@ export const Products_Categories_Query = `
         categories {
           title
           content
+          sectionId
           products {
             product {
               edges {

@@ -1,0 +1,14 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/wrappers";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.products-categories {
+  width: 100%;
+
+  &-nav {
+    @extend .wrap-med;
+  }
+}
