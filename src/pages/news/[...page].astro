@@ -4,9 +4,13 @@ import HeroImage from "../../components/NewsPage/HeroImage/HeroImage.astro";
 import CatNav from "../../components/NewsPage/CatNav/CatNav.astro";
 import NewsPosts from "../../components/NewsPage/NewsPosts/NewsPosts.astro";
 import Pagination from "../../components/NewsPage/Pagination/Pagination.astro";
+import SmallCallAction from "../../components/NewsPage/SmallCallAction/SmallCallAction.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
-import { Hero_Image_Query } from "../../data/news/queries";
+import {
+  Hero_Image_Query,
+  Small_Call_Action_Query,
+} from "../../data/news/queries";
 import {
   News_Posts_Intro_Query,
   News_Posts_Categories_Query,
@@ -52,6 +56,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Page_Seo_Query}
            newsPage {
             ${Hero_Image_Query}
+            ${Small_Call_Action_Query}
           }
 				}
         ${News_Posts_Categories_Query}
@@ -82,4 +87,5 @@ const {
   <CatNav categories={categories} />
   <NewsPosts posts={allPosts} />
   <Pagination page={page} />
+  <SmallCallAction data={newsPage.smallCallAction} />
 </Layout>

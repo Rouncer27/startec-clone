@@ -9,5 +9,23 @@ export const Hero_Image_Query = `
             }
         }
     }
-    
+`;
+
+export const Small_Call_Action_Query = `
+  smallCallAction: smallCallToAction {
+    title
+    content
+    backgroundImage {
+      node {
+        altText
+        sourceUrl
+      }
+    }
+    iconImage {
+      node {
+        altText
+        sourceUrl
+      }
+    }
+  }
 `;
