@@ -1,0 +1,84 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroImage from "../../components/NewsPage/HeroImage/HeroImage.astro";
+import NewsPosts from "../../components/NewsPage/NewsPosts/NewsPosts.astro";
+import CatNav from "../../components/NewsPage/CatNav/CatNav.astro";
+
+import { Page_Seo_Query } from "../../data/Page/queries";
+import { Hero_Image_Query } from "../../data/news/queries";
+import {
+  News_Posts_Intro_Query,
+  News_Posts_Categories_Query,
+} from "../../data/newsPost/queries";
+
+export async function getStaticPaths({ paginate }) {
+  const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query postsQuery {
+          posts(first: 999999) {
+            edges {
+              node {
+                slug
+                title
+                ${News_Posts_Intro_Query}
+              }
+            }
+          }
+        }
+      `,
+    }),
+  });
+
+  const { data } = await response.json();
+  const allposts = data.posts.edges;
+  return paginate(allposts, { pageSize: 9 });
+}
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+			query homePageQuery {
+				page(id: "/news", idType: URI) {
+          ${Page_Seo_Query}
+           newsPage {
+            ${Hero_Image_Query}
+          }
+				}
+        ${News_Posts_Categories_Query}
+			}
+		`,
+  }),
+});
+
+const {
+  data: {
+    categories: { nodes: categories },
+    page: { newsPage, seoMetaTags },
+  },
+} = await response.json();
+
+const {
+  page: { data: allPosts },
+} = Astro.props;
+
+console.log(allPosts);
+---
+
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <HeroImage data={newsPage.heroImage} />
+  <CatNav categories={categories} />
+  <NewsPosts posts={allPosts} />
+</Layout>

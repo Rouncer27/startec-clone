@@ -1,0 +1,90 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import HeroImage from "../../../components/NewsPage/HeroImage/HeroImage.astro";
+import CatIntroHeader from "../../../components/NewsPage/CategoryPage/CatIntroHeader/CatIntroHeader.astro";
+import CatNav from "../../../components/NewsPage/CatNav/CatNav.astro";
+import NewsPosts from "../../../components/NewsPage/NewsPosts/NewsPosts.astro";
+
+import { Page_Seo_Query } from "../../../data/Page/queries";
+import { Hero_Image_Query } from "../../../data/news/queries";
+import {
+  News_Posts_Intro_Query,
+  News_Posts_Categories_Query,
+} from "../../../data/newsPost/queries";
+
+export async function getStaticPaths() {
+  const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query categoriesQuery {
+          ${News_Posts_Categories_Query}
+        }
+      `,
+    }),
+  });
+
+  const { data } = await response.json();
+  return data.categories.nodes.map((cat) => {
+    return {
+      params: { slug: `${cat.slug}` },
+    };
+  });
+}
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+      query PostQuery($slug: String!) {
+      	page(id: "/news", idType: URI) {
+          ${Page_Seo_Query}
+           newsPage {
+            ${Hero_Image_Query}
+          }
+				}
+
+        posts(first: 99999, where: {categoryName: $slug}) {
+           edges {
+            node {
+              slug
+              title
+              ${News_Posts_Intro_Query}
+            }
+          }
+        }
+        
+        ${News_Posts_Categories_Query}
+      }
+    `,
+    variables: {
+      slug: Astro.params["slug"],
+    },
+  }),
+});
+
+const {
+  data: {
+    categories: { nodes: categories },
+    posts: { edges: allPosts },
+    page: { newsPage, seoMetaTags },
+  },
+} = await response.json();
+---
+
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={`Category Page - ${seoMetaTags.seoMetaInformation.metaTitle}`}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <HeroImage data={newsPage.heroImage} />
+  <CatIntroHeader category={Astro.params["slug"]} />
+  <CatNav categories={categories} />
+  <NewsPosts posts={allPosts} />
+</Layout>
