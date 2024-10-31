@@ -59,14 +59,12 @@ const RelatedProjects = ({ currentMarket, projects, data }) => {
           {activateSlider ? (
             <Slider {...settings}>
               {relatedProjects.map((project, index) => {
-                console.log("projectprojectprojectproject", project);
                 return <Project key={index} project={project} />;
               })}
             </Slider>
           ) : (
             <div className="related-projects-slider-no-slider">
               {relatedProjects.map((project, index) => {
-                console.log("projectprojectprojectproject", project);
                 return <Project key={index} project={project} />;
               })}
             </div>

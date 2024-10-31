@@ -1,8 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroImage from "../../components/NewsPage/HeroImage/HeroImage.astro";
-import NewsPosts from "../../components/NewsPage/NewsPosts/NewsPosts.astro";
 import CatNav from "../../components/NewsPage/CatNav/CatNav.astro";
+import NewsPosts from "../../components/NewsPage/NewsPosts/NewsPosts.astro";
+import Pagination from "../../components/NewsPage/Pagination/Pagination.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import { Hero_Image_Query } from "../../data/news/queries";
@@ -36,7 +37,7 @@ export async function getStaticPaths({ paginate }) {
 
   const { data } = await response.json();
   const allposts = data.posts.edges;
-  return paginate(allposts, { pageSize: 9 });
+  return paginate(allposts, { pageSize: 6 });
 }
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -67,10 +68,9 @@ const {
 } = await response.json();
 
 const {
+  page,
   page: { data: allPosts },
 } = Astro.props;
-
-console.log(allPosts);
 ---
 
 <Layout
@@ -81,4 +81,5 @@ console.log(allPosts);
   <HeroImage data={newsPage.heroImage} />
   <CatNav categories={categories} />
   <NewsPosts posts={allPosts} />
+  <Pagination page={page} />
 </Layout>

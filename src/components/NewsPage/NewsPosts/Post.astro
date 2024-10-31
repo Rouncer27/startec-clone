@@ -1,0 +1,26 @@
+---
+const { post } = Astro.props;
+import { Image } from "astro:assets";
+import "./post.scss";
+---
+
+<div class="single-post">
+  <div class="single-post-image">
+    <Image
+      src={post.newsPostsIntro.featuredImage.node.sourceUrl}
+      alt={post.newsPostsIntro.featuredImage.node.altText}
+      inferSize={true}
+    />
+  </div>
+  <div class="single-post-wrapper">
+    <div class="single-post-title">
+      <h3>{post.title}</h3>
+    </div>
+    <div class="single-post-excerpt">
+      <div set:html={post.newsPostsIntro.excerpt} />
+    </div>
+    <div class="single-post-button">
+      <a href={`/news/${post.slug}`}>Read More</a>
+    </div>
+  </div>
+</div>

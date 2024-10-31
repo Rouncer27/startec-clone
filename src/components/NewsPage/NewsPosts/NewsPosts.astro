@@ -1,19 +1,14 @@
 ---
 import Wrapper from "../../shared/Wrapper.astro";
+import Post from "./Post.astro";
 import "./newsPosts.scss";
 ---
 
-<div>
+<div class="news-posts">
   <Wrapper>
     {
       Astro.props.posts.map((post) => {
-        return (
-          <div>
-            <div>
-              <h2>{post.node.title}</h2>
-            </div>
-          </div>
-        );
+        return <Post post={post.node} />;
       })
     }
   </Wrapper>
