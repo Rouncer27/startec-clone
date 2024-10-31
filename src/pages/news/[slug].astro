@@ -2,13 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import PostHeader from "../../components/NewsPost/PostHeader/PostHeader.astro";
 import PostContent from "../../components/NewsPost/PostContent/PostContent.astro";
+import PostGallery from "../../components/NewsPost/PostGallery/PostGallery.astro";
+import PostNav from "../../components/NewsPost/PostNav/PostNav.astro";
+
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
   Post_Content_Query,
   Post_Gallery_Images_Query,
   Post_Categories_Query,
 } from "../../data/newsPost/queries";
-import PostGallery from "../../components/NewsPost/PostGallery/PostGallery.astro";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -94,4 +96,5 @@ const {
   <PostHeader title={post.title} categories={post.categories.edges} />
   <PostContent data={post.newsPosts.mainContent} />
   <PostGallery data={post.newsPosts} />
+  <PostNav data={Astro.props} />
 </Layout>
