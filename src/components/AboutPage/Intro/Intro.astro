@@ -1,0 +1,18 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import LetsConnectCard from "../../shared/LetsConnectCard/LetsConnectCard.astro";
+import "./intro.scss";
+import Headline from "../../shared/Headline.astro";
+---
+
+<div class="about-intro">
+  <Wrapper>
+    <div class="about-intro-container">
+      <div class="about-intro-title">
+        <Headline ele="h2" hlstyle="three">{Astro.props.data.title}</Headline>
+      </div>
+      <div class="about-intro-content" set:html={Astro.props.data.content} />
+    </div>
+  </Wrapper>
+  {Astro.props.data.displayLetsConnectIcon && <LetsConnectCard />}
+</div>

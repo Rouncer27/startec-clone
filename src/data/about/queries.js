@@ -10,3 +10,11 @@ export const Hero_Image_Query = `
         }
     }
 `;
+
+export const Intro_Query = `
+    intro: introComponent {
+        title
+        content
+        displayLetsConnectIcon
+    }
+`;

@@ -1,9 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroImage from "../../components/AboutPage/HeroImage/HeroImage.astro";
+import Intro from "../../components/AboutPage/Intro/Intro.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
-import { Hero_Image_Query } from "../../data/about/queries";
+import { Hero_Image_Query, Intro_Query } from "../../data/about/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -17,6 +18,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Page_Seo_Query}
           aboutPage {
             ${Hero_Image_Query}
+            ${Intro_Query}
           }
 				}
 			}
@@ -37,4 +39,5 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroImage data={aboutPage.heroImage} />
+  <Intro data={aboutPage.intro} />
 </Layout>
