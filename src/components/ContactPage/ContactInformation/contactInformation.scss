@@ -1,0 +1,58 @@
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.contact-information {
+  padding-top: 5rem;
+
+  &-location {
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(50%);
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(33%);
+    }
+
+    &-main {
+      margin-bottom: 5rem;
+    }
+
+    &-regional {
+      margin-bottom: 5rem;
+    }
+
+    h3,
+    h4,
+    p,
+    a {
+      @extend .p-one;
+      margin: 0;
+    }
+
+    h3 {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  &-map {
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(50%);
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(66% - 5rem);
+      margin-left: 5rem;
+    }
+
+    &-intro {
+      p {
+        @extend .hl-five;
+      }
+    }
+  }
+}

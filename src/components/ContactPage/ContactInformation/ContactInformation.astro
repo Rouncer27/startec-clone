@@ -1,11 +1,49 @@
 ---
+import { Image } from "astro:assets";
 import Wrapper from "../../shared/Wrapper.astro";
 import "./contactInformation.scss";
-console.log(Astro.props);
 ---
 
-<div>
+<div class="contact-information">
   <Wrapper>
-    <h1>Contact Information</h1>
+    <div class="contact-information-location">
+      <div class="contact-information-location-main">
+        <h3>Main Office</h3>
+        <p>Calgary Main Office:</p>
+        <p set:html={Astro.props.information.mainOfficeAddress} />
+        <p>Phone: {Astro.props.information.mainOfiicePhone}</p>
+        <p>Fax: {Astro.props.information.mainOfficeFax}</p>
+        <p>Toll Free: {Astro.props.information.mainOfficeTollFree}</p>
+      </div>
+      <div class="contact-information-location-regionals">
+        <h3>Regional Service Locations</h3>
+        {
+          Astro.props.information.locations.map((location) => {
+            return (
+              <div class="contact-information-location-regional">
+                <h4>{location.title}</h4>
+                <p set:html={location.address} />
+                <p>Phone: {location.phone}</p>
+                {location.fax && <p>Fax: {location.fax}</p>}
+                <p>Toll Free: {location.tollFree}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <div class="contact-information-map">
+      <div
+        class="contact-information-map-intro"
+        set:html={Astro.props.map.intro}
+      />
+      <div>
+        <Image
+          src={Astro.props.map.mapImage.node.sourceUrl}
+          alt={Astro.props.map.mapImage.node.altText}
+          inferSize={true}
+        />
+      </div>
+    </div>
   </Wrapper>
 </div>
