@@ -1,0 +1,31 @@
+---
+import "./bioNav.scss";
+import Wrapper from "../../shared/Wrapper.astro";
+---
+
+<div class="bio-post-nav">
+  <Wrapper classes="bio-post-nav-wrapper">
+    {
+      Astro.props.data.prev !== null ? (
+        <div
+          class={`bio-post-nav-prev${Astro.props.data.next === null ? " bio-post-nav-prev-alone" : ""}`}
+        >
+          <a href={`/about/${Astro.props.data.prev.slug}`}>
+            <span>&lt;</span>Previous Bio
+          </a>
+        </div>
+      ) : null
+    }
+    {
+      Astro.props.data.next !== null ? (
+        <div
+          class={`bio-post-nav-next${Astro.props.data.prev === null ? " bio-post-nav-next-alone" : ""}`}
+        >
+          <a href={`/about/${Astro.props.data.next.slug}`}>
+            Next Bio<span>&gt;</span>
+          </a>
+        </div>
+      ) : null
+    }
+  </Wrapper>
+</div>

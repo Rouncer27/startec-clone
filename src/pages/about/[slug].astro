@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import FeaturedImage from "../../components/BioPost/FeaturedImage/FeaturedImage.astro";
 import MainBio from "../../components/BioPost/MainBio/MainBio.astro";
+import BioNav from "../../components/BioPost/BioNav/BioNav.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import { Featured_Image_Query, Main_Bio_Query } from "../../data/bio/queries";
@@ -81,4 +82,5 @@ const {
 >
   <FeaturedImage data={biosPost.featuredImage} title={bio.title} />
   <MainBio data={biosPost.mainBio} />
+  <BioNav data={Astro.props} />
 </Layout>
