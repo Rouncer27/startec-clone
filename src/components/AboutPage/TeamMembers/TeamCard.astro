@@ -1,19 +1,21 @@
 ---
 import { Image } from "astro:assets";
 import "./teamCard.scss";
-console.log("MEM: ", Astro.props.mem);
 ---
 
 <div class="team-card">
-  <div class="team-card-image">
-    <Image
-      src={Astro.props.mem.biosPost.featuredImageComponent.image.node.sourceUrl}
-      alt={Astro.props.mem.biosPost.featuredImageComponent.image.node.altText}
-      inferSize={true}
-    />
-  </div>
-  <div class="team-card-title">
-    <h3>{Astro.props.mem.title}</h3>
-    <p>{Astro.props.mem.biosPost.featuredImageComponent.titleJob}</p>
-  </div>
+  <a href={`/about/${Astro.props.mem.slug}`}>
+    <div class="team-card-image">
+      <Image
+        src={Astro.props.mem.biosPost.featuredImageComponent.image.node
+          .sourceUrl}
+        alt={Astro.props.mem.biosPost.featuredImageComponent.image.node.altText}
+        inferSize={true}
+      />
+    </div>
+    <div class="team-card-title">
+      <h3>{Astro.props.mem.title}</h3>
+      <p>{Astro.props.mem.biosPost.featuredImageComponent.titleJob}</p>
+    </div>
+  </a>
 </div>
