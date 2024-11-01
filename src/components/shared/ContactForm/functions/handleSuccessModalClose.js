@@ -1,6 +1,6 @@
 import clearFormFields from "./clearFormFields";
 
-const handleSuccessModalClose = (setFormStatus, formStatus) => {
+const handleSuccessModalClose = (setFormStatus, formStatus, setFormData) => {
   setFormStatus({
     ...formStatus,
     submitting: false,
@@ -10,7 +10,7 @@ const handleSuccessModalClose = (setFormStatus, formStatus) => {
     captachError: false,
   });
 
-  clearFormFields();
+  clearFormFields(setFormData);
 };
 
 export default handleSuccessModalClose;

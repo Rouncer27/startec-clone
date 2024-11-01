@@ -1,0 +1,29 @@
+@use "../../../../../styles/abstracts/" as *;
+@use "../../../../../styles/global/paragraphs.scss";
+
+.main-form-input {
+  width: calc(100%);
+  margin-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    width: calc(50% - 7.2rem);
+    margin-right: 7.2rem;
+  }
+
+  label {
+    @extend .p-two;
+    display: block;
+    width: 100%;
+    color: $blackColor;
+  }
+
+  input {
+    @extend .p-two;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border: 0.1rem solid transparent;
+    background-color: $whiteColor;
+    color: $blackColor;
+  }
+}
