@@ -1,0 +1,57 @@
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+@use "../../../styles/abstracts/" as *;
+
+.featured-image {
+  &-container {
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(33.333333%);
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(33.333333%);
+    }
+  }
+
+  &-content {
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: calc(66.666666% - 2.5rem);
+      margin-left: 2.5rem;
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(66.666666% - 5rem);
+      margin-left: 5rem;
+    }
+
+    h1,
+    p {
+      @extend .hl-four;
+      margin: 0;
+      color: $secondaryColor;
+      text-transform: uppercase;
+    }
+
+    &-linkedin {
+      @extend .p-one;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+
+      a {
+        @extend .p-one;
+        text-decoration: underline;
+
+        &:hover {
+          color: $tertiaryColor;
+        }
+      }
+    }
+  }
+}

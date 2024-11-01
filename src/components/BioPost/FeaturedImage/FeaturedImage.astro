@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./featuredImage.scss";
+---
+
+<div class="featured-image">
+  <Wrapper wrapType="stand">
+    <div class="featured-image-container">
+      <Image
+        src={Astro.props.data.image.node.sourceUrl}
+        alt={Astro.props.data.image.node.altText}
+        inferSize={true}
+      />
+    </div>
+    <div class="featured-image-content">
+      <h1>{Astro.props.title}</h1>
+      <p>{Astro.props.data.titleJob}</p>
+      {
+        Astro.props.data.linkedinReqiured && (
+          <p class="featured-image-content-linkedin">
+            <a href={Astro.props.data.linkedin}>Linkedin</a>
+          </p>
+        )
+      }
+    </div>
+  </Wrapper>
+</div>

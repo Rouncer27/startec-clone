@@ -1,7 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import FeaturedImage from "../../components/BioPost/FeaturedImage/FeaturedImage.astro";
+import MainBio from "../../components/BioPost/MainBio/MainBio.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
+import { Featured_Image_Query, Main_Bio_Query } from "../../data/bio/queries";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -50,6 +53,10 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
         bio(idType: SLUG, id: $id) {
           ${Page_Seo_Query}
           title
+          biosPost {
+            ${Featured_Image_Query}
+            ${Main_Bio_Query}
+          }
         }
     }
     `,
@@ -60,10 +67,18 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 });
 
 const {
-  data: { bio },
+  data: {
+    bio,
+    bio: { biosPost, seoMetaTags },
+  },
 } = await response.json();
 ---
 
-<Layout>
-  <h1>Single About Page - {bio.title}</h1>
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <FeaturedImage data={biosPost.featuredImage} title={bio.title} />
+  <MainBio data={biosPost.mainBio} />
 </Layout>

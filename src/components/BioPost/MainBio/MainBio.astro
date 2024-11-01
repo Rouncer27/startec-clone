@@ -1,0 +1,10 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import "./mainBio.scss";
+---
+
+<div class="main-bio">
+  <Wrapper wrapType="stand">
+    <div class="main-bio-content" set:html={Astro.props.data.content} />
+  </Wrapper>
+</div>
