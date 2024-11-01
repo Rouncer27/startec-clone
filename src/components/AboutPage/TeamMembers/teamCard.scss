@@ -1,0 +1,26 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/paragraphs";
+
+.team-card {
+  width: calc(50%);
+
+  @media (min-width: 768px) {
+    width: calc(33.3333% - 2rem);
+    margin: 1rem 1rem 5rem;
+  }
+
+  &-image {
+    width: 100%;
+  }
+
+  &-title {
+    width: 100%;
+
+    h3,
+    p {
+      @extend .p-one;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+}

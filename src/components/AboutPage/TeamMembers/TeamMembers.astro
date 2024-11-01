@@ -1,0 +1,21 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import TeamCard from "./TeamCard.astro";
+import "./teamMembers.scss";
+---
+
+<div class="team-members">
+  <Wrapper>
+    <div class="team-members-title">
+      <h2>{Astro.props.title}</h2>
+    </div>
+    <div class="team-members-container">
+      {
+        Astro.props.data.members.map((member) => {
+          const mem = member?.member?.edges[0]?.node;
+          return <TeamCard mem={mem} />;
+        })
+      }
+    </div>
+  </Wrapper>
+</div>

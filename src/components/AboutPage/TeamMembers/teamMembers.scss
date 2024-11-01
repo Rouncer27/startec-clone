@@ -1,0 +1,20 @@
+@use "../../../styles/global/headlines";
+
+.team-members {
+  padding-top: 5rem;
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-three;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+  }
+
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}

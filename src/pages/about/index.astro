@@ -3,8 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import HeroImage from "../../components/AboutPage/HeroImage/HeroImage.astro";
 import Intro from "../../components/AboutPage/Intro/Intro.astro";
 import OurValues from "../../components/AboutPage/OurValues/OurValues.jsx";
-import ExecutiveTeam from "../../components/AboutPage/TeamMembers/ExecutiveTeam.astro";
-import LeadershipTeam from "../../components/AboutPage/TeamMembers/LeadershipTeam.astro";
+import TeamMembers from "../../components/AboutPage/TeamMembers/TeamMembers.astro";
 import TeamVideo from "../../components/AboutPage/TeamVideo/TeamVideo.astro";
 import SmallCallAction from "../../components/AboutPage/SmallCallAction/SmallCallAction.astro";
 
@@ -50,7 +49,7 @@ const {
   },
 } = await response.json();
 
-console.log("aboutPage", aboutPage);
+// console.log("aboutPage", aboutPage);
 ---
 
 <Layout
@@ -61,8 +60,8 @@ console.log("aboutPage", aboutPage);
   <HeroImage data={aboutPage.heroImage} />
   <Intro data={aboutPage.intro} />
   <OurValues client:only="react" data={aboutPage.ourValues} />
-  <ExecutiveTeam data={aboutPage.executiveTeam} />
-  <LeadershipTeam data={aboutPage.leadershipTeam} />
+  <TeamMembers title="Executive Team" data={aboutPage.executiveTeam} />
+  <TeamMembers title="Leadership Team" data={aboutPage.leadershipTeam} />
   <TeamVideo data={aboutPage.teamVideo} />
   <SmallCallAction data={aboutPage.smallCallAction} />
 </Layout>
