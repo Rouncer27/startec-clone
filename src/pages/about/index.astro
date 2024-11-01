@@ -2,9 +2,22 @@
 import Layout from "../../layouts/Layout.astro";
 import HeroImage from "../../components/AboutPage/HeroImage/HeroImage.astro";
 import Intro from "../../components/AboutPage/Intro/Intro.astro";
+import OurValues from "../../components/AboutPage/OurValues/OurValues.jsx";
+import ExecutiveTeam from "../../components/AboutPage/TeamMembers/ExecutiveTeam.astro";
+import LeadershipTeam from "../../components/AboutPage/TeamMembers/LeadershipTeam.astro";
+import TeamVideo from "../../components/AboutPage/TeamVideo/TeamVideo.astro";
+import SmallCallAction from "../../components/AboutPage/SmallCallAction/SmallCallAction.astro";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
-import { Hero_Image_Query, Intro_Query } from "../../data/about/queries";
+import {
+  Hero_Image_Query,
+  Intro_Query,
+  Our_Values_Query,
+  Executive_Team_Query,
+  Leadership_Team_Query,
+  Team_Video_Query,
+  Small_Call_Action_Query,
+} from "../../data/about/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -19,6 +32,11 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           aboutPage {
             ${Hero_Image_Query}
             ${Intro_Query}
+            ${Our_Values_Query}
+            ${Executive_Team_Query}
+            ${Leadership_Team_Query}
+            ${Team_Video_Query}
+            ${Small_Call_Action_Query}
           }
 				}
 			}
@@ -31,6 +49,8 @@ const {
     page: { aboutPage, seoMetaTags },
   },
 } = await response.json();
+
+console.log("aboutPage", aboutPage);
 ---
 
 <Layout
@@ -40,4 +60,9 @@ const {
 >
   <HeroImage data={aboutPage.heroImage} />
   <Intro data={aboutPage.intro} />
+  <OurValues client:only="react" data={aboutPage.ourValues} />
+  <ExecutiveTeam data={aboutPage.executiveTeam} />
+  <LeadershipTeam data={aboutPage.leadershipTeam} />
+  <TeamVideo data={aboutPage.teamVideo} />
+  <SmallCallAction data={aboutPage.smallCallAction} />
 </Layout>
