@@ -10,7 +10,7 @@ exports.handler = async function (req, context) {
   formDataArray.forEach((field) => {
     bodyFormData.append(field[0], field[1]);
   });
-  bodyFormData.append("_wpcf7_unit_tag", "9a05843");
+  // bodyFormData.append("_wpcf7_unit_tag", "9a05843");
 
   const response = await axios.post(FORM_POST_URL, bodyFormData, config);
   console.log("response", response.status, response.data);
