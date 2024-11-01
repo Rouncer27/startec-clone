@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./OurValues.scss";
+import "./ourValues.scss";
 
 const OurValues = ({ data }) => {
   const [activeValue, setActiveValue] = useState(0);
