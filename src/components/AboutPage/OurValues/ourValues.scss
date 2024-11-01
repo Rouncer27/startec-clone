@@ -1,0 +1,97 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/wrappers";
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.our-values {
+  &-wrapper {
+    @extend .wrap-med;
+  }
+
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-four;
+    }
+  }
+
+  &-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &-titles {
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(50%);
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(40% - 2.5rem);
+      margin-right: 2.5rem;
+      padding-right: 2.5rem;
+      border-right: 0.2rem solid $tertiaryColor;
+    }
+
+    button {
+      @extend .hl-five;
+      width: 100%;
+      display: block;
+      margin-bottom: 1.3rem;
+      padding: 0.75rem;
+      transition: all 0.3s ease-in-out;
+      background-color: transparent;
+      border: none;
+      font-weight: 600;
+      text-align: left;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $tertiaryColor;
+        color: $whiteColor;
+      }
+
+      &.active-value-button {
+        background-color: $tertiaryColor;
+        color: $whiteColor;
+      }
+
+      &:disabled {
+        cursor: default;
+      }
+    }
+  }
+
+  &-content {
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(50%);
+    }
+
+    @media (min-width: 1025px) {
+      width: calc(60%);
+      max-width: 50rem;
+      margin-right: auto;
+      margin-left: 0;
+    }
+
+    &-container {
+      display: none;
+
+      &.active-value {
+        display: block;
+      }
+
+      p {
+        @extend .p-one;
+      }
+    }
+  }
+}
