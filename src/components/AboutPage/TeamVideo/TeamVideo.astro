@@ -1,7 +1,12 @@
 ---
+import Wrapper from "../../shared/Wrapper.astro";
 import "./teamVideo.scss";
 ---
 
-<div>
-  <h1>Team Video</h1>
+<div class="team-video">
+  <Wrapper>
+    <div class="team-video-container">
+      <div set:html={Astro.props.data.teamVideoEmbed} />
+    </div>
+  </Wrapper>
 </div>

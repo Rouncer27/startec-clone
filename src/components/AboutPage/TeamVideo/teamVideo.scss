@@ -1,0 +1,32 @@
+.team-video {
+  &-container {
+    width: 100%;
+
+    p {
+      width: 100%;
+    }
+
+    iframe {
+      width: calc(100vw - 4rem);
+      max-width: calc(45rem - 4rem);
+      height: 45vw;
+
+      @media (min-width: 768px) {
+        max-width: calc(90rem - 4rem);
+      }
+
+      @media (min-width: 1025px) {
+        max-width: calc(110rem - 4rem);
+      }
+
+      @media (min-width: 1200px) {
+        max-width: calc(125rem - 4rem);
+        height: 40vw;
+      }
+      @media (min-width: 1600px) {
+        max-width: calc(150rem - 4rem);
+        height: 48vw;
+      }
+    }
+  }
+}
