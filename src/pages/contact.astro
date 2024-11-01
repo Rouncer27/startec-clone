@@ -1,9 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroImage from "../components/ContactPage/HeroImage/HeroImage.astro";
+import ContactInformation from "../components/ContactPage/ContactInformation/ContactInformation.astro";
 
 import { Page_Seo_Query } from "../data/Page/queries";
-import { Hero_Image_Query } from "../data/contact/queries";
+import {
+  Hero_Image_Query,
+  Contact_Information_Query,
+  Contact_Map_Query,
+} from "../data/contact/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -17,6 +22,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Page_Seo_Query}
           contactPage {
             ${Hero_Image_Query}
+            ${Contact_Information_Query}
+            ${Contact_Map_Query}
           }
 				}
 			}
@@ -37,4 +44,8 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroImage data={contactPage.heroImage} />
+  <ContactInformation
+    information={contactPage.contactInformation}
+    map={contactPage.contactMap}
+  />
 </Layout>
