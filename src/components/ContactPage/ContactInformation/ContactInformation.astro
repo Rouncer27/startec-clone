@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Wrapper from "../../shared/Wrapper.astro";
+import ContactForm from "../../shared/ContactForm/ContactForm.jsx";
 import "./contactInformation.scss";
 ---
 
@@ -44,6 +45,7 @@ import "./contactInformation.scss";
           inferSize={true}
         />
       </div>
+      <ContactForm client:only="react" />
     </div>
   </Wrapper>
 </div>
