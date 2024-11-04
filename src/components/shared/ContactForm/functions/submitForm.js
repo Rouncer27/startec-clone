@@ -47,7 +47,11 @@ const submitForm = async (
       console.log("response: ", response);
       if (response.status === 404) {
         throw new Error(
-          `Contact Form was not sent because the server is not found. Please try again.`,
+          `Contact Form was not sent because the server is not found - ${response.status}. Please try again.`,
+        );
+      } else if (response.status !== 200) {
+        throw new Error(
+          `Contact Form was not sent because something went wrong with the request to the server - ${response.status}. Please try again.`,
         );
       }
 
