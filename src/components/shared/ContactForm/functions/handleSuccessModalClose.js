@@ -8,6 +8,8 @@ const handleSuccessModalClose = (setFormStatus, formStatus, setFormData) => {
     success: false,
     captachError: false,
     validationFailedError: false,
+    timeOutError: false,
+    unknownError: false,
     errors: [],
   });
 

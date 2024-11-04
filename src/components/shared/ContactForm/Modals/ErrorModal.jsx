@@ -5,6 +5,8 @@ const ErrorModal = ({
   handleErrorModalClose,
   errorMessages,
   validationFailedError,
+  timeOutError,
+  unknownError,
 }) => {
   console.log("errorMessage: ", errorMessages);
   return (
@@ -15,18 +17,23 @@ const ErrorModal = ({
         </div>
         <div className="form-modal-inner-content error-modal-inner-content">
           <p>There was an error With The Contact Form.</p>
-          {validationFailedError && (
-            <ul>
-              <p>
-                One or more fields have an error. Please check and try again.
-              </p>
-              {errorMessages.map((error) => (
-                <li key={error.idref}>
-                  {error.field.replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="form-modal-inner-content-details error-modal-inner-content-details">
+            {validationFailedError && (
+              <ul>
+                <p>
+                  One or more fields have an error. Please check and try again.
+                </p>
+                {errorMessages.map((error) => (
+                  <li key={error.idref}>
+                    {error.field.replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {timeOutError && <p>{errorMessages[0].errorMessageTimeout}</p>}
+            {unknownError && <p>{errorMessages[0].unknownErrorMessage}</p>}
+          </div>
         </div>
         <div className="form-modal-inner-button error-modal-inner-button">
           <button onClick={handleErrorModalClose}>Close</button>

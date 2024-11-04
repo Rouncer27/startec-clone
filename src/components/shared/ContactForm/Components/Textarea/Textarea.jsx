@@ -1,4 +1,3 @@
-import React from "react";
 import "./textarea.scss";
 
 const Textarea = ({
@@ -18,7 +17,7 @@ const Textarea = ({
         {label}
         {required && <span className="required">&#42;</span>}
         <span className={`error-message ${error ? " error-active" : ""}`}>
-          - {error?.message}
+          {error?.message}
         </span>
         <textarea
           name={id}

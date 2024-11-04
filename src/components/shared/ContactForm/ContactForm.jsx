@@ -31,6 +31,8 @@ const ContactForm = () => {
     success: false,
     captachError: false,
     validationFailedError: false,
+    timeOutError: false,
+    unknownError: false,
     errors: [],
   });
 
@@ -151,6 +153,8 @@ const ContactForm = () => {
           }
           errorMessages={formStatus.errors}
           validationFailedError={formStatus.validationFailedError}
+          timeOutError={formStatus.timeOutError}
+          unknownError={formStatus.unknownError}
         />
       )}
     </div>
