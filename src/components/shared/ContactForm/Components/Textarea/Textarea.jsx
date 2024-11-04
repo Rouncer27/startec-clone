@@ -18,7 +18,7 @@ const Textarea = ({
         {label}
         {required && <span className="required">&#42;</span>}
         <span className={`error-message ${error ? " error-active" : ""}`}>
-          {error?.message} - {label}
+          - {error?.message}
         </span>
         <textarea
           name={id}
