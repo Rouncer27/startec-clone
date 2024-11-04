@@ -21,7 +21,9 @@ const ErrorModal = ({
                 One or more fields have an error. Please check and try again.
               </p>
               {errorMessages.map((error) => (
-                <li key={error.idref}>{error.field}</li>
+                <li key={error.idref}>
+                  {error.field.replace(/([a-z0-9])([A-Z])/g, "$1 $2")}
+                </li>
               ))}
             </ul>
           )}
