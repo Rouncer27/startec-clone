@@ -40,6 +40,7 @@
     transform: translate(-50%, -50%);
     background-color: $whiteColor;
     text-align: center;
+    overflow-y: scroll;
     z-index: 10;
 
     &-icon {
