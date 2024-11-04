@@ -40,6 +40,14 @@ const submitForm = async (
         errors: [],
       });
       clearFormFields(setFormData);
+    } else if (response.data.status === "validation_failed") {
+      setFormStatus({
+        ...formStatus,
+        submitting: false,
+        errorWarnDisplay: true,
+        success: false,
+        errors: response.data.invalid_fields,
+      });
     } else {
       throw new Error(`Contact Form was not sent - ${response.statusText}`);
     }
@@ -50,7 +58,7 @@ const submitForm = async (
       submitting: false,
       errorWarnDisplay: true,
       success: false,
-      error,
+      errors: [{ mainError: error }],
     });
   }
 };
