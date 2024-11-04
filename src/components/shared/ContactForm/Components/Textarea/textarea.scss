@@ -26,6 +26,21 @@
     &:hover {
       cursor: initial;
     }
+
+    &:hover {
+      cursor: initial;
+    }
+
+    .error-message {
+      display: none;
+    }
+
+    .error-active {
+      @extend .p-three;
+      display: inline-block;
+      color: red;
+      padding-left: 2rem;
+    }
   }
 
   textarea {

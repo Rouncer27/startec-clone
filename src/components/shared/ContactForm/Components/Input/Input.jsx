@@ -11,13 +11,15 @@ const Input = ({
   error,
   required,
 }) => {
-  console.log("id: ", id);
-  console.log("error: ", error);
   return (
     <div className={`main-form-input main-form-input-${size}`}>
       <label htmlFor={id}>
         {label}
         {required && <span className="required">&#42;</span>}
+
+        <span className={`error-message ${error ? " error-active" : ""}`}>
+          {error?.message} - {label}
+        </span>
       </label>
       <input
         name={id}
