@@ -31,7 +31,11 @@ const ContactForm = () => {
     success: false,
     yourEmail: null,
     captachError: false,
+    errors: [],
   });
+
+  console.log("Errors: ", formStatus.errors);
+
   return (
     <div className="contact-form">
       <form
