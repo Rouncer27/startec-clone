@@ -31,7 +31,9 @@ const ErrorModal = ({
               </ul>
             )}
 
-            {timeOutError && <p>{errorMessages[0].errorMessageTimeout}</p>}
+            {timeOutError && (
+              <p>{errorMessages[0].errorMessageTimeout.message}</p>
+            )}
             {unknownError && (
               <p>
                 Unknown Error - {errorMessages[0]?.unknownErrorMessage.message}
