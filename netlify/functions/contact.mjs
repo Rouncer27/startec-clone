@@ -1,7 +1,7 @@
 import axios from "axios";
 
 exports.handler = async function (req, context) {
-  const FORM_POST_URL = `https://startec.swbdatabases2.com/wp-json/contact-form-7/v1/contact-forms/546/feedback`;
+  const FORM_POST_URL = `https://startec.swbdatabases2.ca/wp-json/contact-form-7/v1/contact-forms/546/feedback`;
   const config = { headers: { "Content-Type": "multipart/form-data" } };
   const formData = JSON.parse(req.body);
 
@@ -12,7 +12,7 @@ exports.handler = async function (req, context) {
   });
 
   // Just a test to see if the timeout is working //
-  // await new Promise((resolve) => setTimeout(resolve, 15000));
+  await new Promise((resolve) => setTimeout(resolve, 15000));
 
   const response = await axios.post(FORM_POST_URL, bodyFormData, config);
 
