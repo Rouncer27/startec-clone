@@ -14,7 +14,7 @@ const ErrorModal = ({
           <ErrorIcon />
         </div>
         <div className="form-modal-inner-content error-modal-inner-content">
-          <p>Error With The Contact Form!</p>
+          <p>There was an error With The Contact Form.</p>
           {validationFailedError && (
             <ul>
               <p>

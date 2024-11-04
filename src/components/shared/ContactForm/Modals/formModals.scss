@@ -73,6 +73,7 @@
         li {
           @extend .p-three;
           color: red;
+          text-transform: capitalize;
         }
       }
     }
