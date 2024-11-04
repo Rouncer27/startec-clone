@@ -58,7 +58,7 @@ const submitForm = async (
       submitting: false,
       errorWarnDisplay: true,
       success: false,
-      errors: [{ mainError: error }],
+      errors: [{ mainErrorMessage: error }],
     });
   }
 };
