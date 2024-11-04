@@ -1,8 +1,12 @@
 import "./formModals.scss";
 import ErrorIcon from "./ErrorIcon";
 
-const ErrorModal = ({ handleErrorModalClose, errorMessage }) => {
-  console.log("errorMessage: ", errorMessage);
+const ErrorModal = ({
+  handleErrorModalClose,
+  errorMessages,
+  validationFailedError,
+}) => {
+  console.log("errorMessage: ", errorMessages);
   return (
     <div className="form-modal error-modal">
       <div className="form-modal-inner error-modal-inner">
@@ -11,6 +15,14 @@ const ErrorModal = ({ handleErrorModalClose, errorMessage }) => {
         </div>
         <div className="form-modal-inner-content error-modal-inner-content">
           <p>Error With The Contact Form!</p>
+          {validationFailedError && (
+            <ul>
+              <p>{errorMessages.message}</p>
+              {errorMessages.invalid_fields.map((error) => (
+                <li key={error.idref}>{error.field}</li>
+              ))}
+            </ul>
+          )}
         </div>
         <div className="form-modal-inner-button error-modal-inner-button">
           <button onClick={handleErrorModalClose}>Close</button>

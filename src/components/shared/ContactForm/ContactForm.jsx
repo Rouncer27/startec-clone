@@ -29,8 +29,8 @@ const ContactForm = () => {
     submitting: false,
     errorWarnDisplay: false,
     success: false,
-    yourEmail: null,
     captachError: false,
+    validationFailedError: false,
     errors: [],
   });
 
@@ -149,7 +149,8 @@ const ContactForm = () => {
           handleErrorModalClose={() =>
             handleErrorModalClose(setFormStatus, formStatus)
           }
-          errorMessage={formStatus.errors}
+          errorMessages={formStatus.errors}
+          validationFailedError={formStatus.validationFailedError}
         />
       )}
     </div>

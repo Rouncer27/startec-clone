@@ -6,8 +6,9 @@ const handleSuccessModalClose = (setFormStatus, formStatus, setFormData) => {
     submitting: false,
     errorWarnDisplay: false,
     success: false,
-    errors: null,
     captachError: false,
+    validationFailedError: false,
+    errors: [],
   });
 
   clearFormFields(setFormData);

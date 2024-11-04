@@ -47,6 +47,7 @@ const submitForm = async (
         errorWarnDisplay: true,
         success: false,
         errors: response.data.invalid_fields,
+        validationFailedError: true,
       });
     } else {
       throw new Error(`Contact Form was not sent - ${response?.data?.status}`);
