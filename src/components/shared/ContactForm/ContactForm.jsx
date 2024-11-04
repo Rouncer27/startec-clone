@@ -50,6 +50,7 @@ const ContactForm = () => {
             size="full"
             placeholder="Company"
             required={false}
+            errors={formStatus.errors}
           />
 
           <Input
@@ -61,6 +62,7 @@ const ContactForm = () => {
             size="half"
             placeholder="Your Name"
             required={false}
+            errors={formStatus.errors}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -71,6 +73,7 @@ const ContactForm = () => {
             size="half"
             placeholder="Your Position"
             required={false}
+            errors={formStatus.errors}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -81,6 +84,7 @@ const ContactForm = () => {
             size="half"
             placeholder="Email"
             required={false}
+            errors={formStatus.errors}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -91,6 +95,7 @@ const ContactForm = () => {
             size="half"
             placeholder="Phone Number"
             required={false}
+            errors={formStatus.errors}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -101,22 +106,21 @@ const ContactForm = () => {
             size="full"
             placeholder="Markets we serve"
             required={false}
+            errors={formStatus.errors}
           />
           <Textarea
-            value={formData.comments}
             handler={(event) => handleOnChange(event, setFormData, formData)}
-            errors={formStatus.errors}
+            value={formData.comments}
+            label="Comments"
+            id="comments"
             size="full"
-            position="last"
-            title="Comments"
-            type="text"
-            nameId="comments"
-            required={false}
             placeholder="Comments"
+            required={false}
             rows="10"
+            errors={formStatus.errors}
           />
         </fieldset>
-        <div>
+        <div className="contact-form-fields-button">
           <button type="submit">Submit The Form</button>
         </div>
       </form>

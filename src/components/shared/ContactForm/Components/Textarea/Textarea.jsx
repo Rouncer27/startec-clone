@@ -2,27 +2,26 @@ import React from "react";
 import "./textarea.scss";
 
 const Textarea = ({
-  value,
   handler,
-  errors,
+  value,
+  label,
+  id,
   size,
-  position,
-  title,
-  type,
-  nameId,
+  placeholder,
   required,
   rows,
+  errors,
 }) => {
   return (
-    <div className="of-form-textarea">
-      <label htmlFor={nameId}>
-        {title} <span className="required">&#42;</span>
+    <div className={`main-form-textarea main-form-textarea-${size}`}>
+      <label htmlFor={id}>
+        {label} <span className="required">&#42;</span>
         <textarea
-          name={nameId}
-          type={type}
+          name={id}
           value={value}
-          id={nameId}
+          id={id}
           onChange={handler}
+          placeholder={placeholder}
           aria-required={required}
           required={required}
           rows={rows ? rows : "5"}

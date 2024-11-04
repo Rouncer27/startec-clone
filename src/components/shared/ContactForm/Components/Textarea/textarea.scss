@@ -1,42 +1,40 @@
 @use "../../../../../styles/abstracts/" as *;
 @use "../../../../../styles/global/paragraphs.scss";
 
-.of-form-textarea {
-  width: calc(100% - 7rem);
-  margin: 1rem auto;
-  margin-right: 7rem;
-  padding: 1rem 0;
+.main-form-textarea {
+  width: calc(100%);
+  margin-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    width: calc(50% - 2rem);
+    margin-right: 2rem;
+  }
+
+  &-full {
+    @media (min-width: 768px) {
+      width: calc(100% - 2rem);
+      margin-right: 2rem;
+    }
+  }
 
   label {
     @extend .p-two;
-    color: $blackColor;
     display: block;
     width: 100%;
-    line-height: 1.5;
+    color: $blackColor;
 
-    .error-message {
-      display: none;
+    &:hover {
+      cursor: initial;
     }
+  }
 
-    .error-active {
-      display: inline-block;
-      color: red;
-      padding-left: 2rem;
-    }
-
-    textarea {
-      display: block;
-      margin-top: 0.25rem;
-      margin-bottom: 0.5rem;
-      padding: 0.9rem 1rem;
-      background-color: $whiteColor;
-      border-radius: 0;
-      color: $blackColor;
-      margin-left: 0;
-      margin-right: 0;
-      width: 100%;
-      border: none;
-      border: 0.1rem $whiteColor solid;
-    }
+  textarea {
+    @extend .p-two;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(11, 34, 78, 0.1);
+    border-radius: 0;
+    color: $blackColor;
   }
 }
