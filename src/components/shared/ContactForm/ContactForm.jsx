@@ -149,7 +149,7 @@ const ContactForm = () => {
           handleErrorModalClose={() =>
             handleErrorModalClose(setFormStatus, formStatus)
           }
-          errorMessage={formStatus.error}
+          errorMessage={formStatus.errors}
         />
       )}
     </div>

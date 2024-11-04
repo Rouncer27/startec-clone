@@ -1,7 +1,8 @@
 import "./formModals.scss";
 import ErrorIcon from "./ErrorIcon";
 
-const ErrorModal = ({ handleErrorModalClose }) => {
+const ErrorModal = ({ handleErrorModalClose, errorMessage }) => {
+  console.log("errorMessage: ", errorMessage);
   return (
     <div className="form-modal error-modal">
       <div className="form-modal-inner error-modal-inner">
