@@ -1,4 +1,3 @@
-import { set } from "astro:schema";
 import axios from "axios";
 
 exports.handler = async function (req, context) {
