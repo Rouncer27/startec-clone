@@ -11,6 +11,7 @@ exports.handler = async function (req, context) {
     bodyFormData.append(field[0], field[1]);
   });
 
+  // Just a test to see if the timeout is working //
   await new Promise((resolve) => setTimeout(resolve, 15000));
 
   const response = await axios.post(FORM_POST_URL, bodyFormData, config);
