@@ -13,7 +13,6 @@ const submitForm = async (
     return {
       ...prevState,
       submitting: true,
-      errors: [],
     };
   });
 
