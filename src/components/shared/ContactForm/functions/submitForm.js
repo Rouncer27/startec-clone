@@ -49,7 +49,7 @@ const submitForm = async (
         errors: response.data.invalid_fields,
       });
     } else {
-      throw new Error(`Contact Form was not sent - ${response.statusText}`);
+      throw new Error(`Contact Form was not sent - ${response?.data?.status}`);
     }
   } catch (error) {
     console.log("error: ", error);
