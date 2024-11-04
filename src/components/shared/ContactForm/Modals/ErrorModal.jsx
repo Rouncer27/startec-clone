@@ -17,7 +17,9 @@ const ErrorModal = ({
           <p>Error With The Contact Form!</p>
           {validationFailedError && (
             <ul>
-              <p>{errorMessages.message}</p>
+              <p>
+                One or more fields have an error. Please check and try again.
+              </p>
               {errorMessages.invalid_fields.map((error) => (
                 <li key={error.idref}>{error.field}</li>
               ))}
