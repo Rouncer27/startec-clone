@@ -54,7 +54,7 @@ const ContactForm = () => {
             size="full"
             placeholder="Company"
             required={false}
-            errors={formStatus.errors}
+            error={formStatus.errors.find((error) => error.idref === "company")}
           />
 
           <Input
@@ -66,7 +66,9 @@ const ContactForm = () => {
             size="half"
             placeholder="Your Name"
             required={false}
-            errors={formStatus.errors}
+            error={formStatus.errors.find(
+              (error) => error.idref === "yourName",
+            )}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -77,7 +79,9 @@ const ContactForm = () => {
             size="half"
             placeholder="Your Position"
             required={false}
-            errors={formStatus.errors}
+            error={formStatus.errors.find(
+              (error) => error.idref === "position",
+            )}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -88,7 +92,9 @@ const ContactForm = () => {
             size="half"
             placeholder="Email"
             required={false}
-            errors={formStatus.errors}
+            error={formStatus.errors.find(
+              (error) => error.idref === "yourEmail",
+            )}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -99,7 +105,7 @@ const ContactForm = () => {
             size="half"
             placeholder="Phone Number"
             required={false}
-            errors={formStatus.errors}
+            error={formStatus.errors.find((error) => error.idref === "phone")}
           />
           <Input
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -110,7 +116,7 @@ const ContactForm = () => {
             size="full"
             placeholder="Markets we serve"
             required={false}
-            errors={formStatus.errors}
+            error={formStatus.errors.find((error) => error.idref === "markets")}
           />
           <Textarea
             handler={(event) => handleOnChange(event, setFormData, formData)}
@@ -121,7 +127,9 @@ const ContactForm = () => {
             placeholder="Comments"
             required={false}
             rows="10"
-            errors={formStatus.errors}
+            error={formStatus.errors.find(
+              (error) => error.idref === "comments",
+            )}
           />
         </fieldset>
         <div className="contact-form-fields-button">

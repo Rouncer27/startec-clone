@@ -8,8 +8,11 @@ const Input = ({
   type,
   size,
   placeholder,
+  error,
   required,
 }) => {
+  console.log("id: ", id);
+  console.log("error: ", error);
   return (
     <div className={`main-form-input main-form-input-${size}`}>
       <label htmlFor={id}>

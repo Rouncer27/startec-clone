@@ -10,8 +10,10 @@ const Textarea = ({
   placeholder,
   required,
   rows,
-  errors,
+  error,
 }) => {
+  console.log("id: ", id);
+  console.log("error: ", error);
   return (
     <div className={`main-form-textarea main-form-textarea-${size}`}>
       <label htmlFor={id}>
