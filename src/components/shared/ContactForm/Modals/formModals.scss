@@ -71,7 +71,8 @@
         }
 
         li {
-          @extend .p-two;
+          @extend .p-three;
+          color: red;
         }
       }
     }
