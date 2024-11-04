@@ -29,6 +29,8 @@ const submitForm = async (
       body: JSON.stringify(formData),
     }).then((response) => response.json());
 
+    console.log("response: ", response);
+
     if (response.data.status === "mail_sent") {
       setFormStatus({
         ...formStatus,
