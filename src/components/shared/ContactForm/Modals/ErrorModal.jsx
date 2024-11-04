@@ -8,7 +8,7 @@ const ErrorModal = ({
   timeOutError,
   unknownError,
 }) => {
-  console.log("errorMessage: ", errorMessages);
+  console.log("errorMessage: ", errorMessages[0]?.unknownErrorMessage);
   return (
     <div className="form-modal error-modal">
       <div className="form-modal-inner error-modal-inner">
@@ -32,7 +32,11 @@ const ErrorModal = ({
             )}
 
             {timeOutError && <p>{errorMessages[0].errorMessageTimeout}</p>}
-            {unknownError && <p>{errorMessages[0].unknownErrorMessage}</p>}
+            {unknownError && (
+              <p>
+                Unknown Error - {errorMessages[0]?.unknownErrorMessage.message}
+              </p>
+            )}
           </div>
         </div>
         <div className="form-modal-inner-button error-modal-inner-button">

@@ -60,8 +60,8 @@
         margin-bottom: 0.75rem;
       }
 
-      ul {
-        margin-bottom: 1rem;
+      &-details {
+        width: 100%;
 
         p {
           @extend .p-two;
@@ -70,10 +70,21 @@
           font-weight: 600;
         }
 
-        li {
-          @extend .p-three;
-          color: red;
-          text-transform: capitalize;
+        ul {
+          margin-bottom: 1rem;
+
+          p {
+            @extend .p-two;
+            margin: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+          }
+
+          li {
+            @extend .p-three;
+            color: red;
+            text-transform: capitalize;
+          }
         }
       }
     }

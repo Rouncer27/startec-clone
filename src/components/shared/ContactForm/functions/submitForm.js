@@ -43,7 +43,16 @@ const submitForm = async (
     const response = await fetch("/.netlify/functions/contact", {
       method: "POST",
       body: JSON.stringify(formData),
-    }).then((response) => response.json());
+    }).then((response) => {
+      console.log("response: ", response);
+      if (response.status === 404) {
+        throw new Error(
+          `Contact Form was not sent because the server is not found. Please try again.`,
+        );
+      }
+
+      return response.json();
+    });
 
     console.log("response: ", response);
     console.log("timeoutID: ", timeoutID);
