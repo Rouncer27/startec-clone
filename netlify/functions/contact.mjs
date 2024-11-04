@@ -11,7 +11,7 @@ exports.handler = async function (req, context) {
     bodyFormData.append(field[0], field[1]);
   });
 
-  const response = await axios.post(FORM_POST_URL, bodyFormData, config);
+  // const response = await axios.post(FORM_POST_URL, bodyFormData, config);
 
   // return {
   //   statusCode: response.status,
