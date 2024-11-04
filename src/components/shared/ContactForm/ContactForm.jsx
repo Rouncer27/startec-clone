@@ -36,7 +36,7 @@ const ContactForm = () => {
     errors: [],
   });
 
-  console.log("Errors: ", formStatus.errors);
+  // console.log("Errors: ", formStatus.errors);
 
   return (
     <div className="contact-form">
