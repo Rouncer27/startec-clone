@@ -27,7 +27,7 @@ const submitForm = async (
       errors: [
         {
           errorMessageTimeout:
-            "Form was not submitted because the server took too long to respond. Please try again.",
+            "Form was not submitted because the server took too long to respond - Timeout Error. Please try again.",
         },
       ],
     });
