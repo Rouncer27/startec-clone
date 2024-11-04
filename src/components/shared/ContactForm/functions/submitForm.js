@@ -23,7 +23,9 @@ const submitForm = async (
       submitting: false,
       errorWarnDisplay: true,
       success: false,
+      validationFailedError: false,
       timeOutError: true,
+      unknownError: false,
       errors: [
         {
           errorMessageTimeout:
@@ -82,8 +84,10 @@ const submitForm = async (
         submitting: false,
         errorWarnDisplay: true,
         success: false,
-        errors: response.data.invalid_fields,
         validationFailedError: true,
+        timeOutError: false,
+        unknownError: false,
+        errors: response.data.invalid_fields,
       });
     } else {
       clearTimeout(timeoutID);
@@ -97,6 +101,8 @@ const submitForm = async (
       submitting: false,
       errorWarnDisplay: true,
       success: false,
+      validationFailedError: false,
+      timeOutError: false,
       unknownError: true,
       errors: [{ unknownErrorMessage: error }],
     });
