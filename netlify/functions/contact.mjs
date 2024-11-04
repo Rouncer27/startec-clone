@@ -12,16 +12,15 @@ exports.handler = async function (req, context) {
   });
 
   console.log("Hello Trevor");
-  setTimeout(() => {
+  setTimeout(async () => {
     console.log("Hello Again Trevor");
+    const response = await axios.post(FORM_POST_URL, bodyFormData, config);
+
+    return {
+      statusCode: response.status,
+      body: JSON.stringify({
+        data: response.data,
+      }),
+    };
   }, 11000);
-
-  // const response = await axios.post(FORM_POST_URL, bodyFormData, config);
-
-  // return {
-  //   statusCode: response.status,
-  //   body: JSON.stringify({
-  //     data: response.data,
-  //   }),
-  // };
 };
