@@ -57,6 +57,21 @@
       p {
         @extend .p-one;
       }
+
+      ul {
+        margin-bottom: 1rem;
+
+        p {
+          @extend .p-two;
+          margin: 0;
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+        }
+
+        li {
+          @extend .p-two;
+        }
+      }
     }
 
     &-button {
