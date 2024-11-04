@@ -12,10 +12,16 @@ import SuccessModal from "./Modals/SuccessModal";
 import Input from "./Components/Input/Input.jsx";
 import Textarea from "./Components/Textarea/Textarea.jsx";
 
+import "./contactForm.scss";
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     company: "",
+    yourName: "",
+    position: "",
     yourEmail: "",
+    phone: "",
+    markets: "",
     comments: "",
     _wpcf7_unit_tag: "wpcf7-f546-948",
   });
@@ -27,40 +33,89 @@ const ContactForm = () => {
     captachError: false,
   });
   return (
-    <div>
+    <div className="contact-form">
       <form
+        className="contact-form-fields"
         onSubmit={(event) =>
           submitForm(event, setFormStatus, formStatus, setFormData, formData)
         }
       >
-        <Input
-          handler={(event) => handleOnChange(event, setFormData, formData)}
-          value={formData.company}
-          label="Company"
-          id="company"
-          type="text"
-          required={false}
-        />
-        <Input
-          handler={(event) => handleOnChange(event, setFormData, formData)}
-          value={formData.yourEmail}
-          label="Email"
-          id="yourEmail"
-          type="email"
-          required={false}
-        />
-        <Textarea
-          value={formData.comments}
-          handler={(event) => handleOnChange(event, setFormData, formData)}
-          errors={formStatus.errors}
-          size="full"
-          position="last"
-          title="Comments"
-          type="text"
-          nameId="comments"
-          required={false}
-          rows="10"
-        />
+        <fieldset>
+          <Input
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            value={formData.company}
+            label="Company"
+            id="company"
+            type="text"
+            size="full"
+            placeholder="Company"
+            required={false}
+          />
+
+          <Input
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            value={formData.yourName}
+            label="Your Name"
+            id="yourName"
+            type="text"
+            size="half"
+            placeholder="Your Name"
+            required={false}
+          />
+          <Input
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            value={formData.position}
+            label="Your Position"
+            id="position"
+            type="text"
+            size="half"
+            placeholder="Your Position"
+            required={false}
+          />
+          <Input
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            value={formData.yourEmail}
+            label="Email"
+            id="yourEmail"
+            type="email"
+            size="half"
+            placeholder="Email"
+            required={false}
+          />
+          <Input
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            value={formData.phone}
+            label="Phone Number"
+            id="phone"
+            type="text"
+            size="half"
+            placeholder="Phone Number"
+            required={false}
+          />
+          <Input
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            value={formData.markets}
+            label="Markets we serve"
+            id="markets"
+            type="text"
+            size="full"
+            placeholder="Markets we serve"
+            required={false}
+          />
+          <Textarea
+            value={formData.comments}
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            errors={formStatus.errors}
+            size="full"
+            position="last"
+            title="Comments"
+            type="text"
+            nameId="comments"
+            required={false}
+            placeholder="Comments"
+            rows="10"
+          />
+        </fieldset>
         <div>
           <button type="submit">Submit The Form</button>
         </div>

@@ -1,14 +1,29 @@
 import "./input.scss";
 
-const Input = ({ label, id, type, handler, value, required }) => {
-  console.log("INPUT: ", value);
+const Input = ({
+  handler,
+  value,
+  label,
+  id,
+  type,
+  size,
+  placeholder,
+  required,
+}) => {
   return (
-    <div className="main-form-input">
+    <div className={`main-form-input main-form-input-${size}`}>
       <label htmlFor={id}>
         {label}
         {required && <span className="required">&#42;</span>}
       </label>
-      <input name={id} type={type} onChange={handler} value={value} id={id} />
+      <input
+        name={id}
+        type={type}
+        onChange={handler}
+        value={value}
+        id={id}
+        placeholder={placeholder}
+      />
     </div>
   );
 };

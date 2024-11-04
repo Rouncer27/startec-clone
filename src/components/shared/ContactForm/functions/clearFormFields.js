@@ -1,8 +1,12 @@
 const clearFormFields = (setFormData) => {
   setFormData(() => {
     return {
-      firstName: "",
+      company: "",
+      yourName: "",
+      position: "",
       yourEmail: "",
+      phone: "",
+      markets: "",
       comments: "",
       _wpcf7_unit_tag: "wpcf7-f546-948",
     };
