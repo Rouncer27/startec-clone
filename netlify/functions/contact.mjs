@@ -11,13 +11,7 @@ exports.handler = async function (req, context) {
     bodyFormData.append(field[0], field[1]);
   });
   console.log("Hello Trevor");
-  const helloFunction = async () => {
-    setTimeout(function () {
-      console.log("Hello Trevor Inside Timeout");
-    }, 150000);
-  };
-
-  await helloFunction();
+  await new Promise((resolve) => setTimeout(resolve, 15000));
 
   const response = await axios.post(FORM_POST_URL, bodyFormData, config);
 
