@@ -17,29 +17,29 @@ const submitForm = async (
     };
   });
 
-  const timeoutID = setTimeout(() => {
-    // setFormStatus({
-    //   ...formStatus,
-    //   submitting: false,
-    //   errorWarnDisplay: true,
-    //   success: false,
-    //   validationFailedError: false,
-    //   timeOutError: true,
-    //   unknownError: false,
-    //   errors: [
-    //     {
-    //       errorMessageTimeout:
-    //         "Form was not submitted because the server took too long to respond or your browser has block the request to the server. - Timeout Error. Please try again.",
-    //     },
-    //   ],
-    // });
-
-    throw new Error(
-      `Form was not submitted because the server took too long to respond or your browser has block the request to the server. - Timeout Error. Please try again.`,
-    );
-  }, 10000);
-
   try {
+    const timeoutID = setTimeout(() => {
+      // setFormStatus({
+      //   ...formStatus,
+      //   submitting: false,
+      //   errorWarnDisplay: true,
+      //   success: false,
+      //   validationFailedError: false,
+      //   timeOutError: true,
+      //   unknownError: false,
+      //   errors: [
+      //     {
+      //       errorMessageTimeout:
+      //         "Form was not submitted because the server took too long to respond or your browser has block the request to the server. - Timeout Error. Please try again.",
+      //     },
+      //   ],
+      // });
+
+      throw new Error(
+        `Form was not submitted because the server took too long to respond or your browser has block the request to the server. - Timeout Error. Please try again.`,
+      );
+    }, 10000);
+
     const formDataArray = Object.entries(formData);
     const bodyFormData = new FormData();
     formDataArray.forEach((field) => {
