@@ -20,7 +20,7 @@ const ErrorModal = ({
               <p>
                 One or more fields have an error. Please check and try again.
               </p>
-              {errorMessages.invalid_fields.map((error) => (
+              {errorMessages.map((error) => (
                 <li key={error.idref}>{error.field}</li>
               ))}
             </ul>
