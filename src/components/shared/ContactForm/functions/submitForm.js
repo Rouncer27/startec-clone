@@ -94,7 +94,9 @@ const submitForm = async (
       });
     } else {
       clearTimeout(timeoutID);
-      throw new Error(`Contact Form was not sent - ${response?.data?.status}`);
+      throw new Error(
+        `Contact Form was not sent - CMS Contact Form Error:- ${response?.data?.status}`,
+      );
     }
   } catch (error) {
     console.log("error: ", error);
