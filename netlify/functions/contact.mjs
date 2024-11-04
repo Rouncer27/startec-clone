@@ -1,3 +1,4 @@
+import { set } from "astro:schema";
 import axios from "axios";
 
 exports.handler = async function (req, context) {
@@ -10,17 +11,21 @@ exports.handler = async function (req, context) {
   formDataArray.forEach((field) => {
     bodyFormData.append(field[0], field[1]);
   });
-
   console.log("Hello Trevor");
-  setTimeout(async () => {
-    console.log("Hello Again Trevor");
-    const response = await axios.post(FORM_POST_URL, bodyFormData, config);
+  const helloFunction = async () => {
+    setTimeout(function () {
+      console.log("Hello Trevor Inside Timeout");
+    }, 150000);
+  };
 
-    return {
-      statusCode: response.status,
-      body: JSON.stringify({
-        data: response.data,
-      }),
-    };
-  }, 11000);
+  await helloFunction();
+
+  const response = await axios.post(FORM_POST_URL, bodyFormData, config);
+
+  return {
+    statusCode: response.status,
+    body: JSON.stringify({
+      data: response.data,
+    }),
+  };
 };
