@@ -18,21 +18,25 @@ const submitForm = async (
   });
 
   const timeoutID = setTimeout(() => {
-    setFormStatus({
-      ...formStatus,
-      submitting: false,
-      errorWarnDisplay: true,
-      success: false,
-      validationFailedError: false,
-      timeOutError: true,
-      unknownError: false,
-      errors: [
-        {
-          errorMessageTimeout:
-            "Form was not submitted because the server took too long to respond or your browser has block the request to the server. - Timeout Error. Please try again.",
-        },
-      ],
-    });
+    // setFormStatus({
+    //   ...formStatus,
+    //   submitting: false,
+    //   errorWarnDisplay: true,
+    //   success: false,
+    //   validationFailedError: false,
+    //   timeOutError: true,
+    //   unknownError: false,
+    //   errors: [
+    //     {
+    //       errorMessageTimeout:
+    //         "Form was not submitted because the server took too long to respond or your browser has block the request to the server. - Timeout Error. Please try again.",
+    //     },
+    //   ],
+    // });
+
+    throw new Error(
+      `Form was not submitted because the server took too long to respond or your browser has block the request to the server. - Timeout Error. Please try again.`,
+    );
   }, 10000);
 
   try {
@@ -61,7 +65,6 @@ const submitForm = async (
     });
 
     console.log("response: ", response);
-    console.log("timeoutID: ", timeoutID);
 
     if (response.data.status === "mail_sent") {
       clearTimeout(timeoutID);

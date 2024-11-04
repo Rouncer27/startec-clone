@@ -10,8 +10,8 @@ exports.handler = async function (req, context) {
   formDataArray.forEach((field) => {
     bodyFormData.append(field[0], field[1]);
   });
-  console.log("Hello Trevor");
-  await new Promise((resolve) => setTimeout(resolve, 15000));
+
+  // await new Promise((resolve) => setTimeout(resolve, 15000));
 
   const response = await axios.post(FORM_POST_URL, bodyFormData, config);
 
