@@ -27,6 +27,8 @@ const Input = ({
         value={value}
         id={id}
         placeholder={placeholder}
+        aria-required={required}
+        required={required}
       />
     </div>
   );

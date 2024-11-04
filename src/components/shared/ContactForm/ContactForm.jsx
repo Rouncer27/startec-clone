@@ -55,7 +55,7 @@ const ContactForm = () => {
             type="text"
             size="full"
             placeholder="Company"
-            required={false}
+            required={true}
             error={formStatus.errors.find((error) => error.idref === "company")}
           />
 
@@ -67,7 +67,7 @@ const ContactForm = () => {
             type="text"
             size="half"
             placeholder="Your Name"
-            required={false}
+            required={true}
             error={formStatus.errors.find(
               (error) => error.idref === "yourName",
             )}
@@ -80,7 +80,7 @@ const ContactForm = () => {
             type="text"
             size="half"
             placeholder="Your Position"
-            required={false}
+            required={true}
             error={formStatus.errors.find(
               (error) => error.idref === "position",
             )}
@@ -93,7 +93,7 @@ const ContactForm = () => {
             type="email"
             size="half"
             placeholder="Email"
-            required={false}
+            required={true}
             error={formStatus.errors.find(
               (error) => error.idref === "yourEmail",
             )}
@@ -106,7 +106,7 @@ const ContactForm = () => {
             type="text"
             size="half"
             placeholder="Phone Number"
-            required={false}
+            required={true}
             error={formStatus.errors.find((error) => error.idref === "phone")}
           />
           <Input
@@ -117,7 +117,7 @@ const ContactForm = () => {
             type="text"
             size="full"
             placeholder="Markets we serve"
-            required={false}
+            required={true}
             error={formStatus.errors.find((error) => error.idref === "markets")}
           />
           <Textarea
@@ -127,7 +127,7 @@ const ContactForm = () => {
             id="comments"
             size="full"
             placeholder="Comments"
-            required={false}
+            required={true}
             rows="10"
             error={formStatus.errors.find(
               (error) => error.idref === "comments",
