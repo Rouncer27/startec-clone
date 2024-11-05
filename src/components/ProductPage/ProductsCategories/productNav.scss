@@ -5,8 +5,8 @@ $img-circle-grey: url("/circle-grey.png");
 
 .product-nav {
   position: relative;
-  width: 19rem;
-  height: 18.4rem;
+  width: calc(19rem / 1.1);
+  height: calc(18.4rem / 1.1);
   margin: 2rem 1rem;
   cursor: pointer;
 
