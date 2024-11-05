@@ -16,7 +16,7 @@
 
   &-content {
     position: absolute;
-    bottom: 5rem;
+    bottom: 0;
     left: 0;
     width: 100%;
     padding: 4rem 2rem;
@@ -30,11 +30,17 @@
 
     @media (min-width: 1025px) {
       max-width: 100rem;
-      padding: 4rem 8rem 4rem 10rem;
+      padding: 3rem 8rem 3rem 10rem;
+    }
+
+    @media (min-width: 1250px) {
+      max-width: 120rem;
+      padding: 3rem 8rem 3rem 10rem;
     }
 
     h1 {
       @extend .hl-two;
+      margin-top: 0;
       color: $whiteColor;
       font-weight: 600;
     }
@@ -42,6 +48,10 @@
     p {
       @extend .p-one;
       color: $whiteColor;
+
+      &:last-of-type {
+        margin: 0;
+      }
     }
   }
 

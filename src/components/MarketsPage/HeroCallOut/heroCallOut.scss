@@ -1,7 +1,7 @@
 @use "../../../styles/abstracts/" as *;
 @use "../../../styles/global/headlines";
 
-.hero-call-out {
+.markets-call-out {
   position: relative;
   min-height: 50rem;
 
@@ -18,9 +18,8 @@
     align-items: stretch;
     position: absolute;
     width: 100%;
-    top: 50%;
+    bottom: 15%;
     left: 0;
-    transform: translateY(-50%);
     background-color: rgba($secondaryColor, 0.75);
     z-index: 10;
 
@@ -28,7 +27,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 30%;
+      width: 20%;
       background-color: rgba($secondaryColor, 1);
     }
 
@@ -36,8 +35,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 70%;
-      padding: 7rem;
+      width: 80%;
+      padding: 5rem 7rem;
 
       &-inner {
         width: 100%;
