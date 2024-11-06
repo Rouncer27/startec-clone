@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import Project from "./Project";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { act } from "react";
 
 const settings = {
   slidesToShow: 3,
