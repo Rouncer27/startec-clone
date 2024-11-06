@@ -2,6 +2,7 @@
 import Wrapper from "../../shared/Wrapper.astro";
 import LetsConnectCard from "../../shared/LetsConnectCard/LetsConnectCard.astro";
 import "./projectHeader.scss";
+import { Image } from "astro:assets";
 ---
 
 <div class="project-header">
@@ -16,6 +17,15 @@ import "./projectHeader.scss";
         <span>Projects</span>
       </p>
       <h1>{Astro.props.title}</h1>
+    </div>
+    <div class="project-header-image">
+      <div class="project-header-image-inner">
+        <Image
+          src={Astro.props.featuredImage.sourceUrl}
+          alt={Astro.props.featuredImage.altText}
+          inferSize={true}
+        />
+      </div>
     </div>
   </Wrapper>
   <LetsConnectCard />
