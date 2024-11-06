@@ -37,10 +37,10 @@ const settings = {
 const RelatedProjects = ({ currentMarket, projects, data }) => {
   const relatedProjects = projects.filter((project) => {
     const projectRelatedMarkets =
-      project.node.projectPost.marketsRelated.marketsRelated.edges;
+      project?.node?.projectPost?.marketsRelated?.marketsRelated?.edges;
 
-    const isMatched = projectRelatedMarkets.find((market) => {
-      return market.node.slug === currentMarket;
+    const isMatched = projectRelatedMarkets?.find((market) => {
+      return market?.node?.slug === currentMarket;
     });
     return isMatched;
   });
