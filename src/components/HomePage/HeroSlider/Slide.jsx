@@ -1,6 +1,7 @@
 import "./slide.scss";
 
 const Slide = ({ data }) => {
+  console.log("data: ", data);
   return (
     <div className="slide">
       <div className="slide-content">
@@ -19,7 +20,13 @@ const Slide = ({ data }) => {
       </div>
 
       <div className="slide-bgimage">
-        <img src={data.image.node.sourceUrl} alt={data.image.node.altText} />
+        <img
+          src={data.image.node.sourceUrl}
+          alt={data.image.node.altText}
+          width={data.image.node.options.width}
+          height={data.image.node.options.height}
+          loading={data.image.node.options.loading}
+        />
       </div>
     </div>
   );
