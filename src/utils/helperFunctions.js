@@ -1,5 +1,4 @@
 import { getImage } from "astro:assets";
-import h from "../../dist/_astro/CookieContent.BqH_0YAV";
 
 export const getOptimizedImages = async function (image) {
   const optImage = await getImage({
