@@ -10,6 +10,7 @@ import MobileNav from "../components/Navigation/MobileNav/MobileNav";
 import MainLogo from "../components/Logo/MainLogo.astro";
 import Wrapper from "../components/shared/Wrapper.astro";
 import SocialMediaLinks from "../components/SocialMedia/SocialMediaLinks.astro";
+import { getOptimizedImages } from "../utils/helperFunctions";
 
 import "./header.scss";
 
@@ -37,6 +38,20 @@ const {
     socialMediaLinks,
   },
 } = await response.json();
+
+// Optimize Logo for Mobile Menu built in React. //
+const optimizedLogo = await getOptimizedImages(
+  logoOptions.mainLogo.node.sourceUrl,
+);
+
+const newLogoOptions = {
+  mainLogo: {
+    node: {
+      sourceUrl: optimizedLogo.src,
+      altText: logoOptions.mainLogo.node.altText,
+    },
+  },
+};
 ---
 
 <header class="header">
@@ -64,7 +79,7 @@ const {
     <MobileNav
       client:only="react"
       mainMenu={mobile}
-      mainLogo={logoOptions}
+      mainLogo={newLogoOptions}
       socialMedia={socialMediaLinks}
       pathname={Astro.url.pathname}
     />
