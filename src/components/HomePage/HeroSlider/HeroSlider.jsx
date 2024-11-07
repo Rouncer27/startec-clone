@@ -23,7 +23,7 @@ const HeroSlider = (props) => {
   return (
     <div className="hero-slider">
       <Slider {...settings}>
-        {props.data.heroSliderSlides.map((slide, index) => {
+        {props.data.map((slide, index) => {
           return <Slide key={index} data={slide} />;
         })}
       </Slider>

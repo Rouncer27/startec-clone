@@ -7,6 +7,7 @@ import ContentSideImageSide from "../components/HomePage/ContentSideImageSide/Co
 import ThreeImagesRow from "../components/HomePage/ThreeImagesRow/ThreeImagesRow.astro";
 import HeroCallOut from "../components/HomePage/HeroCallOut/HeroCallOut.astro";
 import "../styles/styles.scss";
+import { getImage } from "astro:assets";
 
 import {
   Hero_Slider_Query,
@@ -48,6 +49,38 @@ const {
     page: { seoMetaTags, homePage },
   },
 } = await response.json();
+
+const getOptimizedImages = async function (image) {
+  const optImage = await getImage({
+    src: image,
+    format: "webp",
+    quality: 100,
+    loading: "eager",
+    inferSize: true,
+  });
+
+  return optImage;
+};
+
+const heroSliderImages = await Promise.all(
+  homePage.heroSlider.heroSliderSlides.map(
+    async (slide) => await getOptimizedImages(slide.image.node.sourceUrl),
+  ),
+);
+
+const newOptimizedSlider = homePage.heroSlider.heroSliderSlides.map(
+  (slide, index) => {
+    return {
+      ...slide,
+      image: {
+        node: {
+          sourceUrl: heroSliderImages[index]?.src,
+          altText: slide.image.node.altText,
+        },
+      },
+    };
+  },
+);
 ---
 
 <Layout
@@ -55,7 +88,7 @@ const {
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <HeroSlider client:only="react" data={homePage.heroSlider} />
+  <HeroSlider client:only="react" data={newOptimizedSlider} />
   <MarketsSlider client:only="react" data={homePage.marketsSlider} />
   <ContentTitleLogo data={homePage.contentTitleLogo} />
   <ContentSideImageSide data={homePage.contentSideImageSide} />
