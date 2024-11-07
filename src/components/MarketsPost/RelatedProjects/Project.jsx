@@ -7,6 +7,15 @@ const Project = ({ project }) => {
         <img
           src={project.node.projectPost.featuredImage.image.node.sourceUrl}
           alt={project.node.projectPost.featuredImage.image.node.altText}
+          width={
+            project.node.projectPost.featuredImage.image.node.options.width
+          }
+          height={
+            project.node.projectPost.featuredImage.image.node.options.height
+          }
+          loading={
+            project.node.projectPost.featuredImage.image.node.options.loading
+          }
         />
       </div>
       <div className="project-slide-wrapper">

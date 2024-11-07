@@ -7,6 +7,7 @@ import ImageDivder from "../../components/MarketsPost/ImageDivider/ImageDivder.a
 import FeaturedProducts from "../../components/MarketsPost/FeaturedProducts/FeaturedProducts.jsx";
 import RelatedProjects from "../../components/MarketsPost/RelatedProjects/RelatedProjects.jsx";
 import SmallCallAction from "../../components/MarketsPost/SmallCallAction/SmallCallAction.astro";
+import { getOptimizedImages } from "../../utils/helperFunctions";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
@@ -112,6 +113,46 @@ const {
     allProjects,
   },
 } = await response.json();
+
+// Main Related Project Slider Image optimization //
+const relatedProjects = allProjects.edges.filter((project) => {
+  const projectRelatedMarkets =
+    project?.node?.projectPost?.marketsRelated?.marketsRelated?.edges;
+
+  const isMatched = projectRelatedMarkets?.find((market) => {
+    return market?.node?.slug === Astro.params["slug"];
+  });
+  return isMatched;
+});
+
+const optimizedRelatedProjects = await Promise.all(
+  relatedProjects.map(async (project) => {
+    const optImage = await getOptimizedImages(
+      project.node.projectPost.featuredImage.image.node.sourceUrl,
+      false,
+    );
+    const newProject = {
+      node: {
+        ...project.node,
+        projectPost: {
+          ...project.node.projectPost,
+          featuredImage: {
+            image: {
+              node: {
+                sourceUrl: optImage.src,
+                options: optImage.attributes,
+                altText:
+                  project.node.projectPost.featuredImage.image.node.altText,
+              },
+            },
+          },
+        },
+      },
+    };
+
+    return newProject;
+  }),
+);
 ---
 
 <Layout
@@ -127,8 +168,7 @@ const {
   <FeaturedProducts client:only="react" data={marketsPost.featuredProducts} />
   <RelatedProjects
     client:only="react"
-    currentMarket={Astro.params["slug"]}
-    projects={allProjects.edges}
+    projects={optimizedRelatedProjects}
     data={marketsPost.displayRelatedProjects}
   />
   <SmallCallAction data={marketsPost.smallCallAction} />

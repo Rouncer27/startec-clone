@@ -1,21 +1,22 @@
 import { getImage } from "astro:assets";
 
-export const getOptimizedImages = async function (image) {
+export const getOptimizedImages = async function (image, eager = true) {
   const optImage = await getImage({
     src: image,
     format: "webp",
     quality: 100,
-    loading: "eager",
+    loading: eager ? "eager" : "lazy",
     inferSize: true,
   });
 
   return optImage;
 };
 
-export const optimizeSlider = async function (slider) {
+export const optimizeSlider = async function (slider, eager = true) {
   const optimizedSlidersImages = await Promise.all(
     slider.map(
-      async (slide) => await getOptimizedImages(slide.image.node.sourceUrl),
+      async (slide) =>
+        await getOptimizedImages(slide.image.node.sourceUrl, eager),
     ),
   );
 

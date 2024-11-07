@@ -1,7 +1,6 @@
 import "./slider.scss";
 
 const Slide = ({ data }) => {
-  console.log(data);
   return (
     <div className="marekts-slide">
       <div className="marekts-slide-image">

@@ -33,18 +33,8 @@ const settings = {
   ],
 };
 
-const RelatedProjects = ({ currentMarket, projects, data }) => {
-  const relatedProjects = projects.filter((project) => {
-    const projectRelatedMarkets =
-      project?.node?.projectPost?.marketsRelated?.marketsRelated?.edges;
-
-    const isMatched = projectRelatedMarkets?.find((market) => {
-      return market?.node?.slug === currentMarket;
-    });
-    return isMatched;
-  });
-
-  const activateSlider = relatedProjects.length >= 3;
+const RelatedProjects = ({ projects, data }) => {
+  const activateSlider = projects.length >= 3;
 
   if (!data.displayRelatedProjects) return null;
 
@@ -57,13 +47,13 @@ const RelatedProjects = ({ currentMarket, projects, data }) => {
         <div className="related-projects-slider">
           {activateSlider ? (
             <Slider {...settings}>
-              {relatedProjects.map((project, index) => {
+              {projects.map((project, index) => {
                 return <Project key={index} project={project} />;
               })}
             </Slider>
           ) : (
             <div className="related-projects-slider-no-slider">
-              {relatedProjects.map((project, index) => {
+              {projects.map((project, index) => {
                 return <Project key={index} project={project} />;
               })}
             </div>
