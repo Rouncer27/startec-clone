@@ -7,8 +7,7 @@ import ContentSideImageSide from "../components/HomePage/ContentSideImageSide/Co
 import ThreeImagesRow from "../components/HomePage/ThreeImagesRow/ThreeImagesRow.astro";
 import HeroCallOut from "../components/HomePage/HeroCallOut/HeroCallOut.astro";
 import "../styles/styles.scss";
-import { getImage } from "astro:assets";
-import { getOptimizedImages } from "../utils/helperFunctions";
+import { optimizeSlider } from "../utils/helperFunctions";
 
 import {
   Hero_Slider_Query,
@@ -52,45 +51,14 @@ const {
 } = await response.json();
 
 // Main Hero Slider Image optimization //
-const heroSliderImages = await Promise.all(
-  homePage.heroSlider.heroSliderSlides.map(
-    async (slide) => await getOptimizedImages(slide.image.node.sourceUrl),
-  ),
-);
-
-const newOptimizedHeroSlider = homePage.heroSlider.heroSliderSlides.map(
-  (slide, index) => {
-    return {
-      ...slide,
-      image: {
-        node: {
-          sourceUrl: heroSliderImages[index]?.src,
-          altText: slide.image.node.altText,
-        },
-      },
-    };
-  },
+const optimizedHeroSlider = await optimizeSlider(
+  homePage.heroSlider.heroSliderSlides,
 );
 
 // Main Market Slider Image optimization //
-const marketSlidersImages = await Promise.all(
-  homePage.marketsSlider.marketsSliderSlides.map(
-    async (slide) => await getOptimizedImages(slide.image.node.sourceUrl),
-  ),
+const optimizedMarketSlider = await optimizeSlider(
+  homePage.marketsSlider.marketsSliderSlides,
 );
-
-const newOptimizedMarketsSlider =
-  homePage.marketsSlider.marketsSliderSlides.map((slide, index) => {
-    return {
-      ...slide,
-      image: {
-        node: {
-          sourceUrl: marketSlidersImages[index]?.src,
-          altText: slide.image.node.altText,
-        },
-      },
-    };
-  });
 ---
 
 <Layout
@@ -98,8 +66,8 @@ const newOptimizedMarketsSlider =
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <HeroSlider client:only="react" data={newOptimizedHeroSlider} />
-  <MarketsSlider client:only="react" data={newOptimizedMarketsSlider} />
+  <HeroSlider client:only="react" data={optimizedHeroSlider} />
+  <MarketsSlider client:only="react" data={optimizedMarketSlider} />
   <ContentTitleLogo data={homePage.contentTitleLogo} />
   <ContentSideImageSide data={homePage.contentSideImageSide} />
   <ThreeImagesRow data={homePage.threeImagesRow} />

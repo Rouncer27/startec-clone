@@ -11,3 +11,25 @@ export const getOptimizedImages = async function (image) {
 
   return optImage;
 };
+
+export const optimizeSlider = async function (slider) {
+  const optimizedSlidersImages = await Promise.all(
+    slider.map(
+      async (slide) => await getOptimizedImages(slide.image.node.sourceUrl),
+    ),
+  );
+
+  const newOptimizedHeroSlider = slider.map((slide, index) => {
+    return {
+      ...slide,
+      image: {
+        node: {
+          sourceUrl: optimizedSlidersImages[index]?.src,
+          altText: slide.image.node.altText,
+        },
+      },
+    };
+  });
+
+  return newOptimizedHeroSlider;
+};

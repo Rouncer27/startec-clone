@@ -5,6 +5,7 @@ import SimpleIntro from "../../components/MarketsPage/SimpleIntro/SimpleIntro.as
 import MarketsSlider from "../../components/MarketsPage/MarketsSlider/MarketsSlider";
 import ContentTitleLogo from "../../components/MarketsPage/ContentTitleLogo/ContentTitleLogo.astro";
 import HeroCallOut from "../../components/MarketsPage/HeroCallOut/HeroCallOut.astro";
+import { optimizeSlider } from "../../utils/helperFunctions";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
@@ -43,6 +44,11 @@ const {
     page: { marketsWeServePage, seoMetaTags },
   },
 } = await response.json();
+
+// Main Market Slider Image optimization //
+const optimizedMarketSlider = await optimizeSlider(
+  marketsWeServePage.marketsSlider.marketsSliderSlides,
+);
 ---
 
 <Layout
@@ -52,7 +58,7 @@ const {
 >
   <HeroImage data={marketsWeServePage.heroImage} />
   <SimpleIntro data={marketsWeServePage.simpleIntro} />
-  <MarketsSlider client:only="react" data={marketsWeServePage.marketsSlider} />
+  <MarketsSlider client:only="react" data={optimizedMarketSlider} />
   <ContentTitleLogo data={marketsWeServePage.contentTitleLogo} />
   <HeroCallOut data={marketsWeServePage.heroCallOut} />
 </Layout>

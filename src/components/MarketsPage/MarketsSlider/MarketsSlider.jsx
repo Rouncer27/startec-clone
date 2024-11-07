@@ -43,7 +43,7 @@ const MarketsSlider = (props) => {
         </div>
       </div>
       <Slider {...settings}>
-        {props.data.marketsSliderSlides.map((slide, index) => {
+        {props.data.map((slide, index) => {
           return <Slide key={index} data={slide} />;
         })}
       </Slider>
