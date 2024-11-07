@@ -114,6 +114,53 @@ const {
   },
 } = await response.json();
 
+// Featured Products Image optimization //
+
+const featuredProductsOptimized = await Promise.all(
+  marketsPost.featuredProducts.products.map(async (product) => {
+    const optImage = await getOptimizedImages(
+      product.product.edges[0].node.productPost.productContentComponent.image
+        .node.sourceUrl,
+      false,
+    );
+    const newProduct = {
+      ...product,
+      product: {
+        edges: [
+          {
+            node: {
+              title: product.product.edges[0].node.title,
+              productPost: {
+                ...product.product.edges[0].node.productPost,
+                productContentComponent: {
+                  ...product.product.edges[0].node.productPost
+                    .productContentComponent,
+                  image: {
+                    node: {
+                      sourceUrl: optImage.src,
+                      options: optImage.attributes,
+                      altText:
+                        product.product.edges[0].node.productPost
+                          .productContentComponent.image.node.altText,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
+    };
+
+    return newProduct;
+  }),
+);
+
+const newFeaturedProducts = {
+  title: marketsPost.featuredProducts.title,
+  products: [...featuredProductsOptimized],
+};
+
 // Main Related Project Slider Image optimization //
 const relatedProjects = allProjects.edges.filter((project) => {
   const projectRelatedMarkets =
@@ -165,7 +212,7 @@ const optimizedRelatedProjects = await Promise.all(
   <MarketWysiwyg data={marketsPost.topContent} />
   <ImageDivder data={marketsPost.imageDivider} />
   <MarketWysiwyg data={marketsPost.bottomContent} />
-  <FeaturedProducts client:only="react" data={marketsPost.featuredProducts} />
+  <FeaturedProducts client:only="react" data={newFeaturedProducts} />
   <RelatedProjects
     client:only="react"
     projects={optimizedRelatedProjects}
