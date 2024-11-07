@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroImage from "../components/ProductPage/HeroImage/HeroImage.astro";
 import ProductsCategories from "../components/ProductPage/ProductsCategories/ProductsCategories.jsx";
 import SmallCallAction from "../components/ProductPage/SmallCallAction/SmallCallAction.astro";
+import { getOptimizedImages } from "../utils/helperFunctions";
 
 import { Page_Seo_Query } from "../data/Page/queries";
 import {
@@ -37,6 +38,56 @@ const {
     page: { productsPage, seoMetaTags },
   },
 } = await response.json();
+
+const newOptimizedCategories = await Promise.all(
+  productsPage.productsCategories.categories.map(async (cat) => {
+    const featuredProductsOptimized = await Promise.all(
+      cat.products.map(async (product) => {
+        const optImage = await getOptimizedImages(
+          product.product.edges[0].node.productPost.productContentComponent
+            .image.node.sourceUrl,
+          false,
+        );
+
+        const newProduct = {
+          ...product,
+          product: {
+            edges: [
+              {
+                node: {
+                  title: product.product.edges[0].node.title,
+                  productPost: {
+                    ...product.product.edges[0].node.productPost,
+                    productContentComponent: {
+                      ...product.product.edges[0].node.productPost
+                        .productContentComponent,
+                      image: {
+                        node: {
+                          sourceUrl: optImage.src,
+                          options: optImage.attributes,
+                          altText:
+                            product.product.edges[0].node.productPost
+                              .productContentComponent.image.node.altText,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        };
+        return newProduct;
+      }),
+    );
+
+    const optimizedCategory = {
+      ...cat,
+      products: [...featuredProductsOptimized],
+    };
+    return optimizedCategory;
+  }),
+);
 ---
 
 <Layout
@@ -45,9 +96,6 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroImage data={productsPage.heroImage} />
-  <ProductsCategories
-    client:only="react"
-    data={productsPage.productsCategories}
-  />
+  <ProductsCategories client:only="react" data={newOptimizedCategories} />
   <SmallCallAction data={productsPage.smallCallAction} />
 </Layout>

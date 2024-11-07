@@ -5,7 +5,13 @@ const ProductModal = ({ title, data, setActiveModal }) => {
     <div className="product-modal">
       <div className="product-modal-inner">
         <div className="product-modal-inner-image">
-          <img src={data.image.node.sourceUrl} alt={data.image.node.altText} />
+          <img
+            src={data.image.node.sourceUrl}
+            alt={data.image.node.altText}
+            width={data.image.node.options.width}
+            height={data.image.node.options.height}
+            loading={data.image.node.options.loading}
+          />
         </div>
         <div className="product-modal-inner-content">
           <div>

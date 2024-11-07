@@ -6,12 +6,12 @@ const ProductsCategories = ({ data }) => {
   return (
     <div className="products-categories">
       <div className="products-categories-nav">
-        {data.categories.map((product, index) => {
+        {data.map((product, index) => {
           return <ProductNav product={product} key={index} />;
         })}
       </div>
       <div className="products-categories-content">
-        {data.categories.map((cat, index) => {
+        {data.map((cat, index) => {
           return <ProductCat cat={cat} key={index} />;
         })}
       </div>
