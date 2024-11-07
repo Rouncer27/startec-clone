@@ -1,7 +1,6 @@
 import "./slide.scss";
 
 const Slide = ({ data }) => {
-  console.log("data: ", data);
   return (
     <div className="slide">
       <div className="slide-content">
