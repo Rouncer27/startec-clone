@@ -1,0 +1,35 @@
+@use "../../styles/global/headlines";
+@use "../../styles/global/paragraphs";
+@use "../../styles/abstracts/" as *;
+
+.main-not-found-content {
+  &__title {
+    width: 100%;
+    padding-top: 25vh;
+
+    h1 {
+      @extend .hl-one;
+      text-align: center;
+    }
+  }
+
+  &__description {
+    width: 100%;
+    padding-bottom: 25vh;
+    text-align: center;
+
+    p {
+      @extend .p-one;
+    }
+
+    a {
+      @extend .p-one;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+}
