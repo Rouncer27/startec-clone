@@ -2,9 +2,13 @@
 @use "../../../styles/global/paragraphs" as *;
 
 .content-title-logo {
-  margin-top: 10rem;
+  margin-top: 2rem;
   margin-bottom: 5rem;
   position: relative;
+
+  @media (min-width: 768px) {
+    margin-top: 10rem;
+  }
 
   &.no-button {
     margin-bottom: 12.5rem;

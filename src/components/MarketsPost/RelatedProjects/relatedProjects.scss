@@ -46,14 +46,14 @@
 
     .slick-arrow {
       top: auto;
-      bottom: -6.5rem;
+      bottom: -4rem;
       width: 4.4rem;
       height: 4.4rem;
       border: 0.1rem solid #a5a5a5;
       z-index: 999;
 
       @media (min-width: 768px) {
-        bottom: -7rem;
+        bottom: -4rem;
       }
       @media (min-width: 1025px) {
         bottom: -4rem;
@@ -67,10 +67,10 @@
     }
 
     .slick-prev {
-      left: calc(85% - 4.4rem);
+      left: calc(50% - 8.8rem);
 
       @media (min-width: 768px) {
-        left: calc(90% - 4.4rem);
+        left: calc(50% - 8.8rem);
       }
 
       @media (min-width: 1025px) {
@@ -81,10 +81,10 @@
 
     .slick-next {
       right: auto;
-      left: calc(15% - 4.4rem);
+      left: calc(50% + 4.4rem);
 
       @media (min-width: 768px) {
-        left: calc(10% - 4.4rem);
+        left: calc(50% + 4.4rem);
       }
 
       @media (min-width: 1025px) {
