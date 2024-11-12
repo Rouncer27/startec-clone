@@ -2,8 +2,13 @@
 
 .about-intro {
   position: relative;
-  padding-top: 7.5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    padding-top: 7.5rem;
+    padding-bottom: 2.5rem;
+  }
 
   &-container {
     max-width: 100%;

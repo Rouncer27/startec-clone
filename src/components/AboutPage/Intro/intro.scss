@@ -2,6 +2,11 @@
 
 .about-intro {
   position: relative;
+  padding-top: 10rem;
+
+  @media (min-width: 768px) {
+    padding-top: 0;
+  }
 
   &-container {
     max-width: 100%;
@@ -33,7 +38,12 @@
   }
 
   .lets-connect-card {
-    top: 9rem;
+    top: 1rem;
     bottom: auto;
+
+    @media (min-width: 768px) {
+      top: 9rem;
+      bottom: auto;
+    }
   }
 }

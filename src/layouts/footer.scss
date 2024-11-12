@@ -12,8 +12,12 @@
   }
 
   &__logo {
-    width: calc(50% - 2.5rem);
+    width: calc(40% - 2.5rem);
     margin-right: 2.5rem;
+
+    @media (min-width: 500px) {
+      width: calc(50% - 2.5rem);
+    }
 
     @media (min-width: 768px) {
       width: calc(50%);
@@ -34,7 +38,11 @@
   }
 
   &__social-media {
-    width: calc(50%);
+    width: calc(60%);
+
+    @media (min-width: 500px) {
+      width: calc(50%);
+    }
 
     @media (min-width: 1200px) {
       width: calc(20%);

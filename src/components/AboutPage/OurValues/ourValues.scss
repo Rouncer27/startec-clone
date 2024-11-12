@@ -13,6 +13,11 @@
 
     h2 {
       @extend .hl-four;
+      margin-left: 0.75rem;
+
+      @media (min-width: 768px) {
+        margin-left: 0;
+      }
     }
   }
 
