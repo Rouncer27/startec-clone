@@ -12,7 +12,11 @@
 
   &-title {
     width: 100%;
-    padding: 0 5rem;
+    padding: 0;
+
+    @media (min-width: 768px) {
+      padding: 0 5rem;
+    }
 
     h2 {
       @extend .hl-four;
@@ -22,7 +26,11 @@
 
   &-content {
     width: 100%;
-    padding: 0 5rem;
+    padding: 0;
+
+    @media (min-width: 768px) {
+      padding: 0 5rem;
+    }
 
     p {
       @extend .p-one;

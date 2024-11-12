@@ -1,14 +1,21 @@
 @use "../../../styles/abstracts" as *;
 @use "../../../styles/global/paragraphs";
+@use "../../../styles/utils";
 $img-circle-blue: url("/circle-blue.png");
 $img-circle-grey: url("/circle-grey.png");
 
 .product-nav {
   position: relative;
-  width: calc(19rem / 1.1);
-  height: calc(18.4rem / 1.1);
-  margin: 2rem 1rem;
+  width: calc(19rem / 2);
+  height: calc(18.4rem / 2);
+  margin: 1rem;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    width: calc(19rem / 1.1);
+    height: calc(18.4rem / 1.1);
+    margin: 2rem 1rem;
+  }
 
   &:hover {
     .product-nav-bg-icon {
@@ -42,12 +49,18 @@ $img-circle-grey: url("/circle-grey.png");
     z-index: 10;
 
     h2 {
-      @extend .p-one;
+      @extend .p-three;
+      @include utils.font-sizer(1.2, 1.4, 76.8, 150, 1.2);
       margin: 0;
       padding: 1rem;
       color: $whiteColor;
       text-align: center;
       text-transform: uppercase;
+
+      @media (min-width: 768px) {
+        @include utils.font-sizer(2, 2.3, 76.8, 150, 2);
+        padding: 1rem;
+      }
     }
   }
 
