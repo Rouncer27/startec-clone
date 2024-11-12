@@ -8,6 +8,7 @@ import PostNav from "../../components/NewsPost/PostNav/PostNav.astro";
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
   Post_Content_Query,
+  Post_Featured_Image_Query,
   Post_Gallery_Images_Query,
   Post_Categories_Query,
 } from "../../data/newsPost/queries";
@@ -71,6 +72,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           title
           slug
           newsPosts {
+            ${Post_Featured_Image_Query}
             ${Post_Content_Query}
             ${Post_Gallery_Images_Query}
           }
@@ -93,7 +95,11 @@ const {
   metaTitle={post?.seoMetaTags?.seoMetaInformation?.metaTitle}
   metaDescription={post?.seoMetaTags?.seoMetaInformation?.metaDescription}
 >
-  <PostHeader title={post.title} categories={post.categories.edges} />
+  <PostHeader
+    title={post.title}
+    categories={post.categories.edges}
+    featuredImage={post.newsPosts.featuredImage.node}
+  />
   <PostContent data={post.newsPosts.mainContent} />
   <PostGallery data={post.newsPosts} />
   <PostNav data={Astro.props} />

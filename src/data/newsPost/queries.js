@@ -24,6 +24,15 @@ export const Post_Content_Query = `
     mainContent 
 `;
 
+export const Post_Featured_Image_Query = `
+     featuredImage {
+        node {
+            altText
+            sourceUrl
+        }
+    } 
+`;
+
 export const Post_Gallery_Images_Query = `
     imageGalleryRequired
       imageGallery {
