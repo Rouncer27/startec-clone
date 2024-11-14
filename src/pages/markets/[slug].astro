@@ -8,6 +8,7 @@ import FeaturedProducts from "../../components/MarketsPost/FeaturedProducts/Feat
 import RelatedProjects from "../../components/MarketsPost/RelatedProjects/RelatedProjects.jsx";
 import SmallCallAction from "../../components/MarketsPost/SmallCallAction/SmallCallAction.astro";
 import { getOptimizedImages } from "../../utils/helperFunctions";
+import { getImage } from "astro:assets";
 
 import { Page_Seo_Query } from "../../data/Page/queries";
 import {
@@ -174,10 +175,15 @@ const relatedProjects = allProjects.edges.filter((project) => {
 
 const optimizedRelatedProjects = await Promise.all(
   relatedProjects.map(async (project) => {
-    const optImage = await getOptimizedImages(
-      project.node.projectPost.featuredImage.image.node.sourceUrl,
-      false,
-    );
+    const optImage = await getImage({
+      src: project.node.projectPost.featuredImage.image.node.sourceUrl,
+      format: "webp",
+      quality: 100,
+      loading: "lazy",
+      inferSize: false,
+      width: 1200,
+      height: 450,
+    });
     const newProject = {
       node: {
         ...project.node,

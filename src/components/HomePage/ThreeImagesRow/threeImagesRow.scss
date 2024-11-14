@@ -1,4 +1,9 @@
+@use "../../../styles/abstracts/" as *;
+
 .three-images-row {
+  background: rgba($greyColor, 0.1);
+  padding: 5rem 0 0 0;
+
   &__item {
     display: flex;
     flex-wrap: wrap;

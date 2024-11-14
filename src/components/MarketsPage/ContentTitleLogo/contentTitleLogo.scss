@@ -2,26 +2,22 @@
 @use "../../../styles/global/paragraphs" as *;
 
 .content-title-logo {
-  margin-top: 2rem;
-  margin-bottom: 5rem;
+  padding: 8rem 0 12rem 0;
   position: relative;
+  background: rgba($secondaryColor, 0.1);
 
   @media (min-width: 768px) {
-    margin-top: 10rem;
   }
 
   &.no-button {
-    margin-bottom: 12.5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 20rem;
 
     @media (min-width: 768px) {
-      margin-bottom: 12.5rem;
-      padding-bottom: 5rem;
+      padding-bottom: 20rem;
     }
 
     @media (min-width: 1025px) {
-      margin-bottom: 15rem;
-      padding-bottom: 7.5rem;
+      padding-bottom: 20rem;
     }
   }
 
@@ -74,5 +70,9 @@
     p {
       @extend .p-one;
     }
+  }
+
+  .lets-connect-card {
+    bottom: 3.2rem;
   }
 }

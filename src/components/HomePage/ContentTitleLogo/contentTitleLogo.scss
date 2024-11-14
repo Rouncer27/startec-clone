@@ -2,9 +2,10 @@
 @use "../../../styles/global/paragraphs" as *;
 
 .content-title-logo {
-  margin-top: 10rem;
-  margin-bottom: 5rem;
+  margin-top: 2rem;
+  padding: 8rem 0 12rem 0;
   position: relative;
+  background: rgba($secondaryColor, 0.1);
 
   &.no-button {
     margin-bottom: 12.5rem;
@@ -70,5 +71,9 @@
     p {
       @extend .p-one;
     }
+  }
+
+  .lets-connect-card {
+    bottom: 3.2rem;
   }
 }

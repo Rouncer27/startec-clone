@@ -9,6 +9,7 @@
   transition: all 0.3s ease-in-out;
 
   &:hover {
+    background: rgba($shadowColor, 0.1);
     box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
   }
 
@@ -63,7 +64,7 @@
   &-button {
     position: absolute;
     bottom: 2.5rem;
-    left: 0;
+    left: 2rem;
     width: 100%;
 
     a {

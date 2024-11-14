@@ -1,5 +1,6 @@
 @use "../../../styles/abstracts/" as *;
 @use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
 
 .single-product {
   position: relative;
@@ -26,7 +27,7 @@
     background-color: rgba(46, 46, 46, 0.75);
 
     h3 {
-      @extend .hl-four;
+      @extend .p-one;
       color: $whiteColor;
     }
   }
