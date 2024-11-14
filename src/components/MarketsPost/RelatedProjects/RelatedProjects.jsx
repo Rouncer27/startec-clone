@@ -60,6 +60,8 @@ const RelatedProjects = ({ projects, data }) => {
           )}
         </div>
       </div>
+
+      <div className="related-projects-bar"></div>
     </div>
   );
 };
