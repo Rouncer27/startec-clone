@@ -6,14 +6,30 @@ $img-bar: url("/blue-bar-zag.png");
 
 .featured-image {
   position: relative;
-  margin-top: 7rem;
+  margin-top: 0rem;
   background: linear-gradient(
     to bottom,
     rgba($secondaryColor, 0.1) 0rem,
-    rgba($secondaryColor, 0.1) 18.5rem,
-    transparent 18.5rem,
+    rgba($secondaryColor, 0.1) 25rem,
+    transparent 25rem,
     transparent 100%
   );
+
+  @media (min-width: 768px) {
+    margin-top: 7rem;
+    background: linear-gradient(
+      to bottom,
+      rgba($secondaryColor, 0.1) 0rem,
+      rgba($secondaryColor, 0.1) 15rem,
+      transparent 15rem,
+      transparent 100%
+    );
+  }
+
+  &-wrapper {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
 
   &-bar {
     display: block;
@@ -59,9 +75,11 @@ $img-bar: url("/blue-bar-zag.png");
 
   &-container {
     width: calc(100%);
+    padding-top: 8rem;
 
     @media (min-width: 768px) {
       width: calc(33.333333%);
+      padding-top: 0;
     }
 
     @media (min-width: 1025px) {
