@@ -2,7 +2,61 @@
 @use "../../../styles/global/paragraphs";
 @use "../../../styles/abstracts/" as *;
 
+$img-bar: url("/blue-bar-zag.png");
+
 .featured-image {
+  position: relative;
+  margin-top: 7rem;
+  background: linear-gradient(
+    to bottom,
+    rgba($secondaryColor, 0.1) 0rem,
+    rgba($secondaryColor, 0.1) 18.5rem,
+    transparent 18.5rem,
+    transparent 100%
+  );
+
+  &-bar {
+    display: block;
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    width: calc(130rem / 3);
+    height: calc(17.6rem / 3);
+    background-image: $img-bar;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    z-index: 5;
+
+    @media (min-width: 768px) {
+      top: 0rem;
+      right: 0rem;
+      width: calc(130rem / 3);
+      height: calc(17.6rem / 3);
+    }
+
+    @media (min-width: 1025px) {
+      top: 0rem;
+      right: 0rem;
+      width: calc(130rem / 3);
+      height: calc(17.6rem / 3);
+    }
+
+    @media (min-width: 1200px) {
+      top: 0cqh;
+      right: 0rem;
+      width: calc(130rem / 3);
+      height: calc(17.6rem / 3);
+    }
+
+    @media (min-width: 1600px) {
+      top: 0rem;
+      right: 0rem;
+      width: calc(130rem / 3);
+      height: calc(17.6rem / 3);
+    }
+  }
+
   &-container {
     width: calc(100%);
 
