@@ -1,5 +1,6 @@
 @use "../../../styles/abstracts/" as *;
 @use "../../../styles/global/paragraphs";
+@use "../../../styles/global/buttons";
 
 .team-card {
   width: calc(100%);
@@ -11,7 +12,31 @@
   }
 
   &-image {
+    position: relative;
     width: 100%;
+
+    &-button {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      button {
+        @extend .btn-one;
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+        background-color: $tertiaryColor;
+        color: $whiteColor;
+
+        &::after {
+          top: 0.2rem;
+        }
+
+        &:hover {
+          background-color: $whiteColor;
+          color: $secondaryColor;
+        }
+      }
+    }
   }
 
   &-title {
