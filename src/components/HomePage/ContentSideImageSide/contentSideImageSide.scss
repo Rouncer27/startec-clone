@@ -1,6 +1,7 @@
 @use "../../../styles/abstracts/" as *;
 @use "../../../styles/global/paragraphs";
 @use "../../../styles/global/headlines";
+$img-bar: url("/green-bar.png");
 
 .content-side-image {
   margin-top: 5rem;
@@ -42,11 +43,58 @@
   }
 
   &-right {
+    position: relative;
     width: 100%;
 
     @media (min-width: 768px) {
       width: calc(50% - 3rem);
       margin-left: 3 rem;
+    }
+
+    &-image {
+      position: relative;
+    }
+
+    &-bar {
+      display: block;
+      position: absolute;
+      bottom: -1.5rem;
+      right: 0rem;
+      width: calc(175rem / 4);
+      height: calc(7.4rem / 4);
+      background-image: $img-bar;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      z-index: -1;
+
+      @media (min-width: 768px) {
+        bottom: -1.5rem;
+        right: 5rem;
+        width: calc(175rem / 5);
+        height: calc(7.4rem / 5);
+      }
+
+      @media (min-width: 1025px) {
+        bottom: -1.5rem;
+        right: 10rem;
+        width: calc(175rem / 4);
+        height: calc(7.4rem / 4);
+      }
+
+      @media (min-width: 1200px) {
+        bottom: -2rem;
+        right: 12rem;
+        width: calc(175rem / 3.3);
+        height: calc(7.4rem / 3.3);
+      }
+
+      @media (min-width: 1600px) {
+        bottom: -2.5rem;
+        right: 17rem;
+        width: calc(175rem / 3);
+        height: calc(7.4rem / 3);
+      }
     }
   }
 }
