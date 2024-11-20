@@ -47,6 +47,26 @@
     @media (min-width: 1200px) {
       width: calc(20%);
     }
+
+    .social-media {
+      width: 20rem;
+
+      &-link {
+        a {
+          @media (min-width: 768px) {
+            width: 3.25rem;
+            height: 3.25rem;
+            padding: 0.6rem;
+          }
+
+          @media (min-width: 1025px) {
+            width: 3.25rem;
+            height: 3.25rem;
+            padding: 0.6rem;
+          }
+        }
+      }
+    }
   }
 
   &__menu {

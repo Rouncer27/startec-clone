@@ -6,25 +6,27 @@ import Paragraph from "../../shared/Paragraph.astro";
 ---
 
 <div class="three-images-row">
-  <Wrapper>
-    {
-      Astro.props.data.blocks.map((block) => {
-        return (
-          <div class="three-images-row__item">
-            <div class="three-images-row__item__image">
-              <Image
-                src={block.image.node.sourceUrl}
-                alt={block.image.node.altText}
-                inferSize={true}
-              />
+  <a href="/about">
+    <Wrapper>
+      {
+        Astro.props.data.blocks.map((block) => {
+          return (
+            <div class="three-images-row__item">
+              <div class="three-images-row__item__image">
+                <Image
+                  src={block.image.node.sourceUrl}
+                  alt={block.image.node.altText}
+                  inferSize={true}
+                />
+              </div>
+              <div class="three-images-row__item__content">
+                <Paragraph ele="h2">{block.title}</Paragraph>
+                <Paragraph pstyle="two">{block.content}</Paragraph>
+              </div>
             </div>
-            <div class="three-images-row__item__content">
-              <Paragraph ele="h2">{block.title}</Paragraph>
-              <Paragraph pstyle="two">{block.content}</Paragraph>
-            </div>
-          </div>
-        );
-      })
-    }
-  </Wrapper>
+          );
+        })
+      }
+    </Wrapper>
+  </a>
 </div>
