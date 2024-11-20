@@ -6,12 +6,15 @@ import "./post.scss";
 
 <div class="single-post">
   <div class="single-post-image">
-    <Image
-      src={post.newsPostsIntro.featuredImage.node.sourceUrl}
-      alt={post.newsPostsIntro.featuredImage.node.altText}
-      inferSize={true}
-    />
+    <a href={`/news/${post.slug}`}>
+      <Image
+        src={post.newsPostsIntro.featuredImage.node.sourceUrl}
+        alt={post.newsPostsIntro.featuredImage.node.altText}
+        inferSize={true}
+      />
+    </a>
   </div>
+
   <div class="single-post-wrapper">
     <div class="single-post-title">
       <h3>{post.title}</h3>
