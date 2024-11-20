@@ -5,26 +5,30 @@ import Headline from "../../shared/Headline.astro";
 ---
 
 <div class="markets-call-out">
-  <div class="markets-call-out-banner">
-    <div class="markets-call-out-banner-icon">
-      <div class="markets-call-out-banner-icon-wrapper">
-        <Image
-          src={Astro.props.data.iconImage.node.sourceUrl}
-          alt={Astro.props.data.iconImage.node.altText}
-          inferSize={true}
-        />
-      </div>
-    </div>
-
-    <div class="markets-call-out-banner-content">
-      <div class="markets-call-out-banner-content-inner">
-        <div>
-          <Headline ele="h2" hlstyle="three">{Astro.props.data.title}</Headline>
+  <a href="/contact">
+    <div class="markets-call-out-banner">
+      <div class="markets-call-out-banner-icon">
+        <div class="markets-call-out-banner-icon-wrapper">
+          <Image
+            src={Astro.props.data.iconImage.node.sourceUrl}
+            alt={Astro.props.data.iconImage.node.altText}
+            inferSize={true}
+          />
         </div>
-        <div set:html={Astro.props.data.content} />
+      </div>
+
+      <div class="markets-call-out-banner-content">
+        <div class="markets-call-out-banner-content-inner">
+          <div>
+            <Headline ele="h2" hlstyle="three"
+              >{Astro.props.data.title}</Headline
+            >
+          </div>
+          <div set:html={Astro.props.data.content} />
+        </div>
       </div>
     </div>
-  </div>
+  </a>
 
   <div class="markets-call-out-bgimage">
     <Image
