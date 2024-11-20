@@ -42,12 +42,13 @@ const MarketsSlider = (props) => {
         <div className="markets-slider-title">
           <h2>Markets We Serve</h2>
         </div>
+
+        <Slider className="markets-slider-container" {...settings}>
+          {props.data.map((slide, index) => {
+            return <Slide key={index} data={slide} />;
+          })}
+        </Slider>
       </div>
-      <Slider {...settings}>
-        {props.data.map((slide, index) => {
-          return <Slide key={index} data={slide} />;
-        })}
-      </Slider>
     </div>
   );
 };
