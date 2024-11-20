@@ -12,8 +12,9 @@
     width: 100%;
 
     h2 {
-      @extend .hl-four;
+      @extend .hl-three;
       margin-left: 0.75rem;
+      font-weight: 600;
 
       @media (min-width: 768px) {
         margin-left: 0;
