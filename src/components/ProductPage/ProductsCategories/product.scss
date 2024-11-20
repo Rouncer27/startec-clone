@@ -9,8 +9,8 @@
   cursor: pointer;
 
   @media (min-width: 768px) {
-    width: calc(100% / 2);
-    margin-bottom: 0;
+    width: calc((100% / 2) - 1.5rem);
+    margin: 0.75rem 0.75rem;
   }
 
   @media (min-width: 1025px) {
