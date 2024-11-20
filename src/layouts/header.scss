@@ -7,6 +7,11 @@
   border-top: 1rem solid $secondaryColor;
   z-index: 999999;
 
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1025px) {
+  }
+
   &-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -86,14 +91,15 @@
       &-link {
         a {
           @media (min-width: 768px) {
-            width: 4rem;
-            height: 4rem;
+            width: 3.25rem;
+            height: 3.25rem;
+            padding: 0.6rem;
           }
 
           @media (min-width: 1025px) {
-            width: 4rem;
-            height: 4rem;
-            padding: 0.9rem;
+            width: 3.25rem;
+            height: 3.25rem;
+            padding: 0.6rem;
           }
         }
       }

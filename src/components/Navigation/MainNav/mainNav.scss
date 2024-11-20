@@ -109,7 +109,7 @@
 
         a {
           display: inline-block;
-          padding: 1.2rem 7rem 1.2rem 4rem;
+          padding: 3rem 7rem 3rem 4rem;
           background-color: $tertiaryColor;
           color: $whiteColor;
 
@@ -128,7 +128,7 @@
 
           &::after {
             position: absolute;
-            top: 1.25rem;
+            top: 3rem;
             right: 2rem;
             display: block;
             content: "\2192";
