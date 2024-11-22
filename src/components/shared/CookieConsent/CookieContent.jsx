@@ -10,14 +10,15 @@ const CookieConsent = () => {
     // accepted cookie lasts for a year
     let d = new Date();
     let oneYear = new Date(d.getFullYear() + 1, d.getMonth(), d.getDate());
-    document.cookie = "cookie-consent=granted; expires=" + oneYear + "; path=/";
+    document.cookie =
+      "st-cookie-consent=granted; expires=" + oneYear + "; path=/";
     consentGranted();
   };
 
   const handleDecline = () => {
     setCookies("denied");
     // declined cookie only lasts for the session
-    document.cookie = "cookie-consent=denied; path=/";
+    document.cookie = "st-cookie-consent=denied; path=/";
   };
 
   // this waits to load the cookie banner until the component is mounted
@@ -53,6 +54,9 @@ const CookieConsent = () => {
           </div>
         </div>
       </div>
+      <div
+        className={`${cookies === "granted" || cookies === "denied" ? "hidden" : ""} cookie-banner-overlay`}
+      />
     </div>
   ) : null;
 

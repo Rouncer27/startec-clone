@@ -87,7 +87,7 @@ const baseUrl = Astro.url ? Astro.url : baseData.url;
       // Should be either "granted" or "denied"
       window.getCookieConsent = function () {
         try {
-          const consent = document.cookie.match(/cookie-consent=([^;]+)/)[1];
+          const consent = document.cookie.match(/st-cookie-consent=([^;]+)/)[1];
           return consent;
         } catch (error) {
           return "unk";
