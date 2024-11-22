@@ -20,7 +20,7 @@
 .hl-two {
   @extend .headline-all;
   @include utils.font-sizer(4, 5.5, 76.8, 150, 3.5);
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .hl-three {
