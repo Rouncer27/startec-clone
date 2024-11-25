@@ -2,6 +2,7 @@
 import Wrapper from "../../shared/Wrapper.astro";
 import Wysiwyg from "../../shared/Wysiwyg.astro";
 import "./marketWysiwyg.scss";
+console.log(Astro.props);
 ---
 
 {
@@ -10,7 +11,7 @@ import "./marketWysiwyg.scss";
       <Wrapper>
         <Wysiwyg>
           <div
-            class="market-wysiwyg-container"
+            class={`market-wysiwyg-container${Astro.props.size === "small" ? " wysiwyg-small" : ""}`}
             set:html={Astro.props.data.content}
           />
         </Wysiwyg>

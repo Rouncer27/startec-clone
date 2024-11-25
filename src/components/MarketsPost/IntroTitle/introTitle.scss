@@ -1,12 +1,38 @@
 .intro-title {
+  position: relative;
+
   &-content {
     width: 100%;
     max-width: 90rem;
     margin-right: auto;
     margin-left: 0;
 
+    @media (min-width: 768px) {
+      max-width: 55rem;
+    }
+    @media (min-width: 1025px) {
+      max-width: 75rem;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 90rem;
+    }
+
     h2 {
       font-weight: 600;
+    }
+  }
+
+  .lets-connect-card {
+    display: none !important;
+
+    @media (min-width: 768px) {
+      display: block !important;
+      top: 0 !important;
+      bottom: auto !important;
+    }
+
+    @media (min-width: 1025px) {
     }
   }
 }

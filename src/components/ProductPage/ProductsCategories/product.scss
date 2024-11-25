@@ -29,6 +29,7 @@
     h3 {
       @extend .p-one;
       color: $whiteColor;
+      text-transform: uppercase;
     }
   }
 }
