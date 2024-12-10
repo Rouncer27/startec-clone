@@ -119,11 +119,22 @@ const {
 
 const featuredProductsOptimized = await Promise.all(
   marketsPost.featuredProducts.products.map(async (product) => {
-    const optImage = await getOptimizedImages(
-      product.product.edges[0].node.productPost.productContentComponent.image
-        .node.sourceUrl,
-      false,
-    );
+    // const optImage = await getOptimizedImages(
+    //   product.product.edges[0].node.productPost.productContentComponent.image
+    //     .node.sourceUrl,
+    //   false,
+    // );
+
+    const optImage = await getImage({
+      src: product.product.edges[0].node.productPost.productContentComponent
+        .image.node.sourceUrl,
+      format: "webp",
+      quality: 100,
+      loading: "lazy",
+      width: 1000,
+      height: 1000,
+    });
+
     const newProduct = {
       ...product,
       product: {
