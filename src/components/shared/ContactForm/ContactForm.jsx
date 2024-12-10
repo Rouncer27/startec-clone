@@ -13,6 +13,7 @@ import Input from "./Components/Input/Input.jsx";
 import Textarea from "./Components/Textarea/Textarea.jsx";
 
 import "./contactForm.scss";
+import DropDown from "./Components/DropDown/DropDown.jsx";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const ContactForm = () => {
     yourEmail: "",
     phone: "",
     markets: "",
-    industry: "",
+    industry: "Commercial HVAC",
     comments: "",
     _wpcf7_unit_tag: "wpcf7-f546-948",
   });
@@ -122,32 +123,28 @@ const ContactForm = () => {
             error={formStatus.errors.find((error) => error.idref === "markets")}
           />
 
-          <div>
-            <label htmlFor="industry">
-              Please select your Industry:
-              <select
-                value={formData.industry}
-                name="industry"
-                id="industry"
-                onChange={(event) =>
-                  handleOnChange(event, setFormData, formData)
-                }
-              >
-                <option value="commercial-hvac">Commercial HVAC</option>
-                <option value="petrochemical">Petrochemical</option>
-                <option value="industrial-gas">Industrial Gas</option>
-                <option value="industrial-refrigeration">
-                  Industrial Refrigeration
-                </option>
-                <option value="oil-&-gas">Oil & Gas</option>
-                <option value="energy-transformation">
-                  Energy Transformation
-                </option>
-                <option value="recreation-ice">Recreation Ice</option>
-                <option value="other">Other</option>
-              </select>
-            </label>
-          </div>
+          <DropDown
+            value={formData.industry}
+            id={"industry"}
+            handler={(event) => handleOnChange(event, setFormData, formData)}
+            label="Please select your Industry:"
+            options={[
+              { label: "Commercial HVAC", value: "Commercial HVAC" },
+              { label: "Petrochemical", value: "Petrochemical" },
+              { label: "Industrial Gas", value: "Industrial Gas" },
+              {
+                label: "Industrial Refrigeration",
+                value: "Industrial Refrigeration",
+              },
+              { label: "Oil & Gas", value: "Oil & Gas" },
+              {
+                label: "Energy Transformation",
+                value: "Energy Transformation",
+              },
+              { label: "Recreation Ice", value: "Recreation Ice" },
+              { label: "Other", value: "other" },
+            ]}
+          />
 
           <Textarea
             handler={(event) => handleOnChange(event, setFormData, formData)}
