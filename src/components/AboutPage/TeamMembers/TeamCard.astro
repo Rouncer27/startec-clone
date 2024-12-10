@@ -19,6 +19,13 @@ import "./teamCard.scss";
     <div class="team-card-title">
       <h3>{Astro.props.mem.title}</h3>
       <p>{Astro.props.mem.biosPost.featuredImageComponent.titleJob}</p>
+      {
+        Astro.props.mem.biosPost.featuredImageComponent.subTitle ? (
+          <p class="team-card-title-sub-title">
+            {Astro.props.mem.biosPost.featuredImageComponent.subTitle}
+          </p>
+        ) : null
+      }
     </div>
   </a>
 </div>

@@ -1,6 +1,7 @@
 export const Featured_Image_Query = `
     featuredImage: featuredImageComponent {
         titleJob
+        subTitle
         linkedinReqiured
         linkedin
         image {

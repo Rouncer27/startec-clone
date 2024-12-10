@@ -46,6 +46,7 @@ export const Executive_Team_Query = `
                                     }
                                 }
                                 titleJob
+                                subTitle
                                 }
                             }
                         }
@@ -74,6 +75,7 @@ export const Leadership_Team_Query = `
                                     }
                                 }
                                 titleJob
+                                subTitle
                                 }
                             }
                         }

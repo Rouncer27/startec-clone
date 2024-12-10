@@ -48,5 +48,9 @@
       margin: 0;
       text-transform: uppercase;
     }
+
+    .team-card-title-sub-title {
+      @extend .p-three;
+    }
   }
 }

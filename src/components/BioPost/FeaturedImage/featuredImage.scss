@@ -111,10 +111,14 @@ $img-bar: url("/blue-bar-zag.png");
       text-transform: uppercase;
     }
 
+    .featured-image-content-sub-title {
+      @extend .p-two;
+    }
+
     &-linkedin {
       @extend .p-one;
-      padding-top: 3rem;
-      padding-bottom: 3rem;
+      padding-top: 2rem;
+      padding-bottom: 0rem;
 
       a {
         @extend .p-one;

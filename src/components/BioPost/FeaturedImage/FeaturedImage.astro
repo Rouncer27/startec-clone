@@ -17,6 +17,13 @@ import "./featuredImage.scss";
       <h1>{Astro.props.title}</h1>
       <p>{Astro.props.data.titleJob}</p>
       {
+        Astro.props.data.subTitle ? (
+          <p class="featured-image-content-sub-title">
+            {Astro.props.data.subTitle}
+          </p>
+        ) : null
+      }
+      {
         Astro.props.data.linkedinReqiured && (
           <p class="featured-image-content-linkedin">
             <a href={Astro.props.data.linkedin}>Linkedin</a>
