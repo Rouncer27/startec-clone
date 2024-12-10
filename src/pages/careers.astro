@@ -5,8 +5,13 @@ import Intro from "../components/CareersPage/Intro/Intro.astro";
 
 import { Page_Seo_Query } from "../data/Page/queries";
 
-import { Hero_Image_Query, Intro_Query } from "../data/careers/queries";
+import {
+  Hero_Image_Query,
+  Intro_Query,
+  Careers_Embed_Query,
+} from "../data/careers/queries";
 import Wrapper from "../components/shared/Wrapper.astro";
+import CareersEmbed from "../components/CareersPage/CareersEmbed/CareersEmbed.astro";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -21,6 +26,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           careersPage {
             ${Hero_Image_Query}
             ${Intro_Query}
+            ${Careers_Embed_Query}
           }
 				}
 			}
@@ -42,7 +48,5 @@ const {
 >
   <HeroImage data={careersPage.heroImage} />
   <Intro data={careersPage.intro} />
-  <div>
-    <Wrapper><p>TODO: Careers Page Embed from JazHR</p></Wrapper>
-  </div>
+  <CareersEmbed data={careersPage.careersEmbed} />
 </Layout>

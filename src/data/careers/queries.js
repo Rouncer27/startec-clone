@@ -15,3 +15,9 @@ export const Intro_Query = `
         content
     }
 `;
+
+export const Careers_Embed_Query = `
+    careersEmbed: careersEmbedComponent {
+        careersEmbed
+    }
+`;

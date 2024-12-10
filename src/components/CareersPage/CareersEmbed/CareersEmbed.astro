@@ -1,0 +1,17 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import Wysiwyg from "../../shared/Wysiwyg.astro";
+
+import "./careersEmbed.scss";
+---
+
+<div class="careers-embed">
+  <Wrapper
+    ><Wysiwyg
+      ><div
+        class="careers-embed-content"
+        set:html={Astro.props.data.careersEmbed}
+      /></Wysiwyg
+    ></Wrapper
+  >
+</div>
