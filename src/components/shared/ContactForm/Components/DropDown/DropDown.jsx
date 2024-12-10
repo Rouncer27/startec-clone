@@ -1,8 +1,8 @@
-import React from "react";
+import "./dropDown.scss";
 
-const DropDown = ({ options, value, id, handler, label }) => {
+const DropDown = ({ options, value, id, handler, label, size }) => {
   return (
-    <div>
+    <div className={`main-form-dropdown main-form-dropdown-${size}`}>
       <label htmlFor={id}>
         {label}
         <select value={value} name={id} id={id} onChange={handler}>

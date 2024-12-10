@@ -6,7 +6,7 @@ const clearFormFields = (setFormData) => {
       position: "",
       yourEmail: "",
       phone: "",
-      markets: "",
+      inquiry: "General Inquiry",
       industry: "Commercial HVAC",
       comments: "",
       _wpcf7_unit_tag: "wpcf7-f546-948",

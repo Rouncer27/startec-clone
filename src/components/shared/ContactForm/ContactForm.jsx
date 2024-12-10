@@ -22,7 +22,7 @@ const ContactForm = () => {
     position: "",
     yourEmail: "",
     phone: "",
-    markets: "",
+    inquiry: "General Inquiry",
     industry: "Commercial HVAC",
     comments: "",
     _wpcf7_unit_tag: "wpcf7-f546-948",
@@ -38,7 +38,8 @@ const ContactForm = () => {
     errors: [],
   });
 
-  console.log("formData: ", formData.industry);
+  console.log("inquiry: ", formData.inquiry);
+  console.log("industry: ", formData.industry);
 
   return (
     <div className="contact-form">
@@ -111,23 +112,40 @@ const ContactForm = () => {
             required={true}
             error={formStatus.errors.find((error) => error.idref === "phone")}
           />
-          <Input
+          <DropDown
+            value={formData.inquiry}
+            id={"inquiry"}
             handler={(event) => handleOnChange(event, setFormData, formData)}
-            value={formData.markets}
-            label="Markets we serve"
-            id="markets"
-            type="text"
+            label="Please select your Inquiry:"
             size="full"
-            placeholder="Markets we serve"
-            required={true}
-            error={formStatus.errors.find((error) => error.idref === "markets")}
+            options={[
+              { label: "General Inquiry", value: "General Inquiry" },
+              { label: "Sales Inquiry", value: "Sales Inquiry" },
+              {
+                label: "Parts & Service Inquiry",
+                value: "Parts & Service Inquiry",
+              },
+
+              {
+                label: "Emergency Inquiry",
+                value: "Emergency Inquiry",
+              },
+            ]}
           />
+
+          {formData.inquiry === "Emergency Inquiry" ? (
+            <p className="emergancy-inquiry">
+              Emergency Inquiry please call 1-(800) 555-9439 for emergency
+              situations
+            </p>
+          ) : null}
 
           <DropDown
             value={formData.industry}
             id={"industry"}
             handler={(event) => handleOnChange(event, setFormData, formData)}
             label="Please select your Industry:"
+            size="full"
             options={[
               { label: "Commercial HVAC", value: "Commercial HVAC" },
               { label: "Petrochemical", value: "Petrochemical" },

@@ -24,5 +24,11 @@
         @extend .btn-one;
       }
     }
+
+    .emergancy-inquiry {
+      width: 100%;
+      color: red;
+      font-weight: bold;
+    }
   }
 }
