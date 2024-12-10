@@ -38,13 +38,13 @@ import "./contactInformation.scss";
         class="contact-information-map-intro"
         set:html={Astro.props.map.intro}
       />
-      <div>
+      <!-- <div>
         <Image
           src={Astro.props.map.mapImage.node.sourceUrl}
           alt={Astro.props.map.mapImage.node.altText}
           inferSize={true}
         />
-      </div>
+      </div> -->
       <ContactForm client:only="react" />
     </div>
   </Wrapper>
