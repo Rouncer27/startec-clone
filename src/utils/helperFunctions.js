@@ -8,7 +8,6 @@ export const getOptimizedImages = async function (image, eager = true) {
     loading: eager ? "eager" : "lazy",
     inferSize: true,
   });
-
   return optImage;
 };
 

@@ -11,6 +11,7 @@ import {
   Small_Call_Action_Query,
   Products_Categories_Query,
 } from "../data/products/queries";
+import { getImage } from "astro:assets";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -43,11 +44,21 @@ const newOptimizedCategories = await Promise.all(
   productsPage.productsCategories.categories.map(async (cat) => {
     const featuredProductsOptimized = await Promise.all(
       cat.products.map(async (product) => {
-        const optImage = await getOptimizedImages(
-          product.product.edges[0].node.productPost.productContentComponent
+        // const optImage = await getOptimizedImages(
+        //   product.product.edges[0].node.productPost.productContentComponent
+        //     .image.node.sourceUrl,
+        //   false,
+        // );
+
+        const optImage = await getImage({
+          src: product.product.edges[0].node.productPost.productContentComponent
             .image.node.sourceUrl,
-          false,
-        );
+          format: "webp",
+          quality: 100,
+          loading: "lazy",
+          width: 1000,
+          height: 1000,
+        });
 
         const newProduct = {
           ...product,
