@@ -8,7 +8,6 @@ const ErrorModal = ({
   timeOutError,
   unknownError,
 }) => {
-  console.log("errorMessage: ", errorMessages[0]?.unknownErrorMessage);
   return (
     <div className="form-modal error-modal">
       <div className="form-modal-inner error-modal-inner">

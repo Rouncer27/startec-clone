@@ -1,3 +1,6 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+
 .intro-title {
   position: relative;
 
@@ -19,7 +22,9 @@
     }
 
     h2 {
-      font-weight: 600;
+      @extend .hl-four;
+      color: $secondaryColor;
+      font-weight: normal;
     }
   }
 
