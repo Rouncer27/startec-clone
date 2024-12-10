@@ -38,9 +38,6 @@ const ContactForm = () => {
     errors: [],
   });
 
-  console.log("inquiry: ", formData.inquiry);
-  console.log("industry: ", formData.industry);
-
   return (
     <div className="contact-form">
       <form
