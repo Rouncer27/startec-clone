@@ -22,6 +22,7 @@ const ContactForm = () => {
     yourEmail: "",
     phone: "",
     markets: "",
+    industry: "",
     comments: "",
     _wpcf7_unit_tag: "wpcf7-f546-948",
   });
@@ -36,7 +37,7 @@ const ContactForm = () => {
     errors: [],
   });
 
-  // console.log("Errors: ", formStatus.errors);
+  console.log("formData: ", formData.industry);
 
   return (
     <div className="contact-form">
@@ -120,6 +121,34 @@ const ContactForm = () => {
             required={true}
             error={formStatus.errors.find((error) => error.idref === "markets")}
           />
+
+          <div>
+            <label htmlFor="industry">
+              Please select your Industry:
+              <select
+                value={formData.industry}
+                name="industry"
+                id="industry"
+                onChange={(event) =>
+                  handleOnChange(event, setFormData, formData)
+                }
+              >
+                <option value="commercial-hvac">Commercial HVAC</option>
+                <option value="petrochemical">Petrochemical</option>
+                <option value="industrial-gas">Industrial Gas</option>
+                <option value="industrial-refrigeration">
+                  Industrial Refrigeration
+                </option>
+                <option value="oil-&-gas">Oil & Gas</option>
+                <option value="energy-transformation">
+                  Energy Transformation
+                </option>
+                <option value="recreation-ice">Recreation Ice</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+          </div>
+
           <Textarea
             handler={(event) => handleOnChange(event, setFormData, formData)}
             value={formData.comments}
