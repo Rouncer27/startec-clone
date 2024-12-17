@@ -8,7 +8,6 @@ import ThreeImagesRow from "../components/HomePage/ThreeImagesRow/ThreeImagesRow
 import HeroCallOut from "../components/HomePage/HeroCallOut/HeroCallOut.astro";
 import "../styles/styles.scss";
 import { optimizeSlider } from "../utils/helperFunctions";
-import { getImage } from "astro:assets";
 
 import {
   Hero_Slider_Query,
@@ -60,18 +59,10 @@ const optimizedHeroSlider = await optimizeSlider(
 const optimizedMarketSlider = await optimizeSlider(
   homePage.marketsSlider.marketsSliderSlides,
 );
-
-const optSeoImage = await getImage({
-  src: seoMetaTags.seoMetaInformation.metaImage.node.sourceUrl,
-  format: "webp",
-  quality: 100,
-  loading: "eager",
-  inferSize: true,
-});
 ---
 
 <Layout
-  metaImg={optSeoImage.src}
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.node.sourceUrl}
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
