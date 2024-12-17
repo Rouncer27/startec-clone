@@ -76,6 +76,17 @@
         color: rgba($blackColor, 0.75);
         content: "\2022";
       }
+
+      ul {
+        margin-top: 0.5rem;
+        li {
+          margin-bottom: 0.25em;
+
+          &::before {
+            content: "\2013";
+          }
+        }
+      }
     }
   }
 
