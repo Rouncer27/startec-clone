@@ -42,26 +42,23 @@ const baseUrl = Astro.url ? Astro.url : baseData.url;
     <!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
 
     <!-- OpenGraph Tags -->
-    <!-- <meta property="og:type" content="website" />
-      <meta property="og:url" content={baseUrl} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={imgSrc} />
-      <meta property="og:image:alt" content={description} />
-      <meta property="og:site_name" content={title} />
-      <meta property="og:locale" content={`en_US`} /> -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={baseUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imgSrc} />
+    <meta property="og:image:alt" content={description} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:locale" content={`en_US`} />
 
     <!-- Twitter Card -->
-    <!-- <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={baseUrl} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={imgSrc} />
-      <meta name="twitter:image:alt" content={description} />
-      <meta
-        name="twitter:creator"
-        content={"Startec"}
-      /> -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={baseUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imgSrc} />
+    <meta name="twitter:image:alt" content={description} />
+    <meta name="twitter:creator" content={"Startec"} />
 
     <!-- Google tag (gtag.js) -->
     <script is:inline>
