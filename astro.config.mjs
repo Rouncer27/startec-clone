@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://startec.netlify.app/",
+  site: "https://startec.ca/",
   integrations: [react(), sitemap()],
   image: {
     domains: ["startec.swbdatabases2.ca/"],
