@@ -61,6 +61,26 @@ const baseUrl = Astro.url ? Astro.url : baseData.url;
     <meta name="twitter:creator" content={"Startec"} />
 
     <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      src="https://www.googletagmanager.com/gtag/js?id=G-P602FFTSPP"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      // Set everything to decline by default //
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "denied",
+      });
+      gtag("js", new Date());
+      gtag("config", "G-P602FFTSPP");
+    </script>
+
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
