@@ -19,6 +19,7 @@
     align-items: center;
 
     @media (min-width: 768px) {
+      justify-content: center;
       padding-top: 0 !important;
       padding-right: 0 !important;
       padding-bottom: 0 !important;
@@ -31,7 +32,9 @@
   }
 
   &-logo {
-    max-width: 30rem;
+    max-width: 25rem;
+    margin-left: 0;
+    margin-right: auto;
 
     @media (min-width: 768px) {
       max-width: 30rem;
