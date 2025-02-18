@@ -1,3 +1,4 @@
+@use "../../../styles/abstracts/" as *;
 @use "../../../styles/global/headlines";
 @use "../../../styles/global/paragraphs";
 
@@ -52,6 +53,16 @@
     &-intro {
       p {
         @extend .hl-five;
+      }
+    }
+
+    &-emergency {
+      p {
+        @extend .hl-five;
+        display: inline-block;
+        padding: 2rem;
+        background-color: $secondaryColor;
+        color: $whiteColor;
       }
     }
   }

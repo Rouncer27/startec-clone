@@ -30,6 +30,7 @@ export const Contact_Information_Query = `
 export const Contact_Map_Query = `
     contactMap: contactMapComponent {
         intro
+        serviceEmergency
         mapImage {
           node {
             altText

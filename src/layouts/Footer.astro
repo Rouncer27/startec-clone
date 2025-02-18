@@ -55,7 +55,7 @@ const {
     </div>
 
     <div class="main-footer__copyright">
-      <p>Copyright © 2024 Startec</p>
+      <p>Copyright © <span id="year"></span> Startec</p>
       <nav>
         <ul>
           <li><a href="/privacy-policy">Privacy Policy</a></li>
@@ -66,3 +66,8 @@ const {
     </div>
   </Wrapper>
 </footer>
+
+<script>
+  const yearSpan = document.getElementById("year");
+  yearSpan.innerHTML = `${new Date().getFullYear()}`;
+</script>

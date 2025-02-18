@@ -38,6 +38,9 @@ import "./contactInformation.scss";
         class="contact-information-map-intro"
         set:html={Astro.props.map.intro}
       />
+      <div class="contact-information-map-emergency">
+        <p>Service Emergency: {Astro.props.map.serviceEmergency}</p>
+      </div>
       <!-- <div>
         <Image
           src={Astro.props.map.mapImage.node.sourceUrl}
