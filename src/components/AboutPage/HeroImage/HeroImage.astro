@@ -5,6 +5,13 @@ import Headline from "../../shared/Headline.astro";
 ---
 
 <div class="hero-image">
+  <div class="hero-image-bgimage">
+    <Image
+      src={Astro.props.data.heroImage.node.sourceUrl}
+      alt={Astro.props.data.heroImage.node.altText}
+      inferSize={true}
+    />
+  </div>
   <div class="hero-image-content">
     <div class="hero-image-content-inner">
       <div>
@@ -14,13 +21,5 @@ import Headline from "../../shared/Headline.astro";
       </div>
       <div set:html={Astro.props.data.heroContent} />
     </div>
-  </div>
-
-  <div class="hero-image-bgimage">
-    <Image
-      src={Astro.props.data.heroImage.node.sourceUrl}
-      alt={Astro.props.data.heroImage.node.altText}
-      inferSize={true}
-    />
   </div>
 </div>
