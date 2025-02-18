@@ -2,7 +2,9 @@
 @use "../../../styles/global/headlines";
 
 .markets-slider {
-  margin-top: 5rem;
+  @media (min-width: 768px) {
+    margin-top: 5rem;
+  }
 
   &-wrapper {
     display: flex;

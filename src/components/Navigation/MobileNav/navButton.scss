@@ -3,8 +3,10 @@
 
 .menu {
   position: fixed;
-  top: 3.5rem;
-  right: 3.5rem;
+  top: 2.5rem;
+  right: 2.5rem;
+  padding: 1rem;
+  background-color: $whiteColor;
   z-index: 9999999999999999;
 
   .menu-button {
@@ -47,6 +49,7 @@
     .menu-button::before {
       rotate: 45deg;
       width: var(--x-width);
+      margin-left: 1rem;
     }
   }
 
@@ -54,6 +57,7 @@
     .menu-button::after {
       rotate: -45deg;
       width: var(--x-width);
+      margin-left: 1rem;
     }
   }
 

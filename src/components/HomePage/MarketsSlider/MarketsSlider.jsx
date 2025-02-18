@@ -30,6 +30,8 @@ const settings = {
       breakpoint: 768,
       settings: {
         slidesToShow: 1,
+        centerPadding: "0px",
+        arrows: false,
       },
     },
   ],
