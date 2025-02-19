@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import Slide from "./Slide";
 import "slick-carousel/slick/slick.css";
@@ -38,17 +38,27 @@ const settings = {
 };
 
 const MarketsSlider = (props) => {
+  const sliderRef = useRef(null);
   useEffect(() => {
     console.log("start!");
-    var xCoordStart,
-      yCoordStart,
-      xSlideTrigger = 10,
-      slickElement = document.querySelector(".slick-slider");
+    let xCoordStart = 10;
+    let yCoordStart = 10;
+    let xSlideTrigger = 10;
 
+    const slickElement = document.querySelector(".slick-slider");
+    const slickSlides = document.querySelectorAll(".slick-slide");
+
+    console.log("sliderRef", sliderRef);
     console.log("slickElement", slickElement);
 
     slickElement.addEventListener("touchstart", function (e) {
-      console.log("touchstart");
+      console.log("touchstart", e);
+    });
+
+    slickSlides.forEach((slide) => {
+      slide.addEventListener("touchstart", function (e) {
+        console.log("SLIDE touchstart", e);
+      });
     });
 
     slickElement.addEventListener("touchstart", function (e) {
@@ -70,9 +80,9 @@ const MarketsSlider = (props) => {
       if (deltaX > deltaY) {
         // prevent slide while scrolling vertically
         if (xCoordStart > xCoordEnd + xSlideTrigger) {
-          slickElement.slickNext();
+          sliderRef.current.slickNext();
         } else if (xCoordStart < xCoordEnd + xSlideTrigger) {
-          slickElement.slickNext();
+          sliderRef.current.slickNext();
         }
       }
     });
@@ -84,7 +94,11 @@ const MarketsSlider = (props) => {
         <div className="markets-slider-title">
           <h2>Markets We Serve</h2>
         </div>
-        <Slider className="markets-slider-container" {...settings}>
+        <Slider
+          ref={sliderRef}
+          className="markets-slider-container"
+          {...settings}
+        >
           {props.data.map((slide, index) => {
             return <Slide key={index} data={slide} />;
           })}
