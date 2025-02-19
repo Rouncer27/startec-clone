@@ -67,14 +67,12 @@ const MarketsSlider = (props) => {
 
     slickElement.addEventListener("touchstart", function (e) {
       console.log(e);
-      e.preventDefault();
       xCoordStart = e.clientX;
       yCoordStart = e.clientY;
     });
 
     slickElement.addEventListener("touchend", function (e) {
       console.log(e);
-      e.preventDefault();
       var xCoordEnd = e.clientX;
       var yCoordEnd = e.clientY;
 
