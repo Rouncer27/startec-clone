@@ -40,10 +40,17 @@ const settings = {
 
 const MarketsSlider = (props) => {
   useEffect(() => {
+    console.log("start!");
     var xCoordStart,
       yCoordStart,
       xSlideTrigger = 10,
       slickElement = document.querySelector(".slick-slider");
+
+    console.log("slickElement", slickElement);
+
+    slickElement.addEventListener("touchstart", function (e) {
+      console.log("touchstart");
+    });
 
     slickElement.addEventListener("touchstart", function (e) {
       xCoordStart = e.originalEvent.touches[0].clientX;
