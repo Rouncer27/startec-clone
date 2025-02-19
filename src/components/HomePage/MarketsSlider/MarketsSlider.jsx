@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Slider from "react-slick";
 import Slide from "./Slide";
 import "slick-carousel/slick/slick.css";
@@ -38,6 +39,35 @@ const settings = {
 };
 
 const MarketsSlider = (props) => {
+  useEffect(() => {
+    var xCoordStart,
+      yCoordStart,
+      xSlideTrigger = 10,
+      slickElement = document.querySelector(".slick-slider");
+
+    slickElement.addEventListener("touchstart", function (e) {
+      xCoordStart = e.originalEvent.touches[0].clientX;
+      yCoordStart = e.originalEvent.touches[0].clientY;
+    });
+
+    slickElement.addEventListener("touchend", function (e) {
+      var xCoordEnd = e.originalEvent.changedTouches[0].clientX;
+      var yCoordEnd = e.originalEvent.changedTouches[0].clientY;
+
+      var deltaX = Math.abs(xCoordEnd - xCoordStart);
+      var deltaY = Math.abs(yCoordEnd - yCoordStart);
+
+      if (deltaX > deltaY) {
+        // prevent slide while scrolling vertically
+        if (xCoordStart > xCoordEnd + xSlideTrigger) {
+          slickElement.slick("slickNext");
+        } else if (xCoordStart < xCoordEnd + xSlideTrigger) {
+          slickElement.slick("slickPrev");
+        }
+      }
+    });
+  }, []);
+
   return (
     <div className="markets-slider">
       <div className="markets-slider-wrapper">
