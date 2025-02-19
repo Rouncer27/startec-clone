@@ -25,6 +25,7 @@ const settings = {
       breakpoint: 1100,
       settings: {
         slidesToShow: 2,
+        draggable: true,
       },
     },
     {
@@ -32,6 +33,7 @@ const settings = {
       settings: {
         slidesToShow: 1,
         centerPadding: "0px",
+        draggable: true,
       },
     },
   ],
