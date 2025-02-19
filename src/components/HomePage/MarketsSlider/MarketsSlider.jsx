@@ -52,14 +52,14 @@ const MarketsSlider = (props) => {
       console.log("touchstart");
     });
 
-    slickElement.addEventListener("mousedown", function (e) {
+    slickElement.addEventListener("touchstart", function (e) {
       console.log(e);
       e.preventDefault();
       xCoordStart = e.clientX;
       yCoordStart = e.clientY;
     });
 
-    slickElement.addEventListener("mouseup", function (e) {
+    slickElement.addEventListener("touchend", function (e) {
       console.log(e);
       e.preventDefault();
       var xCoordEnd = e.clientX;
