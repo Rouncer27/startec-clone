@@ -53,11 +53,15 @@ const MarketsSlider = (props) => {
     });
 
     slickElement.addEventListener("touchstart", function (e) {
+      console.log(e);
+      e.preventDefault();
       xCoordStart = e.originalEvent.touches[0].clientX;
       yCoordStart = e.originalEvent.touches[0].clientY;
     });
 
     slickElement.addEventListener("touchend", function (e) {
+      console.log(e);
+      e.preventDefault();
       var xCoordEnd = e.originalEvent.changedTouches[0].clientX;
       var yCoordEnd = e.originalEvent.changedTouches[0].clientY;
 
