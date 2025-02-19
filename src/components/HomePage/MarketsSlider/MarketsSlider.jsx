@@ -58,57 +58,34 @@ const MarketsSlider = (props) => {
     slickSlides.forEach((slide) => {
       slide.addEventListener("touchstart", function (e) {
         console.log("SLIDE touchstart", e);
-        console.log(e);
-        e.preventDefault();
-        xCoordStart = e.clientX;
-        yCoordStart = e.clientY;
-      });
-
-      slide.addEventListener("touchend", function (e) {
-        console.log(e);
-        e.preventDefault();
-        var xCoordEnd = e.clientX;
-        var yCoordEnd = e.clientY;
-
-        var deltaX = Math.abs(xCoordEnd - xCoordStart);
-        var deltaY = Math.abs(yCoordEnd - yCoordStart);
-
-        if (deltaX > deltaY) {
-          // prevent slide while scrolling vertically
-          if (xCoordStart > xCoordEnd + xSlideTrigger) {
-            sliderRef.current.slickNext();
-          } else if (xCoordStart < xCoordEnd + xSlideTrigger) {
-            sliderRef.current.slickNext();
-          }
-        }
       });
     });
 
-    // slickElement.addEventListener("touchstart", function (e) {
-    //   console.log(e);
-    //   e.preventDefault();
-    //   xCoordStart = e.clientX;
-    //   yCoordStart = e.clientY;
-    // });
+    slickElement.addEventListener("touchstart", function (e) {
+      console.log(e);
+      e.preventDefault();
+      xCoordStart = e.clientX;
+      yCoordStart = e.clientY;
+    });
 
-    // slickElement.addEventListener("touchend", function (e) {
-    //   console.log(e);
-    //   e.preventDefault();
-    //   var xCoordEnd = e.clientX;
-    //   var yCoordEnd = e.clientY;
+    slickElement.addEventListener("touchend", function (e) {
+      console.log(e);
+      e.preventDefault();
+      var xCoordEnd = e.clientX;
+      var yCoordEnd = e.clientY;
 
-    //   var deltaX = Math.abs(xCoordEnd - xCoordStart);
-    //   var deltaY = Math.abs(yCoordEnd - yCoordStart);
+      var deltaX = Math.abs(xCoordEnd - xCoordStart);
+      var deltaY = Math.abs(yCoordEnd - yCoordStart);
 
-    //   if (deltaX > deltaY) {
-    //     // prevent slide while scrolling vertically
-    //     if (xCoordStart > xCoordEnd + xSlideTrigger) {
-    //       sliderRef.current.slickNext();
-    //     } else if (xCoordStart < xCoordEnd + xSlideTrigger) {
-    //       sliderRef.current.slickNext();
-    //     }
-    //   }
-    // });
+      if (deltaX > deltaY) {
+        // prevent slide while scrolling vertically
+        if (xCoordStart > xCoordEnd + xSlideTrigger) {
+          sliderRef.current.slickNext();
+        } else if (xCoordStart < xCoordEnd + xSlideTrigger) {
+          sliderRef.current.slickNext();
+        }
+      }
+    });
   }, []);
 
   return (
