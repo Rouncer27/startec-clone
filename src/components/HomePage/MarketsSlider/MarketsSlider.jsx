@@ -52,18 +52,18 @@ const MarketsSlider = (props) => {
       console.log("touchstart");
     });
 
-    slickElement.addEventListener("touchstart", function (e) {
+    slickElement.addEventListener("mousedown", function (e) {
       console.log(e);
       e.preventDefault();
-      xCoordStart = e.originalEvent.touches[0].clientX;
-      yCoordStart = e.originalEvent.touches[0].clientY;
+      xCoordStart = e.clientX;
+      yCoordStart = e.clientY;
     });
 
-    slickElement.addEventListener("touchend", function (e) {
+    slickElement.addEventListener("mouseup", function (e) {
       console.log(e);
       e.preventDefault();
-      var xCoordEnd = e.originalEvent.changedTouches[0].clientX;
-      var yCoordEnd = e.originalEvent.changedTouches[0].clientY;
+      var xCoordEnd = e.clientX;
+      var yCoordEnd = e.clientY;
 
       var deltaX = Math.abs(xCoordEnd - xCoordStart);
       var deltaY = Math.abs(yCoordEnd - yCoordStart);
@@ -71,9 +71,9 @@ const MarketsSlider = (props) => {
       if (deltaX > deltaY) {
         // prevent slide while scrolling vertically
         if (xCoordStart > xCoordEnd + xSlideTrigger) {
-          slickElement.slick("slickNext");
+          slickElement.slickNext();
         } else if (xCoordStart < xCoordEnd + xSlideTrigger) {
-          slickElement.slick("slickPrev");
+          slickElement.slickNext();
         }
       }
     });
