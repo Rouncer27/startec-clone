@@ -49,11 +49,14 @@ const MarketsSlider = (props) => {
     let yCoordStart = 10;
     let xSlideTrigger = 10;
 
-    const slickElement = document.querySelector(".slick-slider");
-    const slickSlides = document.querySelectorAll(".slick-slide");
+    const slickElement = document.querySelector(".markets-slider-container");
+    const slickSlides = document.querySelectorAll(
+      ".markets-slider-container .slick-slide",
+    );
 
     console.log("sliderRef", sliderRef);
     console.log("slickElement", slickElement);
+    console.log("slickSlides", slickSlides);
 
     slickElement.addEventListener("touchstart", function (e) {
       console.log("touchstart", e);
