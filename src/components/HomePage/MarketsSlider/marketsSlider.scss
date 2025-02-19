@@ -36,7 +36,14 @@
     width: 100%;
   }
 
+  .slick-dots {
+    opacity: 0;
+    visibility: hidden;
+  }
+
   .slick-arrow {
+    opacity: 0;
+    visibility: hidden;
     top: -6.5rem;
     width: 4.4rem;
     height: 4.4rem;
@@ -44,6 +51,8 @@
     z-index: 999;
 
     @media (min-width: 768px) {
+      opacity: 1;
+      visibility: visible;
       top: -7rem;
     }
     @media (min-width: 1025px) {

@@ -18,7 +18,7 @@ const settings = {
   centerMode: true,
   centerPadding: "50px",
   arrows: true,
-  dots: false,
+  dots: true,
   pauseOnHover: true,
   responsive: [
     {
@@ -32,7 +32,6 @@ const settings = {
       settings: {
         slidesToShow: 1,
         centerPadding: "0px",
-        arrows: false,
       },
     },
   ],
