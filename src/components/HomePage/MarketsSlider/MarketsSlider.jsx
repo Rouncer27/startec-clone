@@ -50,32 +50,13 @@ const MarketsSlider = (props) => {
     let xSlideTrigger = 10;
 
     const slickElement = document.querySelector(".markets-slider-container");
-    const slickSlides = document.querySelectorAll(
-      ".markets-slider-container .slick-slide",
-    );
-
-    console.log("sliderRef", sliderRef);
-    console.log("slickElement", slickElement);
-    console.log("slickSlides", slickSlides);
 
     slickElement.addEventListener("touchstart", function (e) {
-      console.log("touchstart", e);
-    });
-
-    slickSlides.forEach((slide) => {
-      slide.addEventListener("touchstart", function (e) {
-        console.log("SLIDE touchstart", e);
-      });
-    });
-
-    slickElement.addEventListener("touchstart", function (e) {
-      console.log(e);
       xCoordStart = e.clientX;
       yCoordStart = e.clientY;
     });
 
     slickElement.addEventListener("touchend", function (e) {
-      console.log(e);
       var xCoordEnd = e.clientX;
       var yCoordEnd = e.clientY;
 
