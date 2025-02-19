@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import Slide from "./Slide";
 import "slick-carousel/slick/slick.css";
@@ -38,6 +39,38 @@ const settings = {
 };
 
 const MarketsSlider = (props) => {
+  const sliderRef = useRef(null);
+  useEffect(() => {
+    console.log("start!");
+    let xCoordStart = 10;
+    let yCoordStart = 10;
+    let xSlideTrigger = 10;
+
+    const slickElement = document.querySelector(".markets-slider-container");
+
+    slickElement.addEventListener("touchstart", function (e) {
+      xCoordStart = e.clientX;
+      yCoordStart = e.clientY;
+    });
+
+    slickElement.addEventListener("touchend", function (e) {
+      var xCoordEnd = e.clientX;
+      var yCoordEnd = e.clientY;
+
+      var deltaX = Math.abs(xCoordEnd - xCoordStart);
+      var deltaY = Math.abs(yCoordEnd - yCoordStart);
+
+      if (deltaX > deltaY) {
+        // prevent slide while scrolling vertically
+        if (xCoordStart > xCoordEnd + xSlideTrigger) {
+          sliderRef.current.slickNext();
+        } else if (xCoordStart < xCoordEnd + xSlideTrigger) {
+          sliderRef.current.slickNext();
+        }
+      }
+    });
+  }, []);
+
   return (
     <div className="markets-slider">
       <div className="markets-slider-wrapper">
@@ -45,7 +78,11 @@ const MarketsSlider = (props) => {
           <h2>Markets We Serve</h2>
         </div>
 
-        <Slider className="markets-slider-container" {...settings}>
+        <Slider
+          ref={sliderRef}
+          className="markets-slider-container"
+          {...settings}
+        >
           {props.data.map((slide, index) => {
             return <Slide key={index} data={slide} />;
           })}
