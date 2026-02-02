@@ -77,18 +77,31 @@ const submitForm = async (
 
     if (response.data.status === "mail_sent") {
       clearTimeout(timeoutID);
-      console.log(window.dataLayer, "FIRE SUBMIT FORM TO GTM OUTSIDE");
       // 🔥 GTM FORM SUBMIT EVENT (ADD HERE)
-      if (window.dataLayer) {
-        console.log(window.dataLayer, "FIRE SUBMIT FORM TO GTM INSIDE");
+
+      const eventData = {
+        form_id: "546",
+        form_name: "contact_form",
+        page_location: window.location.href,
+      };
+
+      if (window.gtag) {
+        window.gtag("event", "form_submit", eventData);
+      } else if (window.dataLayer) {
         window.dataLayer.push({
           event: "form_submit",
-          form_name: "contact_form",
-          inquiry_type: formData.inquiry,
-          industry: formData.industry,
-          page_location: window.location.href,
+          ...eventData,
         });
       }
+      // if (window.dataLayer) {
+      // window.dataLayer.push({
+      //   event: "form_submit",
+      //   form_name: "contact_form",
+      //   inquiry_type: formData.inquiry,
+      //   industry: formData.industry,
+      //   page_location: window.location.href,
+      // });
+      // }
 
       setFormStatus({
         ...formStatus,
