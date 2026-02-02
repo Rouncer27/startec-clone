@@ -77,9 +77,10 @@ const submitForm = async (
 
     if (response.data.status === "mail_sent") {
       clearTimeout(timeoutID);
-
+      console.log(window.dataLayer, "FIRE SUBMIT FORM TO GTM OUTSIDE");
       // 🔥 GTM FORM SUBMIT EVENT (ADD HERE)
       if (window.dataLayer) {
+        console.log(window.dataLayer, "FIRE SUBMIT FORM TO GTM INSIDE");
         window.dataLayer.push({
           event: "form_submit",
           form_name: "contact_form",
