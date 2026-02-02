@@ -86,8 +86,10 @@ const submitForm = async (
       };
 
       if (window.gtag) {
+        console.log("Firing GA4");
         window.gtag("event", "form_submit", eventData);
       } else if (window.dataLayer) {
+        console.log("Firing GTM");
         window.dataLayer.push({
           event: "form_submit",
           ...eventData,
