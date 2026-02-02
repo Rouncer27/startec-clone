@@ -1,6 +1,7 @@
 // utils/gtm.js
 export const fireFormSubmitEvent = (formData) => {
   if (!window.dataLayer) return;
+  console.log("Contact Form GTM Fired");
 
   window.dataLayer.push({
     event: "form_submit",
