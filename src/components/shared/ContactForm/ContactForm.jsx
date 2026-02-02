@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { fireFormSubmitEvent } from "./functions/gtm.js";
 
 import handleErrorModalClose from "./functions/handleErrorModalClose.js";
 import handleSuccessModalClose from "./functions/handleSuccessModalClose.js";
@@ -56,6 +57,12 @@ const ContactForm = () => {
       captachError: false,
     }));
   };
+
+  useEffect(() => {
+    if (formStatus.success) {
+      fireFormSubmitEvent(formData);
+    }
+  }, [formStatus.success]);
 
   return (
     <div className="contact-form">
