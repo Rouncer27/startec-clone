@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { fireFormSubmitEvent } from "./functions/gtm.js";
+// import { fireFormSubmitEvent } from "./functions/gtm.js";
 
 import handleErrorModalClose from "./functions/handleErrorModalClose.js";
 import handleSuccessModalClose from "./functions/handleSuccessModalClose.js";
@@ -58,11 +58,11 @@ const ContactForm = () => {
     }));
   };
 
-  useEffect(() => {
-    if (formStatus.success) {
-      fireFormSubmitEvent(formData);
-    }
-  }, [formStatus.success]);
+  // useEffect(() => {
+  //   if (formStatus.success) {
+  //     fireFormSubmitEvent(formData);
+  //   }
+  // }, [formStatus.success]);
 
   return (
     <div className="contact-form">

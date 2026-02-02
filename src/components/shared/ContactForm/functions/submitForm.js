@@ -77,6 +77,18 @@ const submitForm = async (
 
     if (response.data.status === "mail_sent") {
       clearTimeout(timeoutID);
+
+      // 🔥 GTM FORM SUBMIT EVENT (ADD HERE)
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: "form_submit",
+          form_name: "contact_form",
+          inquiry_type: formData.inquiry,
+          industry: formData.industry,
+          page_location: window.location.href,
+        });
+      }
+
       setFormStatus({
         ...formStatus,
         submitting: false,
