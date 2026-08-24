@@ -7,8 +7,8 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: "https://startec.ca/",
   integrations: [react()],
-  image: {
-    domains: ["startec-clone.swbdatabases3.ca/"],
-    remotePatterns: [{ protocol: "http" }],
-  },
+  // image: {
+  //   domains: ["startec-clone.swbdatabases3.ca/"],
+  //   remotePatterns: [{ protocol: "http" }],
+  // },
 });
