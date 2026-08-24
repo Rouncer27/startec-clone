@@ -36,13 +36,11 @@
 
       h2 {
         text-align: center;
-        text-transform: uppercase;
         font-weight: bold;
-        color: $secondaryColor;
         margin: 0;
 
         @media (min-width: 768px) {
-          text-align: left;
+          text-align: right;
           padding-left: 2rem;
         }
       }
@@ -56,7 +54,8 @@
         max-width: 17.6rem;
 
         @media (min-width: 768px) {
-          margin-left: 0;
+          margin-right: 0;
+          margin-left: auto;
           padding-left: 2rem;
         }
       }

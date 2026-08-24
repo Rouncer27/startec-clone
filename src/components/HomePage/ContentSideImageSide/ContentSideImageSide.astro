@@ -20,6 +20,7 @@ import Headline from "../../shared/Headline.astro";
       />
       <div>
         <Button
+          btnstyle="two"
           href={Astro.props.data.buttonLink.edges[0].node.uri}
           title={Astro.props.data.buttonText}
           >{Astro.props.data.buttonText}</Button

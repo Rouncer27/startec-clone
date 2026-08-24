@@ -66,6 +66,7 @@
         @extend .hl-two;
         margin-top: 0;
         color: $whiteColor;
+        font-weight: 600;
       }
     }
 
@@ -87,8 +88,8 @@
         padding-bottom: 0.25rem;
 
         &:hover {
-          color: $whiteColor;
-          background-color: $secondaryColor;
+          color: $tertiaryColor;
+          background-color: $whiteColor;
         }
 
         &::after {

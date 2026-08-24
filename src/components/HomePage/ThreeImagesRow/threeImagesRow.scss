@@ -40,9 +40,11 @@
       }
 
       h2 {
+        margin-bottom: 1rem;
         font-weight: 600;
         text-transform: uppercase;
         line-height: 1.05;
+        color: $primaryColor;
       }
     }
   }
