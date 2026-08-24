@@ -41,7 +41,7 @@
       width: calc(40% - 2.5rem);
       margin-right: 2.5rem;
       padding-right: 2.5rem;
-      border-right: 0.2rem solid $tertiaryColor;
+      border-right: 0.2rem solid $primaryColor;
     }
 
     button {
@@ -59,12 +59,12 @@
       cursor: pointer;
 
       &:hover {
-        background-color: $tertiaryColor;
+        background-color: $primaryColor;
         color: $whiteColor;
       }
 
       &.active-value-button {
-        background-color: $tertiaryColor;
+        background-color: $primaryColor;
         color: $whiteColor;
       }
 
