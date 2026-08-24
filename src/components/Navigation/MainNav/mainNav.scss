@@ -35,7 +35,7 @@
         a {
           @extend .p-two;
           border-bottom: 0.2rem solid transparent;
-          color: $secondaryColor;
+          color: $blackColor;
           font-weight: 600;
           text-transform: uppercase;
 
@@ -110,12 +110,12 @@
         a {
           display: inline-block;
           padding: 3rem 7rem 3rem 4rem;
-          background-color: $tertiaryColor;
+          background-color: $secondaryColor;
           color: $whiteColor;
 
           &:hover {
             color: $whiteColor;
-            background-color: $secondaryColor;
+            background-color: $primaryColor;
             border-bottom-color: transparent;
             cursor: pointer;
           }

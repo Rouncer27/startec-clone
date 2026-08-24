@@ -21,7 +21,7 @@
     width: 100%;
     bottom: 15%;
     left: 0;
-    background-color: rgba($secondaryColor, 0.75);
+    background-color: rgba($primaryColor, 0.75);
     z-index: 10;
 
     &-icon {
@@ -29,7 +29,7 @@
       flex-direction: column;
       justify-content: center;
       width: 20%;
-      background-color: rgba($secondaryColor, 1);
+      background-color: rgba($oldBlueColor, 1);
     }
 
     &-content {
