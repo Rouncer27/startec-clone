@@ -8,7 +8,7 @@ export default defineConfig({
   site: "https://startec.ca/",
   integrations: [react(), sitemap()],
   image: {
-    domains: ["startec.swbdatabases2.ca/"],
-    remotePatterns: [{ protocol: "https" }],
+    domains: ["startec-clone.swbdatabases3.ca/"],
+    remotePatterns: [{ protocol: "http" }],
   },
 });

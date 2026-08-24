@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const handler = async function (req, context) {
-  const FORM_POST_URL = `https://startec.swbdatabases2.ca/wp-json/contact-form-7/v1/contact-forms/546/feedback`;
+  const FORM_POST_URL = `http://startec-clone.swbdatabases3.ca/wp-json/contact-form-7/v1/contact-forms/546/feedback`;
   const config = { headers: { "Content-Type": "multipart/form-data" } };
   const formData = JSON.parse(req.body);
 
