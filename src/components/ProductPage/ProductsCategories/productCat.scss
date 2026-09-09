@@ -37,7 +37,8 @@
     h2 {
       @extend .hl-four;
       color: $secondaryColor;
-      text-transform: uppercase;
+      text-transform: capitalize;
+      font-weight: 600;
     }
   }
 

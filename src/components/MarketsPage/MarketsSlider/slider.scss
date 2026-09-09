@@ -55,8 +55,9 @@
 
     h2 {
       @extend .hl-five;
-      color: $blackColor;
-      text-transform: uppercase;
+      color: #333f4c;
+      text-transform: capitalize;
+      font-weight: 600;
     }
   }
 
