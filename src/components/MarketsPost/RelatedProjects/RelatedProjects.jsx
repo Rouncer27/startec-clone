@@ -42,7 +42,7 @@ const RelatedProjects = ({ projects, data }) => {
     <div className="related-projects">
       <div className="related-projects-wrapper">
         <div className="related-projects-title">
-          <h2>Related Projects for this market</h2>
+          <h2>Related Projects</h2>
         </div>
         <div className="related-projects-slider">
           {activateSlider ? (
