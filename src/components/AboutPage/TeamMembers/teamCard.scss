@@ -41,12 +41,21 @@
 
   &-title {
     width: 100%;
+    margin-top: 1.5rem;
 
     h3,
     p {
       @extend .p-one;
       margin: 0;
       text-transform: uppercase;
+    }
+
+    h3 {
+      font-weight: 600;
+    }
+
+    p {
+      text-transform: capitalize;
     }
 
     .team-card-title-sub-title {
