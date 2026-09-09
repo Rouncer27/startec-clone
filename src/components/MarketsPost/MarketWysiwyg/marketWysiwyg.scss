@@ -1,3 +1,7 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
 .market-wysiwyg {
   div.wysiwyg-small {
     @media (min-width: 768px) {
@@ -10,5 +14,9 @@
     @media (min-width: 1200px) {
       max-width: 90rem;
     }
+  }
+
+  p {
+    @extend .p-one;
   }
 }
