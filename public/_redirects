@@ -32,5 +32,6 @@ https://startec-swb.netlify.app/* https://startec.ca/:splat 301!
 
 
 /markets/commercial-hvac-r/ /markets/industrial-refrigeration/
+/markets/industrial-gasses/ markets/industrial-gases/
 
 /project/freson-bros-produce-and-healthy-foods-store-upgrade/ /markets/industrial-refrigeration/
