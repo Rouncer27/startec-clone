@@ -111,18 +111,26 @@ $img-bar: url("/blue-bar-zag-new.png");
       text-transform: uppercase;
     }
 
+    h1 {
+      font-weight: 600;
+    }
+
+    p {
+      text-transform: capitalize;
+    }
+
     .featured-image-content-sub-title {
       @extend .p-two;
     }
 
     &-linkedin {
-      @extend .p-one;
       padding-top: 2rem;
       padding-bottom: 0rem;
 
       a {
-        @extend .p-one;
-        text-decoration: underline;
+        width: 3.25rem;
+        height: 3.25rem;
+        padding: 0.6rem;
 
         &:hover {
           color: $tertiaryColor;
