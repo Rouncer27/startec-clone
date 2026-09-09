@@ -28,3 +28,9 @@ https://startec-swb.netlify.app/* https://startec.ca/:splat 301!
 /service/example-projects/wings-fine-foods/ /products/
 /service/example-projects/fernie-memorial-arena/ /products/
 
+
+
+
+/markets/commercial-hvac-r/ /markets/industrial-refrigeration/
+
+/project/freson-bros-produce-and-healthy-foods-store-upgrade/ /markets/industrial-refrigeration/
