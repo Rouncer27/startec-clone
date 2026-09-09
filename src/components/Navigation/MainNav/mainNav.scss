@@ -61,7 +61,7 @@
           left: 0;
           width: 30rem;
           padding: 1rem;
-          background-color: rgba(#fff, 0.75);
+          background-color: rgba(#333f4c, 1);
           transition: all 0.3s ease-in-out;
           opacity: 0;
           visibility: hidden;
@@ -76,18 +76,18 @@
             a {
               @extend .p-two;
               border-bottom: 0.2rem solid transparent;
-              font-weight: normal;
-              color: $blackColor;
+              font-weight: 500;
+              color: $whiteColor;
 
               &:hover {
-                color: $shadowColor;
+                color: #72c7f6;
               }
             }
 
             a.main-nav-sub-current {
-              color: $tertiaryColor;
+              color: #72c7f6;
               font-weight: bold;
-              border-bottom-color: $tertiaryColor;
+              border-bottom-color: #72c7f6;
 
               &:hover {
                 cursor: default;
