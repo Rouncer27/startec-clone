@@ -127,14 +127,16 @@ $img-bar: url("/blue-bar-zag-new.png");
       padding-top: 2rem;
       padding-bottom: 0rem;
 
-      a {
-        width: 3.25rem;
-        height: 3.25rem;
-        padding: 0.6rem;
-        line-height: 1.2;
+      li.social-media-link.linkedin-link {
+        a {
+          width: 3.25rem !important;
+          height: 3.25rem !important;
+          padding: 0.6rem !important;
+          line-height: 1.2 !important;
 
-        &:hover {
-          color: $tertiaryColor;
+          &:hover {
+            color: $tertiaryColor !important;
+          }
         }
       }
     }
