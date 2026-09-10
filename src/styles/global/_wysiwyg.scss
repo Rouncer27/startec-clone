@@ -18,12 +18,12 @@
   }
 
   p {
-    @extend .p-two;
+    @extend .p-one;
     width: 100%;
   }
 
   a {
-    @extend .p-two;
+    @extend .p-one;
     transition: all 0.3s;
     color: $primaryColor;
     font-weight: bold;

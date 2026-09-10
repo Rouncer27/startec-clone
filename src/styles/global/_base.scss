@@ -71,14 +71,14 @@ h6 {
 }
 
 p {
-  @include utils.font-sizer(1.8, 1.9, 76.8, 150, 2);
+  @include utils.font-sizer(2, 2.3, 76.8, 150, 2);
   margin: 0;
   margin-bottom: 1.5em;
   line-height: 1.4;
 }
 
 a {
-  @include utils.font-sizer(1.8, 1.9, 76.8, 150, 2);
+  @include utils.font-sizer(2, 2.3, 76.8, 150, 2);
   text-decoration: none;
   color: var.$primaryColor;
   font-weight: normal;

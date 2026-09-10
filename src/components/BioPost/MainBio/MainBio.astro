@@ -1,10 +1,13 @@
 ---
 import Wrapper from "../../shared/Wrapper.astro";
+import Wysiwyg from "../../shared/Wysiwyg.astro";
 import "./mainBio.scss";
 ---
 
 <div class="main-bio">
   <Wrapper wrapType="stand">
-    <div class="main-bio-content" set:html={Astro.props.data.content} />
+    <Wysiwyg>
+      <div class="main-bio-content" set:html={Astro.props.data.content} />
+    </Wysiwyg>
   </Wrapper>
 </div>

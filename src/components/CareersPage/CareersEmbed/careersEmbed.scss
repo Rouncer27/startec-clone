@@ -1,0 +1,25 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/paragraphs";
+@use "../../../styles/global/headlines";
+
+.careers-embed {
+  &-content {
+    .resumator-job {
+      margin: 2rem auto;
+      padding-bottom: 2rem;
+    }
+
+    .resumator-job-title {
+      @extend .hl-four;
+      padding-top: 3.5rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      border-top: 0.25rem solid $tertiaryColor;
+    }
+
+    .resumator-job-info,
+    a {
+      @extend .p-one;
+    }
+  }
+}
