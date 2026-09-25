@@ -86,6 +86,35 @@ export const Leadership_Team_Query = `
     }
 `;
 
+export const Board_Of_Directors_Query = `
+    boardOfDirectors: boardOfDirectorsComponent {
+        members {
+            member {
+                edges {
+                    node {
+                        ... on Bio {
+                        title
+                        slug
+                        biosPost {
+                            featuredImageComponent {
+                                image {
+                                    node {
+                                    altText
+                                    sourceUrl
+                                    }
+                                }
+                                titleJob
+                                subTitle
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;
+
 export const Team_Video_Query = `
     teamVideo: teamVideoComponent {
         teamVideoEmbed
