@@ -13,6 +13,8 @@ import SuccessModal from "./Modals/SuccessModal";
 import Input from "./Components/Input/Input.jsx";
 import Textarea from "./Components/Textarea/Textarea.jsx";
 
+/* BUMP */
+
 import "./contactForm.scss";
 import DropDown from "./Components/DropDown/DropDown.jsx";
 
