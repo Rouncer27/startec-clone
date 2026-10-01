@@ -32,7 +32,7 @@ const ContactForm = () => {
     yourEmail: "",
     phone: "",
     inquiry: "General Inquiry",
-    industry: "Commercial HVAC",
+    industry: "Petrochemical",
     comments: "",
     _wpcf7_unit_tag: "wpcf7-f546-948",
   });
@@ -178,7 +178,6 @@ const ContactForm = () => {
             label="Please select your Industry:"
             size="full"
             options={[
-              { label: "Commercial HVAC", value: "Commercial HVAC" },
               { label: "Petrochemical", value: "Petrochemical" },
               { label: "Industrial Gas", value: "Industrial Gas" },
               {
