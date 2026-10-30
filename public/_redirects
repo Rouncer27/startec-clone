@@ -38,3 +38,7 @@ https://startec-swb.netlify.app/* https://startec.ca/:splat 301!
 
 
 /markets/industrial-gasses/ /markets/industrial-gases/
+
+
+
+/services https://startec.solutions/services/
